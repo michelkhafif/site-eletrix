@@ -59,9 +59,9 @@ export function Hero() {
 
         <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-6 border-t border-white/15 pt-6 sm:grid-cols-4">
           {site.stats.map((s) => (
-            <div key={s.label}>
-              <dd className="font-display text-3xl font-extrabold tracking-tight text-white tnum md:text-[2rem]">{s.prefix}{s.value}{s.suffix}</dd>
+            <div key={s.label} className="flex flex-col-reverse">
               <dt className="mt-0.5 text-sm text-white/65">{s.label}</dt>
+              <dd className="font-display text-3xl font-extrabold tracking-tight text-white tnum md:text-[2rem]">{s.prefix}{s.value}{s.suffix}</dd>
             </div>
           ))}
         </dl>
@@ -250,9 +250,9 @@ export function Network() {
             <SectionHeader id="rede-t" eyebrow="A rede" title="Presente do Sul ao Nordeste, desde 2021." lead="A rede da Eletrix cresce por onde há rotina de verdade: o prédio onde você trabalha, o hotel onde se hospeda, a garagem onde mora." />
             <dl className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8">
               {site.stats.map((s) => (
-                <div key={s.label} data-reveal className="border-l-2 border-brand-500 pl-5">
-                  <dd className="font-display text-[2.5rem] font-extrabold leading-none tracking-tight text-fg"><Counter value={s.value} prefix={s.prefix} suffix={s.suffix} /></dd>
+                <div key={s.label} data-reveal className="flex flex-col-reverse border-l-2 border-brand-500 pl-5">
                   <dt className="mt-2 text-fg-muted">{s.label}</dt>
+                  <dd className="font-display text-[2.5rem] font-extrabold leading-none tracking-tight text-fg"><Counter value={s.value} prefix={s.prefix} suffix={s.suffix} /></dd>
                 </div>
               ))}
             </dl>

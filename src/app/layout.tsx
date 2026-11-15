@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Manrope } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -8,8 +8,9 @@ import { MotionProvider } from '@/components/ui/MotionProvider';
 import { Analytics } from '@/components/layout/Analytics';
 import { SITE_URL, site, withBase } from '@/config/site';
 
-const display = Manrope({ subsets: ['latin'], weight: ['600', '700', '800'], variable: '--font-display', display: 'swap' });
-const text = Inter({ subsets: ['latin'], variable: '--font-text', display: 'swap' });
+// Fontes variáveis self-hosted (subconjunto latin, cobre o português). Build sem dependência de rede.
+const display = localFont({ src: '../fonts/manrope-latin-wght-normal.woff2', weight: '200 800', variable: '--font-display', display: 'swap' });
+const text = localFont({ src: '../fonts/inter-latin-wght-normal.woff2', weight: '100 900', variable: '--font-text', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL + '/'),

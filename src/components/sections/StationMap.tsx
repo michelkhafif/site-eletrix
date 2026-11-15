@@ -21,7 +21,7 @@ export function StationMap({ stations, ufs }: Props) {
   useEffect(() => {
     const node = el.current;
     if (!node) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } }, { rootMargin: '300px' });
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setStarted(true); io.disconnect(); } }, { rootMargin: '0px', threshold: 0.05 });
     io.observe(node);
     return () => io.disconnect();
   }, []);

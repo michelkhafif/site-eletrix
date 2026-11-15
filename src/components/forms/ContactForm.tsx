@@ -138,7 +138,7 @@ export function ContactForm({ profile = 'geral', origin, tone = 'light' }: { pro
         return (
           <div key={f.name} className={span}>
             <label htmlFor={id} className={`mb-1.5 block text-sm font-medium ${tone === 'dark' ? 'text-white' : 'text-ink-900'}`}>
-              {f.label}{f.required && <span className="text-brand-700" aria-hidden="true"> *</span>}
+              {f.label}{f.required && <span className={tone === 'dark' ? 'text-brand-400' : 'text-brand-700'} aria-hidden="true"> *</span>}
             </label>
             {f.type === 'select' ? (
               <select {...common} defaultValue="">

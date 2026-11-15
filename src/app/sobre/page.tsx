@@ -47,14 +47,14 @@ export default function AboutPage() {
           <h2 id="num-t" className="sr-only">A Eletrix em números</h2>
           <dl className="grid grid-cols-2 gap-8 md:grid-cols-5">
             {site.stats.map((s) => (
-              <div key={s.label} data-reveal className="border-l-2 border-brand-500 pl-5">
-                <dd className="font-display text-[2.6rem] font-extrabold leading-none tracking-tight"><Counter value={s.value} prefix={s.prefix} suffix={s.suffix} /></dd>
+              <div key={s.label} data-reveal className="flex flex-col-reverse border-l-2 border-brand-500 pl-5">
                 <dt className="mt-2 text-muted-dark">{s.label}</dt>
+                <dd className="font-display text-[2.6rem] font-extrabold leading-none tracking-tight"><Counter value={s.value} prefix={s.prefix} suffix={s.suffix} /></dd>
               </div>
             ))}
-            <div data-reveal className="border-l-2 border-brand-500 pl-5">
-              <dd className="font-display text-[2.6rem] font-extrabold leading-none tracking-tight tnum">{site.foundedYear}</dd>
+            <div data-reveal className="flex flex-col-reverse border-l-2 border-brand-500 pl-5">
               <dt className="mt-2 text-muted-dark">ano de fundação</dt>
+              <dd className="font-display text-[2.6rem] font-extrabold leading-none tracking-tight tnum">{site.foundedYear}</dd>
             </div>
           </dl>
           <p className="mt-10 max-w-2xl text-muted-dark">Até hoje, nenhuma estação foi desinstalada por falta de manutenção ou de suporte.</p>

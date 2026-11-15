@@ -34,6 +34,7 @@ Tudo o que não estava no briefing (`CLAUDE.md`) foi marcado aqui. Itens com **[
 | Não exibimos número de locais nem de estações por local no mapa | Regra do briefing | — |
 | Mapa mostra 94 locais "Sim" do CSV, só nome e cidade | Regra do briefing. Inclui as 2 unidades Housi (residencial de marca, listadas como "Sim") | Confirmar se as unidades Housi podem aparecer |
 | Logos: todos os 39 parceiros em uma faixa monocromática | CLAUDE.md pede logos de parceiros | WEG e Intelbras são fornecedoras de equipamento, não clientes. A faixa fala "Parceiros e clientes" para ser correta |
+| Mapa mostra 6 estados (SP, RJ, PR, SC, RS, BA) e 19 cidades, enquanto o texto oficial diz "+10 estados" e "+20 cidades" | O CSV só tem os locais marcados "Sim"; os números oficiais vêm do briefing | Um visitante atento pode notar a diferença. Atualizar o CSV ou revisar os números |
 | Rótulo "Parceiros e clientes" | Evita afirmar que todos são clientes | Confirmar se há logos que não devem aparecer |
 | Página adicional `/perguntas-frequentes/` | Melhora SEO e atende a todos os públicos, só com fatos do briefing | — |
 | Rotas legadas (item 2) | Briefing | — |

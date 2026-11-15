@@ -35,7 +35,7 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_1.1fr_1.25fr]">
             {col('Soluções', [
               { href: '/eletrix-hub/', label: 'Eletrix Hub' },
               { href: '/eletrix-rent/', label: 'Eletrix Rent' },
