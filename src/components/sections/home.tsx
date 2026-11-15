@@ -24,8 +24,8 @@ export function Hero() {
         <Parallax className="h-full w-full">
           <Picture name="aqwa-por-do-sol" alt="" priority fill sizes="100vw" position="50% 38%" />
         </Parallax>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/75 to-ink-950/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/20 to-ink-950/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/55 to-transparent md:via-ink-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/25 to-ink-950/40" />
       </div>
 
       <Container className="relative flex flex-1 flex-col justify-end pb-10 pt-[calc(var(--header-h)+48px)] md:pb-14">
@@ -271,7 +271,7 @@ export function Why() {
   return (
     <Section tone="paper" labelledBy="why-t">
       <Container>
-        <SectionHeader id="why-t" eyebrow="Por que a Eletrix" title="Padrão, operação e confiança." lead="Não disputamos o título de maior rede em número de pontos. Disputamos o padrão de serviço que um empreendimento AAA espera." />
+        <SectionHeader id="why-t" eyebrow="Por que a Eletrix" title="Padrão, operação e confiança." lead="O padrão de serviço que um empreendimento AAA espera, do projeto ao suporte, com operação própria." />
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {whyEletrix.map((w, i) => (
             <li key={w.title} data-reveal style={{ ['--d' as string]: `${(i % 3) * 70}ms` }} className="card p-7">

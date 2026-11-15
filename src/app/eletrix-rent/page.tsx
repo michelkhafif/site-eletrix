@@ -76,7 +76,7 @@ export default function RentPage() {
           { icon: 'shield', title: 'Segurança e IT-41', text: 'Instalação dentro das normas do Corpo de Bombeiros, com ART, proteção e sinalização.' },
           { icon: 'receipt', title: 'Sem rateio de energia', text: 'Quem recarrega paga pelo uso, e a energia consumida é reembolsada ao local.' },
           { icon: 'palette', title: 'Sua marca, se quiser', text: <>No modelo white label, os carregadores levam a marca do cliente com a assinatura Powered by Eletrix. <Link href="/white-label/">Saiba mais</Link>.</> },
-          { icon: 'wrench', title: 'Equipamentos de marcas líderes', text: 'WEG, Intelbras e Livoltek, com 7,4 kW e conector Tipo 2.' },
+          { icon: 'wrench', title: 'Equipamentos de marcas reconhecidas', text: 'WEG, Intelbras e Livoltek, com 7,4 kW e conector Tipo 2.' },
           { icon: 'handshake', title: 'Contrato sem surpresas', text: 'Bons negócios se sustentam pela entrega de valor, não por multas ou cláusulas leoninas.' },
         ]} />
       </Band>

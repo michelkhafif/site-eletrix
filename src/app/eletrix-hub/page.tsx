@@ -69,7 +69,7 @@ export default function HubPage() {
               <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-brand-400">Como a tarifa se divide, por kWh</p>
               <ul className="mt-6 space-y-4">
                 {[
-                  { n: '1', t: 'Parcela da Eletrix', d: 'Fixa. Remunera a operação, o app, o suporte e a manutenção.', tag: 'Fixa' },
+                  { n: '1', t: 'Parcela da Eletrix', d: 'Fixa por kWh, qualquer que seja o custo de energia do local.', tag: 'Fixa' },
                   { n: '2', t: 'Reembolso da energia', d: 'Segue o custo real de energia do local. 100% reembolsado.', tag: '100%' },
                   { n: '3', t: 'Bônus ao empreendimento', d: 'Dependendo do custo de energia do cliente, o bônus pode ser maior.', tag: 'Para o local' },
                 ].map((r) => (
@@ -83,7 +83,7 @@ export default function HubPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-5 text-sm text-muted-dark">O motorista paga a tarifa final pelo app Eletrix. A divisão acima é a base do repasse ao empreendimento.</p>
+              <p className="mt-5 text-sm text-muted-dark">O motorista paga a tarifa final pelo app Eletrix.</p>
             </div>
           </div>
         </Container>

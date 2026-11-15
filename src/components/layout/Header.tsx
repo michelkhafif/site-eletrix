@@ -121,8 +121,19 @@ export function Header() {
     return () => { document.removeEventListener('keydown', key); document.removeEventListener('mousedown', click); };
   }, [mega, mobile]);
 
+  // Hover abre e fecha o menu; um clique "fixa" o painel aberto (útil no toque e no teclado) e outro clique fecha.
+  const [pinned, setPinned] = useState(false);
   const openHover = useCallback(() => { clearTimeout(closeTimer.current); setMega(true); }, []);
-  const closeHover = useCallback(() => { closeTimer.current = setTimeout(() => setMega(false), 160); }, []);
+  const closeHover = useCallback(() => {
+    clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setMega((open) => (pinned ? open : false)), 160);
+  }, [pinned]);
+  const onMegaClick = () => {
+    if (!mega) { setMega(true); setPinned(true); }
+    else if (!pinned) setPinned(true);
+    else { setMega(false); setPinned(false); }
+  };
+  useEffect(() => { if (!mega) setPinned(false); }, [mega]);
 
   const active = (href: string) => pathname.startsWith(href);
 
@@ -146,7 +157,7 @@ export function Header() {
               type="button"
               aria-expanded={mega}
               aria-controls="mega-solucoes"
-              onClick={() => setMega((v) => !v)}
+              onClick={onMegaClick}
               className={`flex h-10 items-center gap-1.5 rounded-full px-4 text-[0.92rem] font-medium transition hover:bg-white/10 ${mega ? 'bg-white/10 text-white' : 'text-white/90'}`}
             >
               Soluções <Icon name="chevronDown" size={16} className={`transition-transform duration-200 ${mega ? 'rotate-180' : ''}`} />

@@ -62,7 +62,7 @@ export default function DemandControlPage() {
       </Band>
 
       <FAQ items={faqs.demanda} />
-      <Band tone="light" id="continue" eyebrow="Continue por aqui" title="A jornada do síndico.">
+      <Band tone="light" id="continue" eyebrow="Continue por aqui" title="O caminho do síndico.">
         <RelatedLinks items={[
           { href: '/laudo-de-demanda/', kicker: '02 · Medir', title: 'Laudo de demanda', text: 'Meça a folga real do prédio.' },
           { href: '/infraestrutura-seca/', kicker: '03 · Preparar', title: 'Infraestrutura seca', text: 'Eletrocalhas até as vagas.' },

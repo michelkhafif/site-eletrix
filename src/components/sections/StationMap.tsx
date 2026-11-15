@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import 'maplibre-gl/dist/maplibre-gl.css';
+import { withBase } from '@/config/site';
 import type { Station } from '@/lib/stations';
 
 const STYLE = 'https://tiles.openfreemap.org/styles/positron';
@@ -31,6 +32,8 @@ export function StationMap({ stations, ufs }: Props) {
     (async () => {
       try {
         const maplibregl = await import('maplibre-gl');
+        // O bundler quebra o caminho do worker: servimos uma cópia de public/vendor.
+        maplibregl.setWorkerUrl(withBase('/vendor/maplibre-gl-worker.mjs'));
         if (cancelled || !el.current) return;
         const map = new maplibregl.Map({ container: el.current, style: STYLE, center: [-47, -23.5], zoom: 4.2, attributionControl: { compact: true } });
         mapRef.current = map;
@@ -48,7 +51,6 @@ export function StationMap({ stations, ufs }: Props) {
             },
           });
           map.addLayer({ id: 'clusters', type: 'circle', source: 'stations', filter: ['has', 'point_count'], paint: { 'circle-color': '#0A1220', 'circle-stroke-color': '#10B7FF', 'circle-stroke-width': 2, 'circle-radius': ['step', ['get', 'point_count'], 15, 5, 19, 20, 24] } });
-          map.addLayer({ id: 'cluster-count', type: 'symbol', source: 'stations', filter: ['has', 'point_count'], layout: { 'text-field': ['get', 'point_count_abbreviated'], 'text-size': 12, 'text-font': ['Noto Sans Bold'] }, paint: { 'text-color': '#ffffff' } });
           map.addLayer({ id: 'points', type: 'circle', source: 'stations', filter: ['!', ['has', 'point_count']], paint: { 'circle-color': '#10B7FF', 'circle-radius': 7, 'circle-stroke-color': '#0A1220', 'circle-stroke-width': 2 } });
           map.on('click', 'clusters', async (e: { point: import('maplibre-gl').PointLike }) => {
             const f = map.queryRenderedFeatures(e.point, { layers: ['clusters'] })[0];

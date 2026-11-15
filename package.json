@@ -15,7 +15,8 @@
     "build:pages": "cross-env NEXT_PUBLIC_BASE_PATH=/site-eletrix next build",
     "postbuild": "node scripts/postbuild.mjs",
     "seo:check": "node scripts/check-seo.mjs",
-    "links:check": "node scripts/check-links.mjs"
+    "links:check": "node scripts/check-links.mjs",
+    "prebuild": "node scripts/copy-vendor.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.73.0",

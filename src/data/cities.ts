@@ -129,7 +129,7 @@ export const cities: City[] = [
         title: 'Presença no Paraná',
         paragraphs: [
           'Além de Curitiba, a rede chega a Guarapuava, Ponta Grossa e São José dos Pinhais, e o Shopping Maringá Park está entre os empreendimentos com a recarga Eletrix. A mesma operação e o mesmo suporte 24 horas valem em todas as cidades.',
-          'Para condomínios residenciais e prédios comerciais da região, a jornada de laudo de demanda, infraestrutura seca, controle de demanda e adequação às normas de segurança segue a mesma lógica. As exigências do Corpo de Bombeiros do Paraná são confirmadas na visita técnica.',
+          'Para condomínios residenciais e prédios comerciais da região, o caminho de laudo de demanda, infraestrutura seca, controle de demanda e adequação às normas de segurança segue a mesma lógica. As exigências do Corpo de Bombeiros do Paraná são confirmadas na visita técnica.',
         ],
       },
     ],

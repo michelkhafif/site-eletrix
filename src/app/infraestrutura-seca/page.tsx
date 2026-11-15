@@ -79,9 +79,9 @@ export default function InfraPage() {
       </Band>
 
       <FAQ items={faqs.infra} />
-      <Band tone="light" id="continue" eyebrow="Continue por aqui" title="A jornada do síndico.">
+      <Band tone="light" id="continue" eyebrow="Continue por aqui" title="O caminho do síndico.">
         <RelatedLinks items={[
-          { href: '/laudo-de-demanda/', kicker: '02 · Medir', title: 'Laudo de demanda', text: 'O primeiro passo da jornada.' },
+          { href: '/laudo-de-demanda/', kicker: '02 · Medir', title: 'Laudo de demanda', text: 'O primeiro passo do caminho.' },
           { href: '/controle-de-demanda/', kicker: '04 · Controlar', title: 'Controle de demanda', text: 'Para ter mais carregadores sem sobrecarga.' },
           { href: '/adequacao-it-41/', kicker: '05 · Regularizar', title: 'Adequação IT-41', text: 'Preços públicos e simulador.' },
         ]} />

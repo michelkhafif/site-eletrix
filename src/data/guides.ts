@@ -248,7 +248,7 @@ export const guides: Guide[] = [
         blocks: [
           { t: 'p', text: 'Todo carro elétrico tem um carregador interno que converte a corrente alternada da tomada ou da wallbox em corrente contínua para a bateria. É a capacidade desse carregador interno que define a potência máxima em AC, e não a do equipamento na parede.' },
           { t: 'p', text: 'Praticamente todos os veículos elétricos vendidos no Brasil limitam a recarga AC a 7,4 kW. Se você instalar um carregador de 11 kW ou de 22 kW, o carro continuará puxando 7,4 kW. O resultado: o mesmo tempo de recarga, com um equipamento e uma infraestrutura mais caros.' },
-          { t: 'callout', title: 'E a recarga rápida?', text: 'A recarga rápida usa corrente contínua (DC), em equipamentos muito maiores, geralmente em corredores e postos. A rede Eletrix é só em corrente alternada, pensada para o tempo em que o carro já fica parado: na garagem, no trabalho, no hotel ou no shopping.' },
+          { t: 'callout', title: 'Pensada para o tempo parado', text: 'A rede Eletrix é de corrente alternada (AC), 7,4 kW. Ela foi pensada para o tempo em que o carro já fica parado: na garagem, no trabalho, no hotel ou no shopping.' },
         ],
       },
       {

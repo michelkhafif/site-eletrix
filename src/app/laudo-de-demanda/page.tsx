@@ -36,7 +36,7 @@ export default function LaudoPage() {
         image={{ name: 'hub-garagem', alt: 'Garagem com carregadores Eletrix instalados em fila, ao lado das vagas', position: '50% 50%', ratio: 'landscape' }}
       />
 
-      <Band tone="light" id="o-que-e" eyebrow="O que é" title="Medir antes de decidir." lead="O laudo de demanda é o primeiro passo da jornada do síndico: Medir, Preparar, Controlar, Regularizar.">
+      <Band tone="light" id="o-que-e" eyebrow="O que é" title="Medir antes de decidir." lead="O laudo de demanda é o primeiro passo do caminho do síndico: Medir, Preparar, Controlar, Regularizar.">
         <Split media={<MediaFrame className="aspect-[4/3]"><Picture name="case-8" alt="Garagem com carregadores Eletrix instalados em parede verde, ao lado das vagas" fill sizes="(min-width:1024px) 560px, 100vw" /></MediaFrame>}>
           <Prose>
             <p>Instalar carregadores sem saber a capacidade do prédio é apostar. De um lado, o medo de sobrecarga e de multa por ultrapassar a demanda contratada. Do outro, a pressão dos moradores. O laudo resolve o impasse com um número: o que o seu edifício, de fato, aguenta.</p>
