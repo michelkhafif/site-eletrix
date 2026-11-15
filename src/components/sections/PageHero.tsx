@@ -29,9 +29,11 @@ export function PageHero({ crumbs, eyebrow, title, lead, actions, image, bg, chi
       )}
       {!bg && (
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <div className="absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-brand-500/10 blur-[120px]" />
+          <div className="bg-dots absolute inset-0 [mask-image:linear-gradient(180deg,#000,transparent_85%)]" />
+          <div className="absolute -right-40 -top-40 h-[560px] w-[560px] rounded-full bg-brand-500/15 blur-[120px]" />
         </div>
       )}
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" aria-hidden="true" />
       <Container className="relative">
         {crumbs && <div className="mb-8"><Breadcrumbs items={crumbs} /></div>}
         <div className={image ? 'grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]' : 'max-w-4xl'}>

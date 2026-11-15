@@ -2,166 +2,307 @@
   "/": {
     "title": "Estações de recarga para prédios e condomínios | Eletrix",
     "description": "Operadora de recarga para veículos elétricos. Hub, Rent, instalação na vaga, laudo, infraestrutura e IT-41. Qualidade de serviço à altura de um AAA.",
-    "og": { "headline": "Qualidade de serviço à altura de um AAA.", "kicker": "Eletrix", "bg": "aqwa-por-do-sol" }
+    "og": {
+      "headline": "Qualidade de serviço à altura de um AAA.",
+      "kicker": "Eletrix",
+      "bg": "aqwa-por-do-sol"
+    }
   },
   "/eletrix-hub/": {
     "title": "Eletrix Hub: eletroposto tarifado para empreendimentos",
     "description": "Carregador em comodato por 36 meses, sem mensalidade. Energia 100% reembolsada com bônus ao local, suporte 24h e seguro de até R$ 500 mil.",
-    "og": { "headline": "Eletrix Hub", "kicker": "Recarga tarifada para empreendimentos", "bg": "totem-orelhao" }
+    "og": {
+      "headline": "Eletrix Hub",
+      "kicker": "Recarga tarifada para empreendimentos",
+      "bg": "totem-orelhao"
+    }
   },
   "/eletrix-rent/": {
     "title": "Eletrix Rent: locação de carregador para condomínio e hotel",
     "description": "Carregador da Eletrix com mensalidade fixa, sem comprar o equipamento. Energia 100% reembolsada e chance de gerar receita ao condomínio ou hotel.",
-    "og": { "headline": "Eletrix Rent", "kicker": "Locação de carregador", "bg": "case-5" }
+    "og": {
+      "headline": "Eletrix Rent",
+      "kicker": "Locação de carregador",
+      "bg": "case-5"
+    }
   },
   "/empresas/": {
     "title": "Recarga de veículos elétricos para empresas | Eletrix",
     "description": "Recarga para prédios corporativos, shoppings, hotéis e galpões. Eletrix Hub, Eletrix Rent, troca de operador e white label, com operação própria.",
-    "og": { "headline": "Recarga para empresas e empreendimentos", "kicker": "Eletrix para empresas", "bg": "thera-praca" }
+    "og": {
+      "headline": "Recarga para empresas e empreendimentos",
+      "kicker": "Eletrix para empresas",
+      "bg": "thera-praca"
+    }
   },
   "/condominios/": {
     "title": "Carregador de carro elétrico em condomínio | Eletrix",
     "description": "Do laudo de demanda à IT-41: medir, preparar, controlar e regularizar a recarga do seu condomínio com um só parceiro e cada morador pagando o seu.",
-    "og": { "headline": "Carregador de carro elétrico em condomínio", "kicker": "Para síndicos e gestores", "bg": "arquipeo-aerea" }
+    "og": {
+      "headline": "Carregador de carro elétrico em condomínio",
+      "kicker": "Para síndicos e gestores",
+      "bg": "arquipeo-aerea"
+    }
   },
   "/instalacao-carregador-residencial/": {
     "title": "Instalação de carregador na vaga do condomínio | Eletrix",
     "description": "Carregue na sua vaga e pague na sua conta de luz. Visita técnica gratuita, instalação segura conforme a IT-41, ART inclusa e suporte 24h.",
-    "og": { "headline": "Carregue na sua vaga. Pague na sua conta de luz.", "kicker": "Instalação residencial", "bg": "case-1" }
+    "og": {
+      "headline": "Carregue na sua vaga. Pague na sua conta de luz.",
+      "kicker": "Instalação residencial",
+      "bg": "case-1"
+    }
   },
   "/carregadores/": {
     "title": "Carregador veicular 7,4 kW: WEG, Intelbras, Livoltek",
     "description": "Compare três wallboxes 7,4 kW com 2 anos de garantia Eletrix. Livoltek ATOM a partir de R$ 2.799, WEG WEMOB e Intelbras Business por R$ 4.699.",
-    "og": { "headline": "Carregadores 7,4 kW com garantia Eletrix", "kicker": "WEG · Intelbras · Livoltek", "bg": "case-3" }
+    "og": {
+      "headline": "Carregadores 7,4 kW com garantia Eletrix",
+      "kicker": "WEG · Intelbras · Livoltek",
+      "bg": "case-3"
+    }
   },
   "/laudo-de-demanda/": {
     "title": "Laudo de demanda para carregador de carro elétrico",
     "description": "Sete dias de medição no quadro geral e relatório técnico com quantos carregadores o prédio comporta. Laudo de demanda a partir de R$ 2.799.",
-    "og": { "headline": "Saiba exatamente o que o seu prédio aguenta.", "kicker": "Laudo de demanda · Medir", "bg": "hub-garagem" }
+    "og": {
+      "headline": "Saiba exatamente o que o seu prédio aguenta.",
+      "kicker": "Laudo de demanda · Medir",
+      "bg": "hub-garagem"
+    }
   },
   "/infraestrutura-seca/": {
     "title": "Infraestrutura para carregador de carro elétrico em prédio",
     "description": "Eletrocalhas até as vagas, caminho único para os cabos e fim das ligações improvisadas. Moradores ganham desconto na instalação da própria vaga.",
-    "og": { "headline": "Um padrão único e seguro de recarga para todo o prédio.", "kicker": "Infraestrutura seca · Preparar", "bg": "case-8" }
+    "og": {
+      "headline": "Um padrão único e seguro de recarga para todo o prédio.",
+      "kicker": "Infraestrutura seca · Preparar",
+      "bg": "case-8"
+    }
   },
   "/controle-de-demanda/": {
     "title": "Controle de demanda para carregadores veiculares | Eletrix",
     "description": "Monitora o consumo do prédio em tempo real e ajusta a potência dos carregadores para nunca passar do limite seguro. Mais carregadores, sem sobrecarga.",
-    "og": { "headline": "Mais carregadores, sem sobrecarregar o prédio.", "kicker": "Controle de demanda · Controlar", "bg": "case-2" }
+    "og": {
+      "headline": "Mais carregadores, sem sobrecarregar o prédio.",
+      "kicker": "Controle de demanda · Controlar",
+      "bg": "case-2"
+    }
   },
   "/adequacao-it-41/": {
     "title": "Adequação IT-41 do Corpo de Bombeiros para carregador",
     "description": "Quadro identificado, botoeira por pavimento e sinalização S.A.V.E. R$ 1.799 por pavimento e R$ 449 por carregador. Simule o seu orçamento.",
-    "og": { "headline": "Recarga regularizada e pronta para o AVCB.", "kicker": "Adequação IT-41 · Regularizar", "bg": "case-7" }
+    "og": {
+      "headline": "Recarga regularizada e pronta para o AVCB.",
+      "kicker": "Adequação IT-41 · Regularizar",
+      "bg": "case-7"
+    }
   },
   "/troca-de-operador/": {
     "title": "Trocar a empresa de carregador do condomínio | Eletrix",
     "description": "Carregadores parados, suporte ruim ou fora da IT-41? A Eletrix assume a operação, substitui os equipamentos e regulariza, com reembolso da energia.",
-    "og": { "headline": "Já tem carregadores no prédio? Assumimos a operação e regularizamos.", "kicker": "Troca de operador", "bg": "case-4" }
+    "og": {
+      "headline": "Já tem carregadores no prédio? Assumimos a operação e regularizamos.",
+      "kicker": "Troca de operador",
+      "bg": "case-4"
+    }
   },
   "/white-label/": {
     "title": "Carregador white label para marcas e redes | Eletrix",
     "description": "Carregadores e experiência no app com a marca da sua rede, com a assinatura Powered by Eletrix. Operação, suporte e pagamento por conta da Eletrix.",
-    "og": { "headline": "Sua marca na recarga. Operação Eletrix.", "kicker": "White label · Powered by Eletrix", "bg": "case-6" }
+    "og": {
+      "headline": "Sua marca na recarga. Operação Eletrix.",
+      "kicker": "White label · Powered by Eletrix",
+      "bg": "case-6"
+    }
   },
   "/empreendimentos/": {
     "title": "Empreendimentos onde a Eletrix opera | Eletrix",
     "description": "Edifícios corporativos, centros logísticos e shoppings que escolheram a Eletrix. Conheça alguns dos empreendimentos atendidos em SP, RJ, PR e mais.",
-    "og": { "headline": "Os empreendimentos que escolhem a Eletrix.", "kicker": "Empreendimentos", "bg": "river-one-fim-de-tarde" }
+    "og": {
+      "headline": "Os empreendimentos que escolhem a Eletrix.",
+      "kicker": "Empreendimentos",
+      "bg": "river-one-fim-de-tarde"
+    }
   },
   "/estacoes/": {
     "title": "Onde carregar carro elétrico em São Paulo e Brasil",
     "description": "Mapa das estações Eletrix em prédios, hotéis, shoppings e estacionamentos. Encontre o ponto mais próximo e recarregue pelo app Eletrix.",
-    "og": { "headline": "Encontre uma estação Eletrix.", "kicker": "Mapa de estações", "bg": "app-mapa" }
+    "og": {
+      "headline": "Encontre uma estação Eletrix.",
+      "kicker": "Mapa de estações",
+      "bg": "app-mapa"
+    }
   },
   "/app/": {
     "title": "App Eletrix: recarregue seu carro elétrico pelo celular",
     "description": "Localize estações no mapa, inicie e acompanhe a recarga e pague com cartão de crédito ou saldo em carteira. Disponível para iOS e Android.",
-    "og": { "headline": "Recarregue pelo app Eletrix.", "kicker": "iOS e Android · nota 4,8 na App Store", "bg": "app-mapa" }
+    "og": {
+      "headline": "Recarregue pelo app Eletrix.",
+      "kicker": "iOS e Android · nota 4,8 na App Store",
+      "bg": "app-mapa"
+    }
   },
   "/suporte/": {
     "title": "Suporte Eletrix: ajuda para recarga e estações",
     "description": "Suporte 24 horas para usuários das estações Eletrix. Chame no WhatsApp, veja respostas rápidas e saiba o que fazer se a recarga não iniciar.",
-    "og": { "headline": "Suporte 24 horas.", "kicker": "Suporte ao usuário", "bg": "case-6" }
+    "og": {
+      "headline": "Suporte 24 horas.",
+      "kicker": "Suporte ao usuário",
+      "bg": "case-6"
+    }
   },
   "/guias/": {
     "title": "Guias sobre recarga de carro elétrico em prédios | Eletrix",
     "description": "Guias práticos sobre IT-41, lei de recarga em condomínio de SP, custo de instalação, potência do carregador e cobrança da energia.",
-    "og": { "headline": "Guias de recarga para prédios e condomínios.", "kicker": "Guias Eletrix", "bg": "pinheiros-one-aerea" }
+    "og": {
+      "headline": "Guias de recarga para prédios e condomínios.",
+      "kicker": "Guias Eletrix",
+      "bg": "pinheiros-one-aerea"
+    }
   },
   "/guias/it-41-carregador-veicular/": {
     "title": "IT-41 e carregador veicular: o que muda para o prédio",
     "description": "Entenda a IT-41 do Corpo de Bombeiros de SP para recarga de veículos elétricos: o que exige, quando vale e como adequar o seu prédio.",
-    "og": { "headline": "IT-41 e carregador veicular: o que muda para o prédio.", "kicker": "Guia", "bg": "case-7" }
+    "og": {
+      "headline": "IT-41 e carregador veicular: o que muda para o prédio.",
+      "kicker": "Guia",
+      "bg": "case-7"
+    }
   },
   "/guias/lei-carregador-condominio-sao-paulo/": {
     "title": "Lei 18.403/2026: carregador de carro elétrico em condomínio",
     "description": "A lei paulista garante ao condômino o direito de instalar carregador na vaga. Veja o que ela diz, o que exige e quando o condomínio pode negar.",
-    "og": { "headline": "Lei 18.403/2026: o condomínio pode barrar o carregador?", "kicker": "Guia", "bg": "river-one-fachada" }
+    "og": {
+      "headline": "Lei 18.403/2026: o condomínio pode barrar o carregador?",
+      "kicker": "Guia",
+      "bg": "river-one-fachada"
+    }
   },
   "/guias/quanto-custa-instalar-carregador-carro-eletrico/": {
     "title": "Quanto custa instalar carregador de carro elétrico",
     "description": "O que forma o preço: carregador, distância até o medidor, proteções, IT-41 e ART. Faixas públicas da Eletrix e como pedir uma visita técnica gratuita.",
-    "og": { "headline": "Quanto custa instalar um carregador de carro elétrico?", "kicker": "Guia", "bg": "case-3" }
+    "og": {
+      "headline": "Quanto custa instalar um carregador de carro elétrico?",
+      "kicker": "Guia",
+      "bg": "case-3"
+    }
   },
   "/guias/qual-potencia-carregador-carro-eletrico/": {
     "title": "Qual a potência ideal do carregador de carro elétrico",
     "description": "Por que 7,4 kW atende quase todos os carros vendidos no Brasil, e por que 11 kW ou 22 kW em corrente alternada não trazem ganho real.",
-    "og": { "headline": "Qual a potência ideal do carregador? Por que 7,4 kW.", "kicker": "Guia", "bg": "hub-recarga" }
+    "og": {
+      "headline": "Qual a potência ideal do carregador? Por que 7,4 kW.",
+      "kicker": "Guia",
+      "bg": "hub-recarga"
+    }
   },
   "/guias/cobranca-energia-carregador-condominio/": {
     "title": "Quem paga a energia do carregador no condomínio",
     "description": "Medidor próprio, rateio ou cobrança pelo uso: as formas de pagar a energia do carregador no condomínio e quando cada uma faz sentido.",
-    "og": { "headline": "Quem paga a energia do carregador no condomínio?", "kicker": "Guia", "bg": "case-4" }
+    "og": {
+      "headline": "Quem paga a energia do carregador no condomínio?",
+      "kicker": "Guia",
+      "bg": "case-4"
+    }
   },
   "/sao-paulo/": {
     "title": "Carregador de carro elétrico em São Paulo | Eletrix",
     "description": "Instalação, laudo, infraestrutura, IT-41 e estações Eletrix em São Paulo. Lei estadual 18.403/2026 e Corpo de Bombeiros do estado explicados.",
-    "og": { "headline": "Carregador de carro elétrico em São Paulo", "kicker": "Eletrix em São Paulo", "bg": "faria-lima-financial-center" }
+    "og": {
+      "headline": "Carregador de carro elétrico em São Paulo",
+      "kicker": "Eletrix em São Paulo",
+      "bg": "faria-lima-financial-center"
+    }
   },
   "/rio-de-janeiro/": {
     "title": "Carregador de carro elétrico no Rio de Janeiro | Eletrix",
     "description": "Estações de recarga Eletrix em prédios corporativos e hotéis do Rio. Eletrix Hub, Rent, troca de operador e instalação na vaga.",
-    "og": { "headline": "Carregador de carro elétrico no Rio de Janeiro", "kicker": "Eletrix no Rio", "bg": "aqwa-por-do-sol" }
+    "og": {
+      "headline": "Carregador de carro elétrico no Rio de Janeiro",
+      "kicker": "Eletrix no Rio",
+      "bg": "aqwa-por-do-sol"
+    }
   },
   "/curitiba/": {
     "title": "Carregador de carro elétrico em Curitiba | Eletrix",
     "description": "Estações Eletrix em hotéis e empreendimentos de Curitiba e do Paraná. Eletrix Hub e Rent para hotéis, comércio e condomínios.",
-    "og": { "headline": "Carregador de carro elétrico em Curitiba", "kicker": "Eletrix em Curitiba", "bg": "maringa-park" }
+    "og": {
+      "headline": "Carregador de carro elétrico em Curitiba",
+      "kicker": "Eletrix em Curitiba",
+      "bg": "maringa-park"
+    }
   },
   "/campinas/": {
     "title": "Carregador de carro elétrico em Campinas | Eletrix",
     "description": "Estações Eletrix em Campinas e região, de centros logísticos a condomínios. Eletrix Hub, Rent, laudo, infraestrutura e adequação IT-41.",
-    "og": { "headline": "Carregador de carro elétrico em Campinas", "kicker": "Eletrix em Campinas", "bg": "bresco-viracopos" }
+    "og": {
+      "headline": "Carregador de carro elétrico em Campinas",
+      "kicker": "Eletrix em Campinas",
+      "bg": "bresco-viracopos"
+    }
   },
   "/sobre/": {
     "title": "Sobre a Eletrix: operadora de recarga desde 2021",
     "description": "Fundada em 2021, a Eletrix opera mais de 250 estações em mais de 20 cidades. Conheça a missão, o jeito de trabalhar e quem está por trás.",
-    "og": { "headline": "Carregando seu futuro desde 2021.", "kicker": "Sobre a Eletrix", "bg": "thera-entrada" }
+    "og": {
+      "headline": "Carregando seu futuro desde 2021.",
+      "kicker": "Sobre a Eletrix",
+      "bg": "thera-entrada"
+    }
   },
   "/imprensa/": {
     "title": "Eletrix na imprensa | Eletrix",
     "description": "A Eletrix no Estadão Mobilidade: como prédios ganham com a recarga elétrica e o orelhão que virou ponto de recarga.",
-    "og": { "headline": "A Eletrix na imprensa.", "kicker": "Imprensa", "bg": "estadao-orelhao" }
+    "og": {
+      "headline": "A Eletrix na imprensa.",
+      "kicker": "Imprensa",
+      "bg": "estadao-orelhao"
+    }
   },
   "/contato/": {
     "title": "Fale com a Eletrix: orçamento e visita técnica",
     "description": "Peça uma visita técnica ou um orçamento. WhatsApp +55 11 96575-5730, e-mail e endereço na Av. Angélica, em São Paulo.",
-    "og": { "headline": "Fale com a Eletrix.", "kicker": "Contato", "bg": "totem-orelhao" }
+    "og": {
+      "headline": "Fale com a Eletrix.",
+      "kicker": "Contato",
+      "bg": "totem-orelhao"
+    }
   },
   "/perguntas-frequentes/": {
     "title": "Perguntas frequentes sobre recarga de carro elétrico",
     "description": "Respostas diretas sobre instalação na vaga, IT-41, laudo, energia, Eletrix Hub e Rent, preços públicos e suporte.",
-    "og": { "headline": "Perguntas frequentes.", "kicker": "Eletrix", "bg": "hub-garagem" }
+    "og": {
+      "headline": "Perguntas frequentes.",
+      "kicker": "Eletrix",
+      "bg": "hub-garagem"
+    }
   },
   "/politica-de-privacidade/": {
     "title": "Política de privacidade | Eletrix",
     "description": "Como a Eletrix coleta, usa e protege os dados enviados pelos formulários e pelo site, em conformidade com a LGPD.",
-    "og": { "headline": "Política de privacidade.", "kicker": "Eletrix", "bg": "aqwa-noite" }
+    "og": {
+      "headline": "Política de privacidade.",
+      "kicker": "Eletrix",
+      "bg": "aqwa-noite"
+    }
   },
   "/termos-de-uso/": {
     "title": "Termos de uso do site | Eletrix",
     "description": "Condições de uso do site da Eletrix, informações de preços, disponibilidade e propriedade intelectual.",
-    "og": { "headline": "Termos de uso.", "kicker": "Eletrix", "bg": "aqwa-noite" }
+    "og": {
+      "headline": "Termos de uso.",
+      "kicker": "Eletrix",
+      "bg": "aqwa-noite"
+    }
+  },
+  "/parceiros/": {
+    "title": "Parceiros e clientes da Eletrix",
+    "description": "Administradoras, fundos, incorporadoras, hotéis e redes que confiam a recarga de veículos elétricos à Eletrix, e os fabricantes dos equipamentos.",
+    "og": {
+      "headline": "Parceiros e clientes da Eletrix.",
+      "kicker": "Parceiros",
+      "bg": "thera-entrada"
+    }
   }
 }

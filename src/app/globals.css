@@ -33,8 +33,8 @@
   --card: rgba(255, 255, 255, 0.05);
   --accent: #10b7ff;
 }
-[data-tone='light'] { background: #fff; color: var(--fg); }
-[data-tone='paper'] { background: #f5f8fb; color: var(--fg); }
+[data-tone='light'] { background: #f5f7fa; color: var(--fg); --hair: #dde4ed; }
+[data-tone='paper'] { background: #ecf0f5; color: var(--fg); --hair: #d6dee9; }
 
 @layer base {
   html {
@@ -65,7 +65,9 @@
   .prose-e p + p { @apply mt-4; }
   .prose-e a { @apply font-medium text-accent underline underline-offset-4 transition hover:no-underline; }
   .prose-e strong { @apply font-semibold text-fg; }
-  .card { @apply rounded-2xl border border-hair bg-card; }
+  .card { @apply rounded-2xl border border-hair bg-card; box-shadow: 0 1px 2px rgba(5,11,20,.04), 0 10px 28px -16px rgba(5,11,20,.16); }
+  [data-tone='dark'] .card, [data-tone='ink'] .card { box-shadow: none; }
+  .bg-dots { background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size: 22px 22px; }
   .logo-mono { filter: brightness(0) invert(1); opacity: 0.62; transition: opacity 0.25s; }
   .logo-mono:hover { opacity: 1; }
   .logo-mono-dark { filter: brightness(0); opacity: 0.55; transition: opacity 0.25s; }
@@ -89,9 +91,15 @@ html.motion [data-reveal].in {
 }
 
 /* ---------- Marquee de logos ---------- */
-.marquee-track { animation: marquee 80s linear infinite; width: max-content; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { animation: marquee 110s linear infinite; width: max-content; }
 .marquee:hover .marquee-track, .marquee:focus-within .marquee-track, .marquee[data-paused='true'] .marquee-track { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } .marquee { overflow-x: auto; } }
+.logos-static { display: none; }
+/* Movimento reduzido: sem rolagem, todos os logos em grade estática */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-wrap { display: none; }
+  .logos-static { display: grid; }
+}
 
 /* ---------- Accordion nativo ---------- */
 details > summary { list-style: none; cursor: pointer; }
@@ -100,3 +108,6 @@ details[open] > summary .chev { transform: rotate(180deg); }
 
 /* ---------- MapLibre ---------- */
 .maplibregl-ctrl-attrib { font-size: 11px; }
+
+@keyframes charge { 0% { width: 22%; } 100% { width: 88%; } }
+html.motion .charge-bar { animation: charge 5.5s ease-in-out infinite alternate; }

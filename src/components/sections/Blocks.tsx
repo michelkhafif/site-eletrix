@@ -12,7 +12,7 @@ export function Steps({ items, columns = 4, startAt = 1 }: { items: Step[]; colu
     <ol className={`grid gap-5 ${grid}`}>
       {items.map((s, i) => (
         <li key={s.title} data-reveal style={{ ['--d' as string]: `${i * 70}ms` }} className="card relative flex flex-col p-6">
-          <span className="font-display text-sm font-bold tnum text-accent">{String(i + startAt).padStart(2, '0')}</span>
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-500 font-display text-sm font-extrabold tnum text-ink-950">{String(i + startAt).padStart(2, '0')}</span>
           {s.tag && <span className="absolute right-5 top-5 rounded-full border border-hair px-2.5 py-0.5 text-[0.7rem] font-medium uppercase tracking-wider text-fg-muted">{s.tag}</span>}
           <h3 className="mt-3 text-h3 text-fg">{s.title}</h3>
           <div className="prose-e mt-2 text-[0.97rem] leading-relaxed">{s.text}</div>
@@ -89,7 +89,7 @@ export function CompareTable({ head, rows, caption }: { head: string[]; rows: (s
       <table className="w-full min-w-[560px] border-collapse text-left text-[0.95rem]">
         <caption className="sr-only">{caption}</caption>
         <thead>
-          <tr className="border-b border-hair">
+          <tr className="border-b border-hair bg-black/[0.03]">
             {head.map((h, i) => (
               <th key={i} scope="col" className={`px-5 py-4 font-display text-sm font-bold ${i === 0 ? 'text-fg-muted' : 'text-fg'}`}>{h}</th>
             ))}

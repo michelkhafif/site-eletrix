@@ -4,37 +4,61 @@ import { withBase } from '@/config/site';
 import { logoInfo, partners } from '@/data/partners';
 import { Icon } from '@/components/ui/Icon';
 
-function LogoImg({ slug, name, tone }: { slug: string; name: string; tone: 'dark' | 'light' }) {
+/** Tamanho visual padronizado: mesma "área" para todos, com limites para logos muito largos ou quadrados. */
+const boost: Record<string, number> = { 'tishman-speyer': 1.7, bresco: 1.5, garageinn: 1.35, 'elias-victor-nigri': 1.35, bbz: 1.2, 'padrao-park': 1.3, 'paris-condominios': 1.3, guardian: 1.2, 'cushman-wakefield': 1.15, winpark: 1.15, intercity: 1.15 };
+
+function box(slug: string, scale = 1) {
+  scale *= boost[slug] ?? 1;
   const l = logoInfo(slug);
-  // altura visual padronizada; largura limitada para logos muito horizontais
-  const h = 34;
-  const w = Math.min(Math.round((l.w / l.h) * h), 150);
-  const adjustedH = Math.round(w / (l.w / l.h));
+  const r = l.w / l.h;
+  const area = 1900 * scale;
+  let w = Math.sqrt(area * r);
+  let h = w / r;
+  const maxW = 140 * scale, maxH = 46 * scale, minH = 18 * scale;
+  if (w > maxW) { w = maxW; h = w / r; }
+  if (h > maxH) { h = maxH; w = h * r; }
+  if (h < minH) { h = minH; w = h * r; }
+  return { w: Math.round(w), h: Math.round(h) };
+}
+
+function LogoImg({ slug, name, tone, scale = 1, eager }: { slug: string; name: string; tone: 'dark' | 'light'; scale?: number; eager?: boolean }) {
+  const l = logoInfo(slug);
+  const { w, h } = box(slug, scale);
   return (
-    <img src={withBase(l.file)} alt={name} width={w} height={adjustedH} loading="lazy" decoding="async"
-      className={tone === 'dark' ? 'logo-mono' : 'logo-mono-dark'} style={{ width: w, height: adjustedH, maxHeight: 40 }} />
+    <img src={withBase(l.file)} alt={name} width={w} height={h} loading={eager ? 'eager' : 'lazy'} decoding="async"
+      className={tone === 'dark' ? 'logo-mono' : 'logo-mono-dark'} style={{ width: w, height: h }} />
   );
 }
 
-/** Faixa de logos monocromática, rolagem lenta e pausável. Em movimento reduzido vira lista rolável. */
+/**
+ * Faixa de logos monocromática em rolagem contínua e lenta (todos os parceiros no ciclo), pausável.
+ * Com movimento reduzido a faixa some e entra uma grade estática com todos os logos.
+ */
 export function LogoMarquee({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
   const [paused, setPaused] = useState(false);
   const list = partners;
   return (
-    <div className="relative">
-      <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)]" data-paused={paused} role="group" aria-label="Parceiros e clientes da Eletrix">
-        <ul className="marquee-track flex items-center gap-14 py-3 pr-14">
-          {[...list, ...list].map((p, i) => (
-            <li key={`${p.slug}-${i}`} aria-hidden={i >= list.length ? true : undefined} className="flex h-12 shrink-0 items-center">
-              <LogoImg slug={p.slug} name={i >= list.length ? '' : p.name} tone={tone} />
-            </li>
-          ))}
-        </ul>
+    <div>
+      <div className="marquee-wrap relative">
+        <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_7%,#000_93%,transparent)]" data-paused={paused} role="group" aria-label="Parceiros e clientes da Eletrix">
+          <ul className="marquee-track flex items-center py-3">
+            {[...list, ...list].map((p, i) => (
+              <li key={`${p.slug}-${i}`} aria-hidden={i >= list.length ? true : undefined} className="flex h-14 w-[190px] shrink-0 items-center justify-center">
+                <LogoImg slug={p.slug} name={i >= list.length ? '' : p.name} tone={tone} eager={i < 8} />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <button type="button" onClick={() => setPaused((v) => !v)} aria-pressed={paused}
+          className={`mx-auto mt-4 flex items-center gap-1.5 rounded-full px-3 py-1 text-xs transition ${tone === 'dark' ? 'text-muted-dark hover:text-white' : 'text-muted hover:text-ink-900'}`}>
+          <Icon name={paused ? 'play' : 'pause'} size={13} /> {paused ? 'Retomar rolagem' : 'Pausar rolagem'}
+        </button>
       </div>
-      <button type="button" onClick={() => setPaused((v) => !v)} aria-pressed={paused}
-        className={`mx-auto mt-4 flex items-center gap-1.5 rounded-full px-3 py-1 text-xs transition ${tone === 'dark' ? 'text-muted-dark hover:text-white' : 'text-muted hover:text-ink-900'}`}>
-        <Icon name={paused ? 'play' : 'pause'} size={13} /> {paused ? 'Retomar rolagem' : 'Pausar rolagem'}
-      </button>
+      <ul className="logos-static grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-8" aria-label="Parceiros e clientes da Eletrix">
+        {list.map((p) => (
+          <li key={p.slug} className="flex h-14 w-full items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} scale={0.9} /></li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -43,10 +67,27 @@ export function LogoMarquee({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
 export function FeaturedLogos({ tone = 'dark', limit }: { tone?: 'dark' | 'light'; limit?: number }) {
   const list = partners.filter((p) => p.featured).slice(0, limit);
   return (
-    <ul className="grid grid-cols-2 items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
+    <ul className="grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
       {list.map((p) => (
-        <li key={p.slug} className="flex h-12 items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} /></li>
+        <li key={p.slug} className="flex h-14 w-full items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} scale={1.1} /></li>
       ))}
     </ul>
+  );
+}
+
+/** Grade completa (página de parceiros): destaque primeiro, depois os demais. */
+export function AllLogos({ tone = 'light' }: { tone?: 'dark' | 'light' }) {
+  const featured = partners.filter((p) => p.featured);
+  const rest = partners.filter((p) => !p.featured);
+  const cell = 'flex h-24 items-center justify-center rounded-2xl border border-hair bg-card px-4';
+  return (
+    <div className="space-y-10">
+      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+        {featured.map((p) => <li key={p.slug} className={`${cell} h-28`}><LogoImg slug={p.slug} name={p.name} tone={tone} scale={1.25} /></li>)}
+      </ul>
+      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+        {rest.map((p) => <li key={p.slug} className={cell}><LogoImg slug={p.slug} name={p.name} tone={tone} scale={0.95} /></li>)}
+      </ul>
+    </div>
   );
 }

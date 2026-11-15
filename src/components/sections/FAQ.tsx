@@ -8,7 +8,7 @@ export type FaqItem = { q: string; a: string };
 
 export function FaqList({ items }: { items: FaqItem[] }) {
   return (
-    <div className="divide-y divide-hair border-y border-hair">
+    <div className="divide-y divide-hair rounded-2xl border border-hair bg-card px-6 shadow-card">
       {items.map((f, i) => (
         <details key={f.q} className="group" {...(i === 0 ? {} : {})}>
           <summary className="flex items-start justify-between gap-6 py-5 text-left font-display text-[1.08rem] font-semibold leading-snug text-fg transition hover:text-accent">

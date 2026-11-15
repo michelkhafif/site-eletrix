@@ -51,6 +51,7 @@ export function Footer() {
             {col('Empresa', [
               { href: '/sobre/', label: 'Sobre a Eletrix' },
               { href: '/empreendimentos/', label: 'Empreendimentos' },
+              { href: '/parceiros/', label: 'Parceiros' },
               { href: '/estacoes/', label: 'Mapa de estações' },
               { href: '/empresas/', label: 'Para empresas' },
               { href: '/condominios/', label: 'Para condomínios' },

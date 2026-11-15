@@ -60,3 +60,9 @@ Tudo o que não estava no briefing (`CLAUDE.md`) foi marcado aqui. Itens com **[
 - Logos em PNG (Kinea, Pátria, Safra, Tishman Speyer, Hersil, Argoplan, Vitacon, Bresco, Brookfield, Housi, Atrio, Link, Inteli, Intercity, Confiance, Slaviero, Pepe): pedir o vetor oficial a cada parceiro para nitidez em telas grandes. Falta também o logo da Eletrix em vetor com o símbolo do plug (o SVG fornecido é só o logotipo).
 - Imagens Open Graph são geradas por `npm run og` a partir de `src/data/pages.json` (fonte Arial no render do SVG). Idealmente, o designer valida a arte.
 - Ao alterar títulos e descrições, editar apenas `src/data/pages.json`. O script `npm run seo:check` valida os limites de tamanho.
+
+## 5. Rodada 2 — logos e design
+- **Logos ainda em recorte PNG da apresentação** (sem vetor oficial encontrado automaticamente): Patria, Tishman Speyer, Brookfield, Argoplan, Atrio, BBZ, Elias Victor Nigri, GarageInn, Guardian, Housi, Link, Padrão Park, Paris Condomínios, Pepe, Slaviero, Confiance, Winpark e outros. Os sites de Tishman Speyer e Brookfield bloqueiam download automático. **[ação]** pedir os kits de marca aos parceiros ou ao designer.
+- Logos vetoriais baixados dos sites oficiais ficam em `_materiais/03_Logos/oficiais/` (fora do Git). Confirmar com a Eletrix se pode usar as versões atuais de cada marca.
+- Hero da home usa o cartão "Recarregando" como ilustração (só Tipo 2 e 7,4 kW, sem dados inventados).
+- Em 1024 px o cabeçalho esconde App e Suporte (continuam no menu móvel e no rodapé).

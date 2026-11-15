@@ -168,15 +168,15 @@ export function Header() {
           </div>
           {mainLinks.map((l) => (
             <Link key={l.href} href={l.href} aria-current={active(l.href) ? 'page' : undefined}
-              className={`flex h-10 items-center rounded-full px-4 text-[0.92rem] font-medium transition hover:bg-white/10 ${active(l.href) ? 'text-brand-400' : 'text-white/90'}`}>
+              className={`flex h-10 items-center rounded-full px-3 text-[0.92rem] font-medium transition hover:bg-white/10 xl:px-4 ${active(l.href) ? 'text-brand-400' : 'text-white/90'}`}>
               {l.label}
             </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-1 lg:flex">
-          <Link href="/app/" className="flex h-10 items-center rounded-full px-3 text-sm text-muted-dark transition hover:text-white">App</Link>
-          <Link href="/suporte/" className="flex h-10 items-center rounded-full px-3 text-sm text-muted-dark transition hover:text-white">Suporte</Link>
+          <Link href="/app/" className="hidden h-10 items-center rounded-full px-3 text-sm text-muted-dark transition hover:text-white xl:flex">App</Link>
+          <Link href="/suporte/" className="hidden h-10 items-center rounded-full px-3 text-sm text-muted-dark transition hover:text-white xl:flex">Suporte</Link>
           <Button href="/contato/" size="sm" className="ml-2">Fale com a Eletrix</Button>
         </div>
 

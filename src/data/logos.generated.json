@@ -81,13 +81,13 @@
  },
  "argoplan": {
   "file": "/logos/argoplan.webp",
-  "w": 360,
-  "h": 80
+  "w": 520,
+  "h": 116
  },
  "atrio": {
   "file": "/logos/atrio.webp",
-  "w": 360,
-  "h": 57
+  "w": 520,
+  "h": 82
  },
  "bbz": {
   "file": "/logos/bbz.webp",
@@ -96,18 +96,18 @@
  },
  "bresco": {
   "file": "/logos/bresco.webp",
-  "w": 326,
-  "h": 236
+  "w": 498,
+  "h": 113
  },
  "brookfield": {
   "file": "/logos/brookfield.webp",
-  "w": 360,
-  "h": 54
+  "w": 516,
+  "h": 78
  },
  "confiance-hotel": {
   "file": "/logos/confiance-hotel.webp",
-  "w": 360,
-  "h": 150
+  "w": 388,
+  "h": 162
  },
  "elias-victor-nigri": {
   "file": "/logos/elias-victor-nigri.webp",
@@ -125,34 +125,34 @@
   "h": 146
  },
  "hersil": {
-  "file": "/logos/hersil.webp",
-  "w": 360,
-  "h": 72
+  "file": "/logos/hersil.svg",
+  "w": 174,
+  "h": 33
  },
  "housi": {
   "file": "/logos/housi.webp",
-  "w": 360,
-  "h": 35
+  "w": 468,
+  "h": 46
  },
  "inteli": {
-  "file": "/logos/inteli.webp",
-  "w": 360,
-  "h": 196
+  "file": "/logos/inteli.svg",
+  "w": 75,
+  "h": 41
  },
  "intercity": {
-  "file": "/logos/intercity.webp",
-  "w": 360,
-  "h": 69
+  "file": "/logos/intercity.svg",
+  "w": 184,
+  "h": 35
  },
  "kinea": {
-  "file": "/logos/kinea.webp",
-  "w": 322,
-  "h": 116
+  "file": "/logos/kinea.svg",
+  "w": 158,
+  "h": 48
  },
  "link": {
   "file": "/logos/link.webp",
-  "w": 360,
-  "h": 105
+  "w": 371,
+  "h": 108
  },
  "padrao-park": {
   "file": "/logos/padrao-park.webp",
@@ -166,8 +166,8 @@
  },
  "patria": {
   "file": "/logos/patria.webp",
-  "w": 360,
-  "h": 71
+  "w": 444,
+  "h": 88
  },
  "pepe": {
   "file": "/logos/pepe.webp",
@@ -175,23 +175,23 @@
   "h": 142
  },
  "safra": {
-  "file": "/logos/safra.webp",
-  "w": 245,
-  "h": 260
+  "file": "/logos/safra.svg",
+  "w": 1108,
+  "h": 409
  },
  "slaviero-hoteis": {
   "file": "/logos/slaviero-hoteis.webp",
-  "w": 360,
-  "h": 81
+  "w": 520,
+  "h": 117
  },
  "tishman-speyer": {
   "file": "/logos/tishman-speyer.webp",
-  "w": 360,
-  "h": 154
+  "w": 444,
+  "h": 190
  },
  "vitacon": {
-  "file": "/logos/vitacon.webp",
-  "w": 360,
-  "h": 93
+  "file": "/logos/vitacon.svg",
+  "w": 797,
+  "h": 161
  }
 }

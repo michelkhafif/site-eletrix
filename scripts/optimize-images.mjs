@@ -137,16 +137,21 @@ async function cropSvg(svgText) {
 }
 
 async function processLogo(slug) {
-  if (svgOk.includes(slug)) {
+  const off = ['svg', 'png'].map((e) => path.join(SRC, LOGOS, 'oficiais', `${slug}.${e}`)).find((f) => fs.existsSync(f));
+  if (off && off.endsWith('.svg')) {
+    const { svg, w, h } = await cropSvg(fs.readFileSync(off, 'utf8'));
+    fs.writeFileSync(path.join(OUT_LOGO, `${slug}.svg`), svg);
+    logoManifest[slug] = { file: `/logos/${slug}.svg`, w: Math.round(w), h: Math.round(h) };
+  } else if (svgOk.includes(slug) && !off) {
     const text = fs.readFileSync(path.join(SRC, LOGOS, 'svg_vetor', `${slug}.svg`), 'utf8');
     const { svg, w, h } = await cropSvg(text);
     fs.writeFileSync(path.join(OUT_LOGO, `${slug}.svg`), svg);
     logoManifest[slug] = { file: `/logos/${slug}.svg`, w: Math.round(w), h: Math.round(h) };
   } else {
-    const file = path.join(SRC, LOGOS, 'png_cor_transparente', `${slug}.png`);
+    const file = off || path.join(SRC, LOGOS, 'png_cor_transparente', `${slug}.png`);
     const trimmed = await sharp(file).trim({ threshold: 10 }).toBuffer();
     const out = path.join(OUT_LOGO, `${slug}.webp`);
-    await sharp(trimmed).resize({ width: 360, withoutEnlargement: true }).webp({ quality: 88, alphaQuality: 95 }).toFile(out);
+    await sharp(trimmed).resize({ width: 520, withoutEnlargement: true }).webp({ quality: 90, alphaQuality: 95 }).toFile(out);
     const m = await sharp(out).metadata();
     logoManifest[slug] = { file: `/logos/${slug}.webp`, w: m.width, h: m.height };
   }

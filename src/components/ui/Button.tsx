@@ -13,7 +13,7 @@ const variants: Record<Variant, string> = {
   dark: 'bg-ink-900 text-white hover:bg-ink-700 focus-visible:outline-ink-900',
   secondary: 'border border-ink-900/20 text-ink-900 hover:border-ink-900 hover:bg-ink-900/5 focus-visible:outline-brand-700',
   onDark: 'border border-white/25 text-white hover:border-white/60 hover:bg-white/10 focus-visible:outline-brand-400',
-  ghost: 'text-brand-700 hover:text-brand-800 px-0 focus-visible:outline-brand-700',
+  ghost: 'text-accent hover:opacity-80 px-0 focus-visible:outline-brand-500',
 };
 const sizes: Record<Size, string> = {
   sm: 'h-10 px-4 text-sm',

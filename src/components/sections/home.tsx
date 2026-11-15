@@ -17,54 +17,89 @@ import { site, whatsappLink } from '@/config/site';
 import { wa } from '@/data/whatsapp';
 
 /* ------------------------------------------------------------------ HERO */
+function PlugMark({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 64 32" width="34" height="17" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" aria-hidden="true" className={className}>
+      <path d="M2 16h14M48 16h14" />
+      <circle cx="32" cy="16" r="11" />
+    </svg>
+  );
+}
+
 export function Hero() {
   return (
-    <section data-tone="dark" className="relative flex min-h-[100svh] flex-col overflow-hidden">
-      <div className="absolute inset-0" aria-hidden="true">
+    <section data-tone="dark" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden">
+      {/* fundo: prédio AAA, bem discreto no desktop */}
+      <div className="absolute inset-0 -z-10 hidden md:block" aria-hidden="true">
         <Parallax className="h-full w-full">
-          <Picture name="aqwa-por-do-sol" alt="" priority fill sizes="100vw" position="50% 38%" />
+          <Picture name="aqwa-por-do-sol" alt="" fill sizes="100vw" position="50% 38%" className="opacity-60" />
         </Parallax>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink-950/95 via-ink-950/55 to-transparent md:via-ink-950/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/25 to-ink-950/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/85 to-ink-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/60" />
+      </div>
+      {/* mobile: o carregador é a imagem de fundo do topo */}
+      <div className="absolute inset-x-0 top-0 -z-10 h-[62svh] md:hidden" aria-hidden="true">
+        <Picture name="totem-orelhao" alt="" priority fill sizes="100vw" position="50% 30%" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink-950/70 via-ink-950/35 to-ink-950" />
       </div>
 
-      <Container className="relative flex flex-1 flex-col justify-end pb-10 pt-[calc(var(--header-h)+48px)] md:pb-14">
-        <div className="max-w-3xl">
-          <p className="eyebrow mb-6">Operadora de recarga para veículos elétricos</p>
-          <h1 className="text-display text-white">Qualidade de serviço à altura de um AAA.</h1>
-          <p className="mt-6 max-w-xl text-lead text-white/80">
-            A Eletrix opera a recarga nos melhores empreendimentos do país e leva o mesmo padrão à vaga do morador. Do laudo à operação, com um só parceiro.
-          </p>
-        </div>
-
-        <div className="mt-10 grid max-w-3xl gap-3 sm:grid-cols-2">
-          <Link href="/empresas/" className="group flex items-center justify-between gap-4 rounded-2xl bg-brand-500 p-5 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.8)] transition hover:bg-brand-400">
-            <span>
-              <span className="block font-display text-lg font-bold leading-tight">Tenho um empreendimento</span>
-              <span className="mt-0.5 block text-sm text-ink-950/75">Hub, Rent, troca de operador</span>
-            </span>
-            <Icon name="arrowRight" size={22} className="shrink-0 transition group-hover:translate-x-1" />
-          </Link>
-          <Link href="/instalacao-carregador-residencial/" className="group flex items-center justify-between gap-4 rounded-2xl border border-white/25 bg-white/5 p-5 text-white backdrop-blur transition hover:border-white/60 hover:bg-white/10">
-            <span>
-              <span className="block font-display text-lg font-bold leading-tight">Quero carregar na minha vaga</span>
-              <span className="mt-0.5 block text-sm text-white/70">Visita técnica gratuita</span>
-            </span>
-            <Icon name="arrowRight" size={22} className="shrink-0 transition group-hover:translate-x-1" />
-          </Link>
-        </div>
-        <p className="mt-4 text-sm text-white/70">
-          Síndico ou gestor? <Link href="/condominios/" className="font-semibold text-brand-400 underline-offset-4 hover:underline">Veja o caminho do laudo à IT-41</Link>.
-        </p>
-
-        <dl className="mt-12 grid max-w-3xl grid-cols-2 gap-6 border-t border-white/15 pt-6 sm:grid-cols-4">
-          {site.stats.map((s) => (
-            <div key={s.label} className="flex flex-col-reverse">
-              <dt className="mt-0.5 text-sm text-white/65">{s.label}</dt>
-              <dd className="font-display text-3xl font-extrabold tracking-tight text-white tnum md:text-[2rem]">{s.prefix}{s.value}{s.suffix}</dd>
+      <Container className="relative flex flex-1 items-center pb-10 pt-[calc(var(--header-h)+28px)] md:pb-14 md:pt-[calc(var(--header-h)+40px)]">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="pt-[24svh] md:pt-0">
+            <p className="eyebrow mb-5">Recarga de carros elétricos para prédios, hotéis e condomínios</p>
+            <h1 className="text-display text-white">Qualidade de serviço à altura de um AAA.</h1>
+            <p className="mt-6 max-w-xl text-lead text-white/80">
+              A Eletrix instala e opera estações de recarga para veículos elétricos nos melhores empreendimentos do país e na vaga do morador. Do laudo à operação, com um só parceiro.
+            </p>
+            <div className="mt-9 grid max-w-xl gap-3 sm:grid-cols-2">
+              <Link href="/empresas/" className="group flex items-center justify-between gap-4 rounded-2xl bg-brand-500 p-5 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.8)] transition hover:bg-brand-400">
+                <span>
+                  <span className="block font-display text-lg font-bold leading-tight">Tenho um empreendimento</span>
+                  <span className="mt-0.5 block text-sm text-ink-950/75">Hub, Rent, troca de operador</span>
+                </span>
+                <Icon name="arrowRight" size={22} className="shrink-0 transition group-hover:translate-x-1" />
+              </Link>
+              <Link href="/instalacao-carregador-residencial/" className="group flex items-center justify-between gap-4 rounded-2xl border border-white/25 bg-white/5 p-5 text-white backdrop-blur transition hover:border-white/60 hover:bg-white/10">
+                <span>
+                  <span className="block font-display text-lg font-bold leading-tight">Quero carregar na minha vaga</span>
+                  <span className="mt-0.5 block text-sm text-white/70">Visita técnica gratuita</span>
+                </span>
+                <Icon name="arrowRight" size={22} className="shrink-0 transition group-hover:translate-x-1" />
+              </Link>
             </div>
-          ))}
-        </dl>
+            <p className="mt-4 text-sm text-white/70">
+              Síndico ou gestor? <Link href="/condominios/" className="font-semibold text-brand-400 underline-offset-4 hover:underline">Veja o caminho do laudo à IT-41</Link>.
+            </p>
+            <dl className="mt-10 grid max-w-xl grid-cols-2 gap-6 border-t border-white/15 pt-6 sm:grid-cols-4">
+              {site.stats.map((s) => (
+                <div key={s.label} className="flex flex-col">
+                  <dt className="order-2 mt-0.5 text-sm leading-tight text-white/65">{s.label}</dt>
+                  <dd className="order-1 font-display text-3xl font-extrabold tracking-tight text-white tnum md:text-[2rem]">{s.prefix}{s.value}{s.suffix}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+          {/* composição desktop: produto real + status de recarga + garagem */}
+          <div className="relative hidden lg:block" aria-hidden="true">
+            <div className="relative ml-auto aspect-[4/5] w-[78%] overflow-hidden rounded-[28px] border border-white/15 shadow-lift">
+              <Picture name="totem-orelhao" alt="" fill sizes="460px" position="50% 40%" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/50 via-transparent to-transparent" />
+            </div>
+            <div className="absolute -left-2 bottom-10 w-[46%] overflow-hidden rounded-2xl border border-white/15 shadow-lift">
+              <div className="aspect-square"><Picture name="case-7" alt="" fill sizes="240px" position="50% 55%" /></div>
+            </div>
+            <div className="absolute right-0 top-8 w-[250px] rounded-2xl border border-white/15 bg-ink-950/85 p-4 backdrop-blur-md shadow-lift">
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-2 text-brand-400"><PlugMark /><span className="text-xs font-semibold uppercase tracking-[0.14em]">Recarregando</span></span>
+                <span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand-400 opacity-60 motion-reduce:hidden" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand-500" /></span>
+              </div>
+              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-white/10"><div className="charge-bar h-full w-[64%] rounded-full bg-gradient-to-r from-brand-600 to-brand-400" /></div>
+              <p className="mt-3 text-sm text-white/85">Conector Tipo 2 · 7,4 kW</p>
+              <p className="text-xs text-muted-dark">Pagamento pelo app Eletrix</p>
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   );
@@ -77,6 +112,7 @@ export function LogoStrip() {
       <Container>
         <p className="mb-6 text-center text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-muted-dark">Parceiros e clientes da Eletrix</p>
         <LogoMarquee tone="dark" />
+        <p className="mt-6 text-center"><Link href="/parceiros/" className="text-sm font-semibold text-brand-400 underline-offset-4 hover:underline">Ver todos os parceiros</Link></p>
       </Container>
     </Section>
   );

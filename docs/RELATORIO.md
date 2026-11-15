@@ -34,3 +34,6 @@ Lista completa em `docs/PENDENCIAS.md` (e-mail do FormSubmit, links das lojas, L
 3. Trocar depoimentos provisórios.
 4. Pedir logo vetorial da Eletrix com o símbolo do plug e vetores dos parceiros.
 5. Medir com Search Console e GA4 após o lançamento.
+
+## Rodada 2
+Faixa de parceiros corrigida (rolagem contínua com os 39 logos, grade estática em movimento reduzido, página `/parceiros/`), novo hero com o carregador em destaque, fundos claros em cinza com cards brancos e sombra, revisão completa (`docs/REVISAO.md`) e plano em `docs/PLANO-V2.md`.
