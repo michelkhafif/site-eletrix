@@ -1,0 +1,197 @@
+{
+ "barzel": {
+  "file": "/logos/barzel.svg",
+  "w": 169,
+  "h": 46
+ },
+ "cbre": {
+  "file": "/logos/cbre.svg",
+  "w": 4309,
+  "h": 1036
+ },
+ "cushman-wakefield": {
+  "file": "/logos/cushman-wakefield.svg",
+  "w": 64,
+  "h": 14
+ },
+ "cyrela": {
+  "file": "/logos/cyrela.svg",
+  "w": 501,
+  "h": 122
+ },
+ "hazak": {
+  "file": "/logos/hazak.svg",
+  "w": 139,
+  "h": 55
+ },
+ "innova": {
+  "file": "/logos/innova.svg",
+  "w": 173,
+  "h": 25
+ },
+ "intelbras": {
+  "file": "/logos/intelbras.svg",
+  "w": 500,
+  "h": 98
+ },
+ "jaime": {
+  "file": "/logos/jaime.svg",
+  "w": 66,
+  "h": 71
+ },
+ "jll": {
+  "file": "/logos/jll.svg",
+  "w": 108,
+  "h": 48
+ },
+ "plenty-park": {
+  "file": "/logos/plenty-park.svg",
+  "w": 179,
+  "h": 80
+ },
+ "rrm-estacionamentos": {
+  "file": "/logos/rrm-estacionamentos.svg",
+  "w": 98,
+  "h": 91
+ },
+ "shpaisman": {
+  "file": "/logos/shpaisman.svg",
+  "w": 206,
+  "h": 54
+ },
+ "sl": {
+  "file": "/logos/sl.svg",
+  "w": 55,
+  "h": 101
+ },
+ "totvs": {
+  "file": "/logos/totvs.svg",
+  "w": 501,
+  "h": 144
+ },
+ "weg": {
+  "file": "/logos/weg.svg",
+  "w": 6002,
+  "h": 4205
+ },
+ "winpark": {
+  "file": "/logos/winpark.svg",
+  "w": 118,
+  "h": 98
+ },
+ "argoplan": {
+  "file": "/logos/argoplan.webp",
+  "w": 360,
+  "h": 80
+ },
+ "atrio": {
+  "file": "/logos/atrio.webp",
+  "w": 360,
+  "h": 57
+ },
+ "bbz": {
+  "file": "/logos/bbz.webp",
+  "w": 196,
+  "h": 198
+ },
+ "bresco": {
+  "file": "/logos/bresco.webp",
+  "w": 326,
+  "h": 236
+ },
+ "brookfield": {
+  "file": "/logos/brookfield.webp",
+  "w": 360,
+  "h": 54
+ },
+ "confiance-hotel": {
+  "file": "/logos/confiance-hotel.webp",
+  "w": 360,
+  "h": 150
+ },
+ "elias-victor-nigri": {
+  "file": "/logos/elias-victor-nigri.webp",
+  "w": 298,
+  "h": 152
+ },
+ "garageinn": {
+  "file": "/logos/garageinn.webp",
+  "w": 256,
+  "h": 176
+ },
+ "guardian": {
+  "file": "/logos/guardian.webp",
+  "w": 319,
+  "h": 146
+ },
+ "hersil": {
+  "file": "/logos/hersil.webp",
+  "w": 360,
+  "h": 72
+ },
+ "housi": {
+  "file": "/logos/housi.webp",
+  "w": 360,
+  "h": 35
+ },
+ "inteli": {
+  "file": "/logos/inteli.webp",
+  "w": 360,
+  "h": 196
+ },
+ "intercity": {
+  "file": "/logos/intercity.webp",
+  "w": 360,
+  "h": 69
+ },
+ "kinea": {
+  "file": "/logos/kinea.webp",
+  "w": 322,
+  "h": 116
+ },
+ "link": {
+  "file": "/logos/link.webp",
+  "w": 360,
+  "h": 105
+ },
+ "padrao-park": {
+  "file": "/logos/padrao-park.webp",
+  "w": 224,
+  "h": 178
+ },
+ "paris-condominios": {
+  "file": "/logos/paris-condominios.webp",
+  "w": 218,
+  "h": 166
+ },
+ "patria": {
+  "file": "/logos/patria.webp",
+  "w": 360,
+  "h": 71
+ },
+ "pepe": {
+  "file": "/logos/pepe.webp",
+  "w": 322,
+  "h": 142
+ },
+ "safra": {
+  "file": "/logos/safra.webp",
+  "w": 245,
+  "h": 260
+ },
+ "slaviero-hoteis": {
+  "file": "/logos/slaviero-hoteis.webp",
+  "w": 360,
+  "h": 81
+ },
+ "tishman-speyer": {
+  "file": "/logos/tishman-speyer.webp",
+  "w": 360,
+  "h": 154
+ },
+ "vitacon": {
+  "file": "/logos/vitacon.webp",
+  "w": 360,
+  "h": 93
+ }
+}

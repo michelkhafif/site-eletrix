@@ -1,0 +1,375 @@
+{
+ "aqwa-por-do-sol": {
+  "w": 1920,
+  "h": 1429,
+  "widths": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "fallback": 1280
+ },
+ "aqwa-noite": {
+  "w": 1110,
+  "h": 1000,
+  "widths": [
+   480,
+   800,
+   1110
+  ],
+  "fallback": 1110
+ },
+ "thera-praca": {
+  "w": 1920,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "fallback": 1280
+ },
+ "thera-entrada": {
+  "w": 1280,
+  "h": 723,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "river-one-fim-de-tarde": {
+  "w": 1920,
+  "h": 1279,
+  "widths": [
+   480,
+   800,
+   1280,
+   1920
+  ],
+  "fallback": 1280
+ },
+ "river-one-fachada": {
+  "w": 1280,
+  "h": 852,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "pinheiros-one-aerea": {
+  "w": 1622,
+  "h": 2368,
+  "widths": [
+   480,
+   800,
+   1280,
+   1622
+  ],
+  "fallback": 1280
+ },
+ "pinheiros-one-fachada": {
+  "w": 1280,
+  "h": 1789,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "arquipeo-aerea": {
+  "w": 1280,
+  "h": 955,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "arquipeo-jardim": {
+  "w": 1280,
+  "h": 960,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "cea-aerea": {
+  "w": 1280,
+  "h": 1024,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "cea-fachada": {
+  "w": 1280,
+  "h": 853,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "faria-lima-financial-center": {
+  "w": 1280,
+  "h": 1919,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "castelo-branco-office-park": {
+  "w": 1280,
+  "h": 857,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "totvs-seneca": {
+  "w": 1280,
+  "h": 853,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "biosquare": {
+  "w": 1280,
+  "h": 1707,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "berrini-500": {
+  "w": 1280,
+  "h": 1322,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "jk-360": {
+  "w": 993,
+  "h": 1811,
+  "widths": [
+   480,
+   800,
+   993
+  ],
+  "fallback": 993
+ },
+ "botafogo-trade-center": {
+  "w": 1280,
+  "h": 853,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "eco-sapucai": {
+  "w": 1280,
+  "h": 847,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "bresco-viracopos": {
+  "w": 1280,
+  "h": 959,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "maringa-park": {
+  "w": 1280,
+  "h": 853,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "app-mapa": {
+  "w": 589,
+  "h": 1280,
+  "widths": [
+   480,
+   589
+  ],
+  "fallback": 589
+ },
+ "totem-orelhao": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ },
+ "case-1": {
+  "w": 1197,
+  "h": 1169,
+  "widths": [
+   480,
+   800,
+   1197
+  ],
+  "fallback": 1197
+ },
+ "case-2": {
+  "w": 1280,
+  "h": 942,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "case-3": {
+  "w": 973,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   973
+  ],
+  "fallback": 973
+ },
+ "case-4": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ },
+ "case-5": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ },
+ "case-6": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ },
+ "case-7": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ },
+ "case-8": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ },
+ "hub-garagem": {
+  "w": 1280,
+  "h": 767,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "hub-recarga": {
+  "w": 1280,
+  "h": 611,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "estadao-orelhao": {
+  "w": 1021,
+  "h": 565,
+  "widths": [
+   480,
+   800,
+   1021
+  ],
+  "fallback": 1021
+ },
+ "estadao-predios": {
+  "w": 883,
+  "h": 663,
+  "widths": [
+   480,
+   800,
+   883
+  ],
+  "fallback": 883
+ },
+ "ceo": {
+  "w": 960,
+  "h": 1280,
+  "widths": [
+   480,
+   800,
+   960
+  ],
+  "fallback": 960
+ }
+}

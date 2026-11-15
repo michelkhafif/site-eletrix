@@ -1,0 +1,41 @@
+{
+  "name": "site-eletrix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site institucional da Eletrix",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "images": "node scripts/optimize-images.mjs",
+    "data": "node scripts/build-stations.mjs",
+    "og": "node scripts/generate-og.mjs",
+    "build:pages": "cross-env NEXT_PUBLIC_BASE_PATH=/site-eletrix next build",
+    "postbuild": "node scripts/postbuild.mjs",
+    "seo:check": "node scripts/check-seo.mjs",
+    "links:check": "node scripts/check-links.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^1.73.0",
+    "maplibre-gl": "^6.18.0",
+    "next": "^15.5.29",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "autoprefixer": "^10.6.2",
+    "cross-env": "^10.1.0",
+    "csv-parse": "^7.0.3",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.29",
+    "postcss": "^8.5.33",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^6.0.3"
+  }
+}

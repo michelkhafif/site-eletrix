@@ -8,3 +8,6 @@ out/
 .env*
 .DS_Store
 Thumbs.db
+*.tsbuildinfo
+_materiais/
+CLAUDE.md
