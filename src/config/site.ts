@@ -9,7 +9,7 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ||
-  (env === 'production' ? 'https://eletrix.mobi' : 'https://michelk55.github.io/site-eletrix')
+  (env === 'production' ? 'https://eletrix.mobi' : 'https://michelkhafif.github.io/site-eletrix')
 ).replace(/\/$/, '');
 
 export const site = {

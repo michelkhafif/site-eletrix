@@ -4,7 +4,7 @@ Tudo o que não estava no briefing (`CLAUDE.md`) foi marcado aqui. Itens com **[
 
 ## 1. Ações necessárias antes do lançamento
 
-- **[ação] Ativar o GitHub Pages:** github.com/Michelk55/site-eletrix → Settings → Pages → Source: **GitHub Actions**.
+- **[ação] Ativar o GitHub Pages:** github.com/michelkhafif/site-eletrix → Settings → Pages → Source: **GitHub Actions**.
 - **[ação] Confirmar o e-mail do FormSubmit.** O primeiro envio de formulário faz o serviço mandar um e-mail de ativação para `admin@eletrix5.com.br`. Enquanto não for confirmado, os formulários não entregam. Endpoint em `src/config/site.ts` (`site.form.endpoint`).
 - **[ação] Links das lojas do app.** Estão como busca genérica na App Store e no Google Play (`site.app.appStore`, `site.app.playStore`). Trocar pelos links oficiais.
 - **[ação] LinkedIn:** URL oficial da página da Eletrix (`site.social.linkedin`). Enquanto vazio, o ícone não aparece no rodapé.

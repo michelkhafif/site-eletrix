@@ -10,7 +10,7 @@ const OUT = path.join(ROOT, 'out');
 if (!fs.existsSync(OUT)) { console.error('Pasta out/ não encontrada.'); process.exit(1); }
 
 const production = process.env.NEXT_PUBLIC_SITE_ENV === 'production';
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || (production ? 'https://eletrix.mobi' : 'https://michelk55.github.io/site-eletrix')).replace(/\/$/, '');
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || (production ? 'https://eletrix.mobi' : 'https://michelkhafif.github.io/site-eletrix')).replace(/\/$/, '');
 const pages = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/pages.json'), 'utf8'));
 
 fs.writeFileSync(path.join(OUT, '.nojekyll'), '');

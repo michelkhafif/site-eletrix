@@ -20,7 +20,7 @@ npm run build && npm start   # simula o site estático
 Scripts: `npm run images` (imagens e logos), `npm run data` (CSV → estações), `npm run og` (imagens OG), `npm run seo:check`, `npm run links:check`.
 
 ## Como publicar (teste)
-Push na `main` dispara `.github/workflows/deploy.yml` (basePath `/site-eletrix`, noindex). Ative uma vez: **Settings → Pages → Source: GitHub Actions**. URL: https://michelk55.github.io/site-eletrix/
+Push na `main` dispara `.github/workflows/deploy.yml` (basePath `/site-eletrix`, noindex). Ative uma vez: **Settings → Pages → Source: GitHub Actions**. URL: https://michelkhafif.github.io/site-eletrix/
 
 ## Migrar para eletrix.mobi
 Build com `NEXT_PUBLIC_SITE_ENV=production` e `NEXT_PUBLIC_BASE_PATH` vazio (ou ajuste as variáveis do workflow). Isso libera indexação, gera sitemap.xml, robots.txt e canonical em eletrix.mobi. Depois: configurar 301 para as 3 rotas legadas, preencher GA4/Pixel se desejado e confirmar o domínio no Search Console.
