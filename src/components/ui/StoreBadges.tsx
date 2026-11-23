@@ -15,13 +15,13 @@ export function StoreBadges({ className = '' }: { className?: string }) {
   const cls = 'inline-flex h-12 items-center gap-3 rounded-xl border border-white/20 bg-black px-4 text-white transition hover:border-white/50';
   return (
     <div className={`flex flex-wrap gap-3 ${className}`}>
-      <a href={site.app.appStore} target="_blank" rel="noopener noreferrer" className={cls} aria-label="Baixar na App Store: app Eletrix">
+      <a href={site.app.appStore} target="_blank" rel="noopener noreferrer" className={cls}>
         <AppleMark />
-        <span className="leading-tight"><span className="block text-[0.62rem] uppercase tracking-wider text-white/70">Baixar na</span><span className="block text-[0.95rem] font-semibold">App Store</span></span>
+        <span className="leading-tight"><span className="block text-[0.62rem] uppercase tracking-wider text-white/70">Baixar na</span>{' '}<span className="block text-[0.95rem] font-semibold">App Store</span></span>
       </a>
-      <a href={site.app.playStore} target="_blank" rel="noopener noreferrer" className={cls} aria-label="Disponível no Google Play: app Eletrix">
+      <a href={site.app.playStore} target="_blank" rel="noopener noreferrer" className={cls}>
         <PlayMark />
-        <span className="leading-tight"><span className="block text-[0.62rem] uppercase tracking-wider text-white/70">Disponível no</span><span className="block text-[0.95rem] font-semibold">Google Play</span></span>
+        <span className="leading-tight"><span className="block text-[0.62rem] uppercase tracking-wider text-white/70">Disponível no</span>{' '}<span className="block text-[0.95rem] font-semibold">Google Play</span></span>
       </a>
     </div>
   );

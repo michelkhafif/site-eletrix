@@ -106,3 +106,11 @@ Branch: `redesign-v2` (não foi feito merge na principal nem publicação). Este
 - `playwright` entrou como `devDependency` (QA). O Chromium da cache dele não bate com a versão instalada; os scripts usam o Edge do sistema (`channel: 'msedge'`).
 - `scripts/map-cache/` (JSON bruto do IBGE) está no `.gitignore`; o SVG final é commitado.
 - Não adotei animações de entrada por seção. Movimento automático na página inteira: LED do hero, contagem, marquee de logos e pulso dos pins.
+
+## 4. Correção posterior: faixa de parceiros (C-2, revisão do Michel)
+Substitui a decisão do item C-2 acima. A faixa volta a ser uma rolagem horizontal, sem grade estática:
+- Rolagem automática e contínua, em loop infinito e sem emenda: a lista é repetida uma vez e a animação vai de 0 a -50%. Velocidade de cerca de 70 px/s (140 s por volta), calma o bastante para reconhecer cada marca.
+- Sem botão de pausa, sem "ver todos", **sem pausa no hover ou no foco** e sem qualquer controle. A faixa nem recebe foco por teclado.
+- **Roda também com `prefers-reduced-motion`**, por pedido expresso. O marquee é a exceção à regra de reduzir movimento; a grade estática foi removida. Registro o risco: usuários sensíveis a movimento verão a faixa rolando (o movimento é lento e linear).
+- Logos maiores (escala 1,6× contra 1,45× antes), com a mesma área ótica entre eles (altura e largura calculadas pela proporção de cada logo). Células de 200 px no celular e 240 px no desktop; no celular a faixa também roda.
+- Fundo continua claro (branco), contrastando com o hero escuro.

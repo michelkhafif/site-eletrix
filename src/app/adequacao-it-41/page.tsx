@@ -10,6 +10,7 @@ import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
+import { Icon } from '@/components/ui/Icon';
 import { faqs } from '@/data/faqs';
 import { wa } from '@/data/whatsapp';
 import { whatsappLink } from '@/config/site';
@@ -70,7 +71,13 @@ export default function It41Page() {
       </Band>
 
       <Band tone="light" id="exigencias" eyebrow="A norma, em resumo" title="O que a IT-41 pede para recarga de veículos elétricos." lead="Resumo didático da Portaria CCB-003/970/2026. A leitura completa está no nosso guia.">
-        <div className="grid gap-x-12 gap-y-4 md:grid-cols-2">
+        <details className="group rounded-2xl border border-hair bg-white px-6 shadow-card">
+          <summary className="flex min-h-14 items-center justify-between gap-4 py-3 font-display text-[1.05rem] font-semibold text-fg">
+            Ver o resumo da norma
+            <Icon name="chevronDown" size={20} className="chev shrink-0 text-accent transition-transform duration-200" />
+          </summary>
+          <div className="pb-6 pt-2">
+          <div className="grid gap-x-12 gap-y-4 md:grid-cols-2">
           <CheckList items={[
             'Responsabilidade integral do responsável técnico e do instalador, seguindo NBR 5410, NBR 17019 e NBR IEC 61851-1.',
             'Em áreas internas, só recarga em modos 3 e 4: proibido tomada comum, adaptador ou extensão.',
@@ -87,6 +94,8 @@ export default function It41Page() {
           ]} />
         </div>
         <p className="mt-8 text-fg-muted">Em residências unifamiliares, a norma traz recomendação de boas práticas. <Link href="/guias/it-41-carregador-veicular/" className="font-semibold text-accent underline underline-offset-4">Leia o guia completo</Link>.</p>
+          </div>
+        </details>
       </Band>
 
       <Band tone="paper" id="passo-a-passo" eyebrow="Como contratar" title="Da visita técnica à entrega com ART.">

@@ -15,7 +15,7 @@ export function FinalContact({ initial = 'gestor', whatsappMessage = wa.default,
         <div className="absolute inset-0 bg-gradient-to-r from-ink-950 via-ink-950/92 to-ink-950/70" />
       </div>
       <Container className="relative">
-        <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-14 lg:grid-cols-[0.95fr_1.05fr]">
           <div data-reveal>
             <p className="eyebrow mb-4">Fale com a Eletrix</p>
             <h2 id="final-t" className="text-h2">{title}</h2>
@@ -24,7 +24,7 @@ export function FinalContact({ initial = 'gestor', whatsappMessage = wa.default,
               <Button href={whatsappLink(whatsappMessage)} icon="whatsapp" size="lg">Falar no WhatsApp</Button>
               <Button href={`tel:${site.contact.phoneCommercialTel}`} variant="onDark" size="lg" icon="phone">{site.contact.phoneCommercialDisplay}</Button>
             </div>
-            <ul className="mt-10 space-y-4 text-muted-dark">
+            <ul className="mt-10 space-y-4 text-muted-dark [overflow-wrap:anywhere]">
               <li className="flex gap-3"><Icon name="clock" size={20} className="mt-0.5 text-brand-400" /> <span>Suporte 24 horas para as estações em operação.</span></li>
               <li className="flex gap-3"><Icon name="mail" size={20} className="mt-0.5 text-brand-400" /> <a href={`mailto:${site.contact.email}`} className="hover:text-white">{site.contact.email}</a></li>
               <li className="flex gap-3"><Icon name="pin" size={20} className="mt-0.5 text-brand-400" /> <span>{site.contact.address.street}, {site.contact.address.district}, {site.contact.address.city}/{site.contact.address.state}</span></li>

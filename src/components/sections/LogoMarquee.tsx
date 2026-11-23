@@ -34,22 +34,13 @@ function LogoImg({ slug, name, tone, scale = 1, eager }: { slug: string; name: s
 export function LogoMarquee({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
   const list = partners;
   return (
-    <div>
-      <div className="marquee-wrap relative">
-        {/* Sem botão de pausa: a rolagem para ao passar o mouse ou receber foco, e some com movimento reduzido */}
-        <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_7%,#000_93%,transparent)]" role="group" aria-label="Parceiros e clientes da Eletrix" tabIndex={0}>
-          <ul className="marquee-track flex items-center py-3">
-            {[...list, ...list].map((p, i) => (
-              <li key={`${p.slug}-${i}`} aria-hidden={i >= list.length ? true : undefined} className="flex h-20 w-[240px] shrink-0 items-center justify-center">
-                <LogoImg slug={p.slug} name={i >= list.length ? '' : p.name} tone={tone} scale={1.45} eager={i < 6} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <ul className="logos-static grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-6" aria-label="Parceiros e clientes da Eletrix">
-        {list.map((p) => (
-          <li key={p.slug} className="flex h-16 w-full items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} scale={1.1} /></li>
+    <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]" role="group" aria-label="Parceiros e clientes da Eletrix">
+      {/* Rolagem contínua e sem controles. A lista é repetida uma vez: ao chegar em -50% o loop recomeça sem emenda. */}
+      <ul className="marquee-track flex items-center py-3">
+        {[...list, ...list].map((p, i) => (
+          <li key={`${p.slug}-${i}`} aria-hidden={i >= list.length ? true : undefined} className="flex h-20 w-[200px] shrink-0 items-center justify-center md:w-[240px]">
+            <LogoImg slug={p.slug} name={i >= list.length ? '' : p.name} tone={tone} scale={1.6} eager={i < 6} />
+          </li>
         ))}
       </ul>
     </div>

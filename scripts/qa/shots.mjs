@@ -1,9 +1,9 @@
 // Screenshots de QA. Uso: node scripts/qa/shots.mjs <pasta-saida> [base-url] [paginas separadas por vírgula]
 import { chromium } from 'playwright';
 const out = process.argv[2] || 'qa/depois';
-const base = (process.argv[3] || 'http://localhost:3000').replace(/\/$/, '');
+const base = (process.argv[3] || 'http://localhost:3001').replace(/\/$/, '');
 const pages = (process.argv[4] || '/,/eletrix-hub/,/condominios/,/instalacao-carregador-residencial/,/adequacao-it-41/,/contato/,/guias/').split(',');
-const widths = [390, 1440];
+const widths = (process.env.WIDTHS || '390,1440').split(',').map(Number);
 const browser = await chromium.launch({ channel: process.env.PW_CHANNEL || 'msedge' });
 for (const w of widths) {
   const ctx = await browser.newContext({ viewport: { width: w, height: w < 600 ? 844 : 900 }, deviceScaleFactor: 1, reducedMotion: 'reduce' });

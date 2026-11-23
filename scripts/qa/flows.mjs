@@ -11,11 +11,11 @@ const b = await chromium.launch({ channel: 'msedge' });
   await p.goto(base + '/', { waitUntil: 'networkidle' }); await p.waitForTimeout(600);
   const r = await p.evaluate(() => ({
     beam: getComputedStyle(document.querySelector('.led-beam')).animationName,
-    marquee: getComputedStyle(document.querySelector('.marquee-wrap')).display,
+    marquee: getComputedStyle(document.querySelector('.marquee-track')).animationName,
     stat: [...document.querySelectorAll('#hero-t ~ dl dd, dl dd')].slice(0, 4).map((e) => e.textContent.replace(/\s+/g, ' ').trim()),
   }));
   ok(r.beam === 'none', `reduced-motion: LED parado (${r.beam})`);
-  ok(r.marquee === 'none', 'reduced-motion: marquee oculto, grade estática no lugar');
+  ok(r.marquee === 'marquee', 'marquee segue rodando mesmo com reduced-motion (pedido do Michel)');
   ok(/250/.test(r.stat[0]), 'reduced-motion: número final direto (' + r.stat.join(' | ') + ')');
 }
 // 2. contagem em escadinha com movimento

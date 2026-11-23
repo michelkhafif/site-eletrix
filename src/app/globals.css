@@ -21,7 +21,7 @@
   --fg-muted: #4a5b72;
   --hair: #e2e8f0;
   --card: #ffffff;
-  --accent: #0877ad;
+  --accent: #066a9b;
 }
 [data-tone='dark'] { background: #050b14; color: var(--fg); }
 [data-tone='ink'] {
@@ -54,7 +54,7 @@
   p { text-wrap: pretty; }
   ::selection { background: #10b7ff; color: #050b14; }
   :focus-visible { outline: 2px solid #10b7ff; outline-offset: 3px; border-radius: 4px; }
-  [data-tone='light'] :focus-visible, [data-tone='paper'] :focus-visible { outline-color: #0877ad; }
+  [data-tone='light'] :focus-visible, [data-tone='paper'] :focus-visible { outline-color: #066a9b; }
   img { @apply max-w-full; }
   .tnum { font-variant-numeric: tabular-nums lining-nums; }
 }
@@ -84,19 +84,12 @@
 /* Sem animação de entrada por seção: o único movimento automático é o do hero (LED), a contagem dos números e os pins. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  *:not(.marquee-track), *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
 
 /* ---------- Marquee de logos ---------- */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { animation: marquee 80s linear infinite; width: max-content; }
-.marquee:hover .marquee-track, .marquee:focus-within .marquee-track, .marquee[data-paused='true'] .marquee-track { animation-play-state: paused; }
-.logos-static { display: none; }
-/* Movimento reduzido: sem rolagem, todos os logos em grade estática */
-@media (prefers-reduced-motion: reduce) {
-  .marquee-wrap { display: none; }
-  .logos-static { display: grid; }
-}
+.marquee-track { animation: marquee 140s linear infinite; width: max-content; }
 
 /* ---------- Accordion nativo ---------- */
 details > summary { list-style: none; cursor: pointer; }
@@ -112,5 +105,3 @@ html.motion .led-beam { animation: led-sweep 9s cubic-bezier(.45,0,.2,1) 1.2s in
 @keyframes led-glow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
 html.motion .led-glow { animation: led-glow 4.5s ease-in-out infinite; }
 
-/* Seções abaixo da primeira dobra só são desenhadas perto da rolagem (menos estilo/layout no carregamento) */
-main > section:not(:first-child) { content-visibility: auto; contain-intrinsic-size: auto 720px; }

@@ -49,9 +49,9 @@ export default function ContactPage() {
       <Section tone="light" labelledBy="contato-t">
         <Container>
           <h2 id="contato-t" className="sr-only">Canais e formulário</h2>
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
-              <ul className="space-y-4">
+              <ul className="space-y-4 [overflow-wrap:anywhere]">
                 {channels.map((c) => (
                   <li key={c.title} data-reveal>
                     <a href={c.href} {...(c.ext ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="card group flex items-start gap-4 p-5 transition hover:border-brand-500/60 hover:shadow-card">
