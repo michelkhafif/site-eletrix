@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import { pageMeta } from '@/lib/seo';
 import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
-import { FeatureGrid, Split, MediaFrame, RelatedLinks } from '@/components/sections/Blocks';
+import { FeatureGrid, MediaFrame, RelatedLinks } from '@/components/sections/Blocks';
 import { CTABand } from '@/components/sections/CTABand';
 import { Counter } from '@/components/ui/Counter';
 import { Picture } from '@/components/ui/Picture';
@@ -34,7 +33,7 @@ export default function AboutPage() {
               <h2 id="missao-t" className="font-display text-[clamp(1.9rem,1.3rem+2.4vw,3.2rem)] font-extrabold leading-[1.1] tracking-tight">{site.mission}</h2>
               <Prose className="mt-8">
                 <p>Recarga de carro elétrico precisa ser parte da rotina, e não uma ocasião especial. É no prédio onde se trabalha, no hotel onde se hospeda, no shopping onde se faz compras e na garagem de casa que o carro passa a maior parte do tempo parado. É ali que a Eletrix está.</p>
-                <p>Não disputamos o título de maior rede em número de pontos. Disputamos <strong>padrão, operação e confiança</strong>: ser a operadora que os melhores empreendimentos do país escolhem, com qualidade de serviço à altura de um AAA.</p>
+                <p>Não disputamos o título de maior rede em número de pontos. Disputamos <strong>padrão, operação e confiança</strong>: ser a operadora que os melhores empreendimentos do país escolhem.</p>
               </Prose>
             </div>
             <MediaFrame className="aspect-[4/5] max-h-[560px] lg:ml-auto lg:w-[85%]"><Picture name="case-6" alt="Carregador Eletrix em totem numerado, instalado em uma garagem" fill sizes="(min-width:1024px) 460px, 100vw" /></MediaFrame>

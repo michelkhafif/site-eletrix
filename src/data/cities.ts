@@ -48,7 +48,7 @@ export const cities: City[] = [
         id: 'quem-atendemos',
         title: 'Para quem a Eletrix atua na capital',
         paragraphs: [
-          'Na capital paulista, a Eletrix atende edifícios corporativos AAA, condomínios residenciais, hotéis, escolas, estacionamentos e comércios. A sede fica na Avenida Angélica, em Santa Cecília.',
+          'Na capital paulista, a Eletrix atende edifícios corporativos, condomínios residenciais, hotéis, escolas, estacionamentos e comércios. A sede fica na Avenida Angélica, em Santa Cecília.',
           'Para prédios corporativos, o Eletrix Hub leva estações tarifadas em comodato, sem mensalidade e com energia reembolsada. Para condomínios residenciais, o caminho começa pelo laudo de demanda e pode seguir até a regularização na IT-41. Para o morador, a instalação é ligada ao medidor da própria unidade.',
         ],
       },

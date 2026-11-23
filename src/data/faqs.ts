@@ -51,14 +51,6 @@ export const faqs: Record<string, FaqItem[]> = {
       a: 'O suporte funciona 24 horas e, em caso de problema, o carregador volta a funcionar em até 12 horas.',
     },
     {
-      q: 'Há seguro?',
-      a: 'Sim. A instalação e a manutenção contam com seguro de até R$ 500 mil, com cobertura de responsabilidade civil em todo o território nacional.',
-    },
-    {
-      q: 'Posso acompanhar as recargas?',
-      a: 'Sim. Mediante solicitação, o responsável pelo empreendimento recebe acesso a um dashboard de gestão em tempo real, com todas as recargas e carregadores em um único painel.',
-    },
-    {
       q: 'Posso cobrar pelo tempo em que o carro fica parado depois da recarga?',
       a: 'Pode, se quiser. A taxa de ociosidade é opcional: terminada a recarga e passada uma tolerância (por exemplo, 20 minutos), o empreendimento pode cobrar por minuto de permanência. A decisão é sua.',
     },
@@ -94,7 +86,7 @@ export const faqs: Record<string, FaqItem[]> = {
   empresas: [
     {
       q: 'A Eletrix atende prédios corporativos, shoppings e hotéis?',
-      a: 'Sim. O Eletrix Hub foi desenhado para prédios corporativos AAA, shoppings, comércios, hotéis e galpões. Para fluxos menores, existe o Eletrix Rent.',
+      a: 'Sim. O Eletrix Hub foi desenhado para prédios corporativos e shoppings. Para fluxos menores, como condomínios, hotéis e pequenos comércios, existe o Eletrix Rent.',
     },
     {
       q: 'Já temos carregadores de outra operadora. É possível migrar?',

@@ -38,7 +38,7 @@ export function PageHero({ crumbs, eyebrow, title, lead, actions, image, bg, chi
         {crumbs && <div className="mb-8"><Breadcrumbs items={crumbs} /></div>}
         <div className={image ? 'grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]' : 'max-w-4xl'}>
           <div>
-            {eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
+            {eyebrow && <p className="eyebrow mb-4">{eyebrow.replace(/^\d+\s*·\s*/, '')}</p>}
             <h1 className="text-h1 text-white">{title}</h1>
             <p className="mt-6 max-w-2xl text-lead text-muted-dark">{lead}</p>
             {actions && <div className="mt-9 flex flex-wrap items-center gap-3">{actions}</div>}

@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
 import { FeatureGrid, Split, MediaFrame } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { FinalContact } from '@/components/sections/FinalContact';
 import { Button } from '@/components/ui/Button';
 import { Icon } from '@/components/ui/Icon';
@@ -90,6 +91,8 @@ export default function CondosPage() {
       </Band>
 
       <FAQ items={faqs.condominios} />
+
+      <DuvidasSobre path={PATH} />
       <FinalContact initial="sindico" whatsappMessage={wa.sindico} title="Vamos planejar o caminho do seu condomínio?" />
     </>
   );

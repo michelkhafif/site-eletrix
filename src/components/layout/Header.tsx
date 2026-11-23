@@ -21,7 +21,7 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
     <div className="grid gap-0 divide-x divide-white overflow-hidden rounded-2xl border border-white bg-ink-900 shadow-lift lg:grid-cols-[1fr_1fr_1.1fr_0.9fr]">
       {profileOrder.map((p) => (
         <div key={p} className="bg-ink-900 p-6">
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-400">{profiles[p].title}</p>
+          <p className="text-sm font-semibold text-brand-400">{profiles[p].title}</p>
           <p className="mb-4 mt-1 text-sm text-muted-dark">{profiles[p].question}</p>
           <ul className="space-y-1">
             {group(p).map((s) => (
@@ -33,7 +33,7 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
                   <span>
                     <span className="flex items-center gap-2 text-[0.95rem] font-semibold text-white">
                       {s.name}
-                      {s.step && <span className="rounded-full border border-white/15 px-2 py-px text-[0.65rem] font-medium uppercase tracking-wider text-muted-dark">{s.step}</span>}
+                      {s.step && <span className="rounded-full border border-white/15 px-2 py-px text-xs font-medium text-muted-dark">{s.step}</span>}
                     </span>
                     <span className="mt-0.5 block text-[0.82rem] leading-snug text-muted-dark">{s.tagline}</span>
                   </span>
@@ -70,7 +70,7 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
         <div className="absolute inset-0"><Picture name="totem-orelhao" alt="" sizes="320px" fill position="50% 30%" className="opacity-70 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-85" /></div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6">
-          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-400">Em destaque</p>
+          <p className="text-sm font-semibold text-brand-400">Em destaque</p>
           <p className="mt-1 font-display text-xl font-bold text-white">Eletrix Hub</p>
           <p className="mt-1 text-sm text-muted-dark">Para prédios corporativos e shoppings.</p>
           <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400">Conhecer <Icon name="arrowRight" size={16} className="transition group-hover:translate-x-0.5" /></span>

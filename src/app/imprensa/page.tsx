@@ -28,7 +28,7 @@ export default function PressPage() {
               <article className="card overflow-hidden">
                 <div className="aspect-[16/10] overflow-hidden bg-paper"><Picture name={p.image} alt={p.imageAlt} fill sizes="(min-width:768px) 600px, 100vw" /></div>
                 <div className="p-7">
-                  <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">{p.outlet} {p.section} · {p.year}</p>
+                  <p className="text-sm font-semibold text-accent">{p.outlet} {p.section} · {p.year}</p>
                   <h2 className="mt-2 font-display text-[1.35rem] font-bold leading-snug">{p.title}</h2>
                   {/* TODO: inserir o link original da matéria em src/data/content.ts (press[].url). Não inventar URL. */}
                   {p.url && <a href={p.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-1.5 font-semibold text-accent underline underline-offset-4">Ler a matéria <Icon name="arrowUpRight" size={16} /></a>}

@@ -103,12 +103,6 @@ details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] > summary .chev { transform: rotate(180deg); }
 
-/* ---------- MapLibre ---------- */
-.maplibregl-ctrl-attrib { font-size: 11px; }
-
-@keyframes charge { 0% { width: 22%; } 100% { width: 88%; } }
-html.motion .charge-bar { animation: charge 5.5s ease-in-out infinite alternate; }
-
 /* ---------- Hero: feixe de LED azul que atravessa a foto ---------- */
 @keyframes led-sweep { 0% { transform: translateX(-60%) skewX(-18deg); opacity: 0; } 12% { opacity: 1; } 55% { opacity: 1; } 70%, 100% { transform: translateX(260%) skewX(-18deg); opacity: 0; } }
 .led-beam { position: absolute; inset: -10% auto -10% 0; width: 22%; pointer-events: none; mix-blend-mode: screen;
@@ -117,7 +111,3 @@ html.motion .charge-bar { animation: charge 5.5s ease-in-out infinite alternate;
 html.motion .led-beam { animation: led-sweep 9s cubic-bezier(.45,0,.2,1) 1.2s infinite; }
 @keyframes led-glow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
 html.motion .led-glow { animation: led-glow 4.5s ease-in-out infinite; }
-/* ---------- Mapa: pins que brilham, defasados ---------- */
-@keyframes pin-pulse { 0%,100% { opacity: .15; transform: scale(.6); } 50% { opacity: .75; transform: scale(1.5); } }
-html.motion .pin-halo { transform-box: fill-box; transform-origin: center; animation: pin-pulse 3.6s ease-in-out infinite; animation-delay: var(--pd, 0s); }
-.pin-halo { opacity: .35; }

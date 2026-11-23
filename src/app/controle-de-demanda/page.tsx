@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
 import { Steps, FeatureGrid, Callout, Split, RelatedLinks } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { DemandDiagram } from '@/components/sections/DemandDiagram';
@@ -62,6 +63,8 @@ export default function DemandControlPage() {
       </Band>
 
       <FAQ items={faqs.demanda} />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="O caminho do síndico.">
         <RelatedLinks items={[
           { href: '/laudo-de-demanda/', kicker: '02 · Medir', title: 'Laudo de demanda', text: 'Meça a folga real do prédio.' },

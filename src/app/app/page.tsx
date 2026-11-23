@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { pageMeta } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
-import { absoluteUrl, site } from '@/config/site';
+import { absoluteUrl } from '@/config/site';
 import { orgId } from '@/lib/jsonld';
 import { PageHero } from '@/components/sections/PageHero';
 import { Band } from '@/components/sections/Band';

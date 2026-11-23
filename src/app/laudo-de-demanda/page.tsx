@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
 import { Steps, FeatureGrid, CheckList, Callout, Split, MediaFrame, RelatedLinks, PriceCard } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
@@ -53,7 +54,7 @@ export default function LaudoPage() {
             <h2 id="cf-t" className="text-h2">Sete dias de medição, um relatório.</h2>
           </header>
           <div data-reveal className="mt-10 rounded-3xl border border-hair bg-card p-6 md:p-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">Medição contínua no quadro geral</p>
+            <p className="text-sm font-semibold text-accent">Medição contínua no quadro geral</p>
             <ol className="mt-5 grid grid-cols-7 gap-2 md:gap-3">
               {days.map((d, i) => (
                 <li key={d} className="text-center">
@@ -92,7 +93,7 @@ export default function LaudoPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <PriceCard highlight label="Laudo de demanda" price="A partir de R$ 2.799" note="O valor final depende do porte e das condições do local." items={['Equipamento registrador instalado no quadro geral', 'Medição de 7 dias', 'Análise do consumo e dos picos', 'Relatório técnico entregue ao prédio']} cta={<Button href={whatsappLink(wa.laudo)} icon="whatsapp">Contratar o laudo</Button>} />
           <div data-reveal className="card p-7">
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">Contrate só o que precisa</p>
+            <p className="text-sm font-semibold text-accent">Contrate só o que precisa</p>
             <p className="mt-3 font-display text-xl font-bold">O laudo é o primeiro passo. Os próximos são opcionais.</p>
             <p className="mt-2 text-fg-muted">Dá para contratar só o laudo ou seguir para a infraestrutura seca, o controle de demanda e a adequação à IT-41. Um só parceiro, do laudo à regularização.</p>
             <ul className="mt-5 space-y-2 text-[0.97rem]">
@@ -109,6 +110,8 @@ export default function LaudoPage() {
       </Band>
 
       <FAQ items={faqs.laudo} />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Depois do laudo.">
         <RelatedLinks items={[
           { href: '/infraestrutura-seca/', kicker: '03 · Preparar', title: 'Infraestrutura seca', text: 'Eletrocalhas até as vagas e padrão único.' },

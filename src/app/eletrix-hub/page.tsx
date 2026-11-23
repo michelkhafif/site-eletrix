@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
 import { Steps, FeatureGrid, CheckList, CompareTable, Split, MediaFrame, RelatedLinks } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
@@ -21,17 +22,17 @@ export const metadata = pageMeta(PATH);
 export default function HubPage() {
   return (
     <>
-      <JsonLd data={serviceLd({ name: 'Eletrix Hub', description: 'Estações de recarga tarifadas em comodato por 36 meses, com operação completa da Eletrix, para prédios corporativos, shoppings, comércios, hotéis e galpões.', path: PATH })} />
+      <JsonLd data={serviceLd({ name: 'Eletrix Hub', description: 'Estações de recarga tarifadas em comodato por 36 meses, com operação completa da Eletrix, para prédios corporativos e shoppings.', path: PATH })} />
       <PageHero
         crumbs={[{ name: 'Eletrix Hub', href: PATH }]}
-        eyebrow="06 · Para empreendimentos"
-        title="Eletrix Hub: recarga tarifada para o seu empreendimento, sem mensalidade."
+        eyebrow="Para prédios corporativos e shoppings"
+        title="Eletrix Hub: recarga tarifada para prédios corporativos e shoppings, sem mensalidade."
         lead="A Eletrix instala, opera e dá suporte às estações. O seu empreendimento oferece recarga a quem usa o espaço, tem a energia 100% reembolsada e ainda recebe um bônus. Qualidade de serviço à altura de um AAA."
         actions={<>
           <Button href={whatsappLink(wa.hub)} icon="whatsapp" size="lg">Falar no WhatsApp</Button>
           <Button href="#modelo" variant="onDark" size="lg" icon="chevronDown">Entender o modelo</Button>
         </>}
-        chips={['Comodato por 36 meses', 'Rescisão sem multa', 'Suporte 24 horas', 'Seguro de até R$ 500 mil']}
+        chips={['Comodato por 36 meses', 'Rescisão sem multa', 'Suporte 24 horas', 'Energia 100% reembolsada']}
         image={{ name: 'totem-orelhao', alt: 'Totem orelhão azul da Eletrix com um carro elétrico em recarga em frente a um edifício corporativo', position: '50% 40%' }}
       />
 
@@ -41,8 +42,8 @@ export default function HubPage() {
         >
           <Prose>
             <p>O carregador fica em <strong>comodato por 36 meses</strong>: ele é da Eletrix e não há mensalidade para o empreendimento. O investimento do local está na infraestrutura, e ela é negociável. Depois da visita técnica, a Eletrix analisa a demanda e avalia a sua participação nos custos para viabilizar a operação.</p>
-            <p>É a solução indicada para <strong>prédios corporativos AAA, shoppings, comércios, hotéis e galpões</strong>. Em todos eles, o objetivo para o usuário é o mesmo: aproveitar o tempo de permanência. Quem carrega, ganha conveniência. Quem administra, ganha um serviço a mais para o espaço e uma receita que não existia.</p>
-            <p>Para fluxos menores, como condomínios residenciais e pequenos comércios, existe o <Link href="/eletrix-rent/">Eletrix Rent</Link>.</p>
+            <p>É a solução indicada para <strong>prédios corporativos e shoppings</strong>. Nos dois, o objetivo para o usuário é o mesmo: aproveitar o tempo de permanência. Quem carrega, ganha conveniência. Quem administra, ganha um serviço a mais para o espaço e uma receita que não existia.</p>
+            <p>Para fluxos menores, como condomínios residenciais, hotéis e pequenos comércios, existe o <Link href="/eletrix-rent/">Eletrix Rent</Link>.</p>
           </Prose>
         </Split>
       </Band>
@@ -58,7 +59,7 @@ export default function HubPage() {
 
       <Section tone="dark" id="modelo" labelledBy="modelo-t">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[0.9fr_1.1fr]">
             <div data-reveal>
               <p className="eyebrow mb-4">O modelo comercial</p>
               <h2 id="modelo-t" className="text-h2">Energia 100% reembolsada, com bônus ao local.</h2>
@@ -66,14 +67,14 @@ export default function HubPage() {
               <p className="mt-6 text-muted-dark">A Eletrix <strong className="text-white">recomenda</strong> uma tarifa final ao usuário, mas <strong className="text-white">não impõe</strong>: o empreendimento participa da decisão. Os valores de tarifa variam conforme o local e são apresentados na proposta.</p>
             </div>
             <div data-reveal className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-brand-400">Como a tarifa se divide, por kWh</p>
+              <p className="text-sm font-semibold text-brand-400">Como a tarifa se divide, por kWh</p>
               <ul className="mt-6 space-y-4">
                 {[
                   { n: '1', t: 'Parcela da Eletrix', d: 'Fixa por kWh, qualquer que seja o custo de energia do local.', tag: 'Fixa' },
                   { n: '2', t: 'Reembolso da energia', d: 'Segue o custo real de energia do local. 100% reembolsado.', tag: '100%' },
                   { n: '3', t: 'Bônus ao empreendimento', d: 'Dependendo do custo de energia do cliente, o bônus pode ser maior.', tag: 'Para o local' },
                 ].map((r) => (
-                  <li key={r.n} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-ink-900 p-5">
+                  <li key={r.n} className="flex flex-wrap items-start gap-4 rounded-2xl border border-white/10 bg-ink-900 p-5 sm:flex-nowrap">
                     <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand-500 font-display font-bold text-ink-950">{r.n}</span>
                     <span className="flex-1">
                       <span className="block font-display font-bold text-white">{r.t}</span>
@@ -98,8 +99,6 @@ export default function HubPage() {
           { icon: 'palette', title: 'Placas e comunicação visual', text: 'Sinalização clara para o motorista encontrar e usar a estação.' },
           { icon: 'network', title: 'Internet para a operação', text: 'Quando necessário, a conexão que mantém a estação online também é incluída.' },
           { icon: 'headset', title: 'Suporte 24 horas', text: 'Em caso de problema, o carregador volta a funcionar em até 12 horas.' },
-          { icon: 'lock', title: 'Seguro de até R$ 500 mil', text: 'Instalação e manutenção, com cobertura de responsabilidade civil em todo o território nacional.' },
-          { icon: 'chart', title: 'Dashboard de gestão', text: 'Mediante solicitação, todas as recargas e carregadores do empreendimento em um painel, em tempo real.' },
         ]} />
       </Band>
 
@@ -134,7 +133,7 @@ export default function HubPage() {
               <p className="mt-6"><Button href="/guias/qual-potencia-carregador-carro-eletrico/" variant="ghost">Ler o guia sobre potência</Button></p>
             </div>
             <div data-reveal className="card p-7">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">Ficha técnica de referência</p>
+              <p className="text-sm font-semibold text-accent">Ficha técnica de referência</p>
               <dl className="mt-5 divide-y divide-hair">
                 {[
                   ['Entrada', '220 V, monofásico ou bifásico, 50–60 Hz'],
@@ -153,8 +152,7 @@ export default function HubPage() {
       </Section>
 
       <Band tone="light" id="controle" eyebrow="Você decide" title="Controle do empreendimento sobre a operação." lead="O Hub se adapta ao jeito de cada local administrar o espaço.">
-        <FeatureGrid columns={3} items={[
-          { icon: 'chart', title: 'Dashboard em tempo real', text: 'O responsável acompanha todas as recargas e carregadores em um único painel, mediante solicitação.' },
+        <FeatureGrid columns={2} items={[
           { icon: 'clock', title: 'Taxa de ociosidade opcional', text: 'Se o veículo não for retirado ao fim da recarga (tolerância de, por exemplo, 20 minutos), o empreendimento pode cobrar por minuto de permanência. A decisão é do empreendimento.' },
           { icon: 'palette', title: 'White label', text: <>Carregadores e experiência no app com a sua marca e a assinatura Powered by Eletrix. <Link href="/white-label/">Saiba mais</Link>.</> },
         ]} />
@@ -163,7 +161,7 @@ export default function HubPage() {
       <Band tone="paper" id="comparativo" eyebrow="Hub ou Rent?" title="Qual modelo serve ao seu local." lead="Em ambos, a Eletrix opera a recarga e a energia é 100% reembolsada. A diferença está no fluxo esperado e no investimento.">
         <CompareTable caption="Comparativo entre Eletrix Hub e Eletrix Rent" head={['', 'Eletrix Hub', 'Eletrix Rent']} rows={[
           ['Modelo', 'Comodato por 36 meses', 'Locação com mensalidade fixa'],
-          ['Ideal para', 'Prédios corporativos, shoppings, comércios, hotéis e galpões com alto fluxo', 'Condomínios residenciais, hotéis e pequenos comércios, com fluxo menor'],
+          ['Ideal para', 'Prédios corporativos e shoppings, com alto fluxo de veículos', 'Condomínios residenciais, hotéis e pequenos comércios, com fluxo menor'],
           ['Investimento do local', 'Infraestrutura, negociável', 'Infraestrutura + mensalidade'],
           ['Energia', '100% reembolsada + bônus ao local', '100% reembolsada, com chance de gerar receita'],
           ['Rescisão', 'A qualquer momento, sem multa', 'Condições na proposta'],
@@ -189,6 +187,8 @@ export default function HubPage() {
       </Band>
 
       <FAQ items={faqs.hub} />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Soluções que se complementam.">
         <RelatedLinks items={[
           { href: '/eletrix-rent/', kicker: '07', title: 'Eletrix Rent', text: 'Locação com mensalidade fixa para fluxos menores.' },

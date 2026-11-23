@@ -6,7 +6,7 @@ type Variant = 'primary' | 'secondary' | 'ghost' | 'onDark' | 'dark';
 type Size = 'md' | 'lg' | 'sm';
 
 const base =
-  'group inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight whitespace-nowrap transition-[background,color,border-color,box-shadow,transform] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  'group inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-tight text-center sm:whitespace-nowrap transition-[background,color,border-color,box-shadow,transform] duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const variants: Record<Variant, string> = {
   primary: 'bg-brand-500 text-ink-950 hover:bg-brand-400 active:bg-brand-600 active:translate-y-px focus-visible:outline-brand-500 shadow-[0_8px_24px_-10px_rgba(16,183,255,.7)]',
@@ -16,9 +16,9 @@ const variants: Record<Variant, string> = {
   ghost: 'text-accent hover:opacity-80 px-0 focus-visible:outline-brand-500',
 };
 const sizes: Record<Size, string> = {
-  sm: 'h-10 px-4 text-sm',
-  md: 'h-12 px-6 text-[0.95rem]',
-  lg: 'h-14 px-8 text-base',
+  sm: 'min-h-10 px-4 py-1.5 text-sm',
+  md: 'min-h-12 px-6 py-2 text-[0.95rem]',
+  lg: 'min-h-14 px-7 py-2.5 text-base sm:px-8',
 };
 
 type Props = {

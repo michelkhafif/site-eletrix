@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band } from '@/components/sections/Band';
 import { Steps, FeatureGrid, CheckList, Callout, RelatedLinks, CompareTable } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Container, Section } from '@/components/ui/Section';
@@ -41,7 +42,7 @@ export default function SwitchPage() {
           { icon: 'clipboard', title: 'Instalação fora da IT-41', text: 'Sem botoeira, sem sinalização, sem ART. Um problema na renovação do AVCB.' },
           { icon: 'receipt', title: 'Energia sem retorno', text: 'O prédio paga a energia e não recebe de volta, ou recebe sem clareza.' },
           { icon: 'clock', title: 'Contrato sem flexibilidade', text: 'Multas e cláusulas que prendem o prédio mesmo quando o serviço não entrega.' },
-          { icon: 'network', title: 'Equipamento sem conexão', text: 'Carregadores sem internet, sem app ou sem dashboard para o gestor acompanhar.' },
+          { icon: 'network', title: 'Equipamento sem conexão', text: 'Carregadores sem internet ou sem app para o motorista usar.' },
         ]} />
       </Band>
 
@@ -88,6 +89,8 @@ export default function SwitchPage() {
       </Section>
 
       <FAQ items={faqs.troca} tone="paper" />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Ao assumir, a Eletrix também:">
         <RelatedLinks items={[
           { href: '/adequacao-it-41/', kicker: '05', title: 'Adequação IT-41', text: 'Quadro, botoeira e sinalização.' },

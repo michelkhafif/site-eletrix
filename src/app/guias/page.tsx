@@ -28,7 +28,7 @@ export default function GuidesIndex() {
         <Link href={first.href} className="card group grid overflow-hidden transition hover:shadow-card md:grid-cols-2">
           <div className="aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[320px]"><Picture name={first.image} alt={first.imageAlt} fill sizes="(min-width:768px) 600px, 100vw" className="transition duration-500 group-hover:scale-[1.03]" /></div>
           <div className="flex flex-col justify-center p-8 md:p-10">
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">{first.kicker} · {first.minutes} min de leitura</p>
+            <p className="text-sm font-semibold text-accent">{first.kicker} · {first.minutes} min de leitura</p>
             <h2 className="mt-3 text-h3 !text-[1.7rem]">{first.title}</h2>
             <p className="mt-3 text-fg-muted">{first.summary}</p>
             <span className="mt-6 inline-flex items-center gap-1.5 font-semibold text-accent">Ler guia <Icon name="arrowRight" size={18} className="transition group-hover:translate-x-0.5" /></span>
@@ -40,7 +40,7 @@ export default function GuidesIndex() {
               <Link href={g.href} className="card group flex h-full flex-col overflow-hidden transition hover:-translate-y-0.5 hover:shadow-card sm:flex-row">
                 <div className="aspect-[16/10] shrink-0 overflow-hidden sm:aspect-auto sm:w-2/5"><Picture name={g.image} alt={g.imageAlt} fill sizes="(min-width:640px) 240px, 100vw" className="transition duration-500 group-hover:scale-[1.04]" /></div>
                 <div className="flex flex-1 flex-col p-6">
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-accent">{g.kicker} · {g.minutes} min</p>
+                  <p className="text-sm font-semibold text-accent">{g.kicker} · {g.minutes} min</p>
                   <h3 className="mt-2 flex-1 font-display text-[1.1rem] font-bold leading-snug">{g.title}</h3>
                   <p className="mt-2 text-sm text-fg-muted">{g.summary}</p>
                 </div>

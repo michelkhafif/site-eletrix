@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
 import { Steps, FeatureGrid, CompareTable, Split, MediaFrame, RelatedLinks, PriceCard } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
@@ -63,7 +64,7 @@ export default function RentPage() {
         <CompareTable caption="Comparativo entre Eletrix Rent e Eletrix Hub" head={['', 'Eletrix Rent', 'Eletrix Hub']} rows={[
           ['Modelo', 'Locação com mensalidade fixa', 'Comodato por 36 meses, sem mensalidade'],
           ['Fluxo de veículos', 'Menor, recarga coletiva', 'Alto, com rotatividade'],
-          ['Ideal para', 'Condomínios residenciais, hotéis e pequenos comércios', 'Prédios corporativos, shoppings, comércios, hotéis e galpões'],
+          ['Ideal para', 'Condomínios residenciais, hotéis e pequenos comércios', 'Prédios corporativos e shoppings'],
           ['Investimento do local', 'Infraestrutura + mensalidade', 'Infraestrutura, negociável'],
           ['Energia', '100% reembolsada', '100% reembolsada + bônus ao local'],
         ]} />
@@ -82,6 +83,8 @@ export default function RentPage() {
       </Band>
 
       <FAQ items={faqs.rent} />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Outras soluções para o seu local.">
         <RelatedLinks items={[
           { href: '/eletrix-hub/', kicker: '06', title: 'Eletrix Hub', text: 'Comodato sem mensalidade para alto fluxo.' },

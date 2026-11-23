@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
 import { Steps, FeatureGrid, CheckList, Callout, Split, MediaFrame, RelatedLinks, CompareTable } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
@@ -79,6 +80,8 @@ export default function InfraPage() {
       </Band>
 
       <FAQ items={faqs.infra} />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="O caminho do síndico.">
         <RelatedLinks items={[
           { href: '/laudo-de-demanda/', kicker: '02 · Medir', title: 'Laudo de demanda', text: 'O primeiro passo do caminho.' },

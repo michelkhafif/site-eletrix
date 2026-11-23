@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band } from '@/components/sections/Band';
 import { FeatureGrid, Steps, RelatedLinks } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { FinalContact } from '@/components/sections/FinalContact';
 import { Button } from '@/components/ui/Button';
 import { Icon, type IconName } from '@/components/ui/Icon';
@@ -36,7 +37,7 @@ export default function CompaniesPage() {
       <PageHero
         crumbs={[{ name: 'Para empresas', href: PATH }]}
         eyebrow="Para empresas e empreendimentos"
-        title="Recarga de veículos elétricos para empresas e empreendimentos, com padrão AAA."
+        title="Recarga de veículos elétricos para empresas e empreendimentos."
         lead="A Eletrix instala, opera e dá suporte à recarga no seu empreendimento. O local oferece o serviço, tem a energia reembolsada e não monta uma operação. Um só parceiro, do projeto ao dia a dia."
         actions={<>
           <Button href={whatsappLink(wa.empreendimento)} icon="whatsapp" size="lg">Agendar visita técnica</Button>
@@ -64,16 +65,14 @@ export default function CompaniesPage() {
           { title: 'Visita técnica', text: 'Avaliamos o espaço, o fluxo de veículos e a demanda de energia.' },
           { title: 'Proposta e modelo', text: 'Hub (comodato) ou Rent (locação), conforme o fluxo e o investimento.' },
           { title: 'Instalação conforme a IT-41', text: 'ART, proteções, placas, comunicação visual e, quando preciso, internet para a operação.' },
-          { title: 'Operação e suporte', text: 'App, pagamento, suporte 24 horas e dashboard para o gestor, mediante solicitação.' },
+          { title: 'Operação e suporte', text: 'App, pagamento e suporte 24 horas.' },
         ]} />
       </Band>
 
       <Band tone="dark" id="por-que" eyebrow="O que o gestor pede" title="Zero dor de cabeça, segurança e conformidade.">
         <FeatureGrid items={[
           { icon: 'handshake', title: 'Sem mensalidade, sem multa', text: 'No Hub, o carregador fica em comodato e o contrato pode ser rescindido a qualquer momento, por qualquer das partes, sem multa.' },
-          { icon: 'lock', title: 'Seguro de até R$ 500 mil', text: 'Cobertura de responsabilidade civil em todo o território nacional, para instalação e manutenção.' },
           { icon: 'headset', title: 'Suporte 24 horas', text: 'Se um carregador falhar, ele volta a funcionar em até 12 horas.' },
-          { icon: 'chart', title: 'Dashboard de gestão', text: 'Todas as recargas e carregadores em um painel em tempo real, para o responsável pelo empreendimento.' },
           { icon: 'receipt', title: 'Energia reembolsada', text: '100% da energia reembolsada, com bônus ao local sobre cada kWh cobrado no Hub.' },
           { icon: 'clipboard', title: 'IT-41 resolvida', text: 'Quadro identificado, botoeira por pavimento e sinalização em todos os pontos.' },
         ]} />
@@ -98,6 +97,8 @@ export default function CompaniesPage() {
       </Band>
 
       <FAQ items={faqs.empresas} tone="light" />
+
+      <DuvidasSobre path={PATH} />
       <RelatedLinks_ />
       <FinalContact initial="gestor" whatsappMessage={wa.empreendimento} title="Vamos conversar sobre o seu empreendimento?" />
     </>

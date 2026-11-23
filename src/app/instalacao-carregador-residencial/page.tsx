@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band } from '@/components/sections/Band';
 import { Steps, FeatureGrid, CheckList, RelatedLinks } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Container, Section } from '@/components/ui/Section';
@@ -56,14 +57,14 @@ export default function ResidentialPage() {
       <Band tone="light" id="preco" eyebrow="Quanto custa" title="Preço depende da sua vaga. A visita é grátis." lead="Dois valores formam o investimento: o carregador, que tem preço público, e a instalação, que é definida depois da visita técnica.">
         <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr]">
           <div data-reveal className="card flex flex-col p-7">
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">Instalação</p>
+            <p className="text-sm font-semibold text-accent">Instalação</p>
             <p className="mt-3 font-display text-[1.8rem] font-extrabold leading-tight">Definida após a visita técnica</p>
             <p className="mt-2 text-fg-muted">A distância entre a vaga e o medidor varia, e é ela que mais pesa no custo.</p>
             <CheckList className="mt-6 text-[0.95rem]" items={['Visita técnica gratuita', 'ART inclusa', 'Proteções contra choque, sobretensão e sobrecorrente', 'Garantia da instalação e do equipamento', 'Suporte 24 horas']} />
             <p className="mt-6 text-[0.95rem] text-fg-muted">Em prédios com infraestrutura seca da Eletrix, o morador tem <strong className="text-fg">desconto na instalação</strong> da própria vaga.</p>
           </div>
           <div data-reveal className="card p-7">
-            <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">Carregadores à venda · a partir de R$ 2.799</p>
+            <p className="text-sm font-semibold text-accent">Carregadores à venda · a partir de R$ 2.799</p>
             <ul className="mt-4 divide-y divide-hair">
               {chargers.map((c) => (
                 <li key={c.slug} className="flex flex-wrap items-center justify-between gap-3 py-4">
@@ -118,6 +119,8 @@ export default function ResidentialPage() {
       </Section>
 
       <FAQ items={faqs.instalacao} tone="light" />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="paper" id="continue" eyebrow="Continue por aqui" title="Para ir além da vaga.">
         <RelatedLinks items={[
           { href: '/carregadores/', kicker: 'Equipamento', title: 'Carregadores', text: 'WEG, Intelbras e Livoltek, 7,4 kW.' },

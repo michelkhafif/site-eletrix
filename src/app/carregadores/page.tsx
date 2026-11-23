@@ -6,6 +6,7 @@ import { PageHero } from '@/components/sections/PageHero';
 import { Band } from '@/components/sections/Band';
 import { CheckList, CompareTable, Callout, RelatedLinks } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
+import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { chargers, chargerNote } from '@/data/chargers';
@@ -57,7 +58,7 @@ export default function ChargersPage() {
           {chargers.map((c, i) => (
             <li key={c.slug} data-reveal style={{ ['--d' as string]: `${i * 80}ms` }} className="card flex flex-col overflow-hidden">
               <div className="flex items-center justify-between px-7 pt-7">
-                <span className="rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-brand-400">{c.tag}</span>
+                <span className="rounded-full bg-ink-900 px-3 py-1 text-xs font-semibold text-brand-400">{c.tag}</span>
                 <span className="font-display text-sm font-bold text-fg-muted">{c.brand}</span>
               </div>
               <div className="flex flex-1 flex-col p-7">
@@ -102,7 +103,7 @@ export default function ChargersPage() {
           ].map((x) => (
             <div key={x.a} data-reveal className="card p-7">
               <p className="font-display text-[1.1rem] font-bold">{x.q}</p>
-              <p className="mt-4 text-sm font-semibold uppercase tracking-wider text-accent">Vá de</p>
+              <p className="mt-4 text-sm font-semibold text-accent">Vá de</p>
               <p className="font-display text-xl font-extrabold">{x.a}</p>
               <p className="mt-2 text-fg-muted">{x.d}</p>
             </div>
@@ -124,6 +125,8 @@ export default function ChargersPage() {
       </Band>
 
       <FAQ items={faqs.carregadores} />
+
+      <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Antes de comprar, vale ler.">
         <RelatedLinks items={[
           { href: '/instalacao-carregador-residencial/', kicker: 'Morador', title: 'Instalação na vaga', text: 'Visita técnica gratuita.' },

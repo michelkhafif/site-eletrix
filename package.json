@@ -15,12 +15,10 @@
     "build:pages": "cross-env NEXT_PUBLIC_BASE_PATH=/site-eletrix next build",
     "postbuild": "node scripts/postbuild.mjs",
     "seo:check": "node scripts/check-seo.mjs",
-    "links:check": "node scripts/check-links.mjs",
-    "prebuild": "node scripts/copy-vendor.mjs"
+    "links:check": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.73.0",
-    "maplibre-gl": "^6.18.0",
     "next": "^15.5.29",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"

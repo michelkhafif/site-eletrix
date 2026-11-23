@@ -62,7 +62,7 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           <div className="grid gap-12 lg:grid-cols-[260px_1fr] lg:gap-16">
             <aside className="lg:sticky lg:top-[calc(var(--header-h)+24px)] lg:self-start">
               <nav aria-label="Neste guia" className="rounded-2xl border border-hair p-5">
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-accent">Neste guia</p>
+                <p className="text-sm font-semibold text-accent">Neste guia</p>
                 <ol className="mt-3 space-y-2.5 text-[0.95rem]">
                   {g.sections.map((s) => <li key={s.id}><a href={`#${s.id}`} className="text-fg-muted transition hover:text-accent">{s.title}</a></li>)}
                   <li><a href="#faq" className="text-fg-muted transition hover:text-accent">Perguntas frequentes</a></li>

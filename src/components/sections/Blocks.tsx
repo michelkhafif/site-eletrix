@@ -12,8 +12,8 @@ export function Steps({ items, columns = 4, startAt = 1 }: { items: Step[]; colu
     <ol className={`grid gap-5 ${grid}`}>
       {items.map((s, i) => (
         <li key={s.title} data-reveal style={{ ['--d' as string]: `${i * 70}ms` }} className="card relative flex flex-col p-6">
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-500 font-display text-sm font-extrabold tnum text-ink-950">{String(i + startAt).padStart(2, '0')}</span>
-          {s.tag && <span className="absolute right-5 top-5 rounded-full border border-hair px-2.5 py-0.5 text-[0.7rem] font-medium uppercase tracking-wider text-fg-muted">{s.tag}</span>}
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-500 font-display text-sm font-extrabold tnum text-ink-950">{i + startAt}</span>
+          {s.tag && <span className="absolute right-5 top-5 rounded-full border border-hair px-2.5 py-0.5 text-xs font-medium text-fg-muted">{s.tag}</span>}
           <h3 className="mt-3 text-h3 text-fg">{s.title}</h3>
           <div className="prose-e mt-2 text-[0.97rem] leading-relaxed">{s.text}</div>
         </li>
@@ -60,7 +60,7 @@ export function CheckList({ items, className = '' }: { items: ReactNode[]; class
 export function PriceCard({ label, price, note, items, cta, highlight }: { label: string; price: string; note?: string; items?: string[]; cta?: ReactNode; highlight?: boolean }) {
   return (
     <div className={`flex h-full flex-col rounded-3xl border p-7 ${highlight ? 'border-brand-500/50 bg-card shadow-glow' : 'border-hair bg-card'}`}>
-      <p className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-accent">{label}</p>
+      <p className="text-sm font-semibold text-accent">{label}</p>
       <p className="mt-3 font-display text-[2rem] font-extrabold leading-tight tracking-tight text-fg tnum">{price}</p>
       {note && <p className="mt-2 text-sm text-fg-muted">{note}</p>}
       {items && <CheckList items={items} className="mt-6 flex-1 text-[0.95rem]" />}
@@ -120,10 +120,10 @@ export function RelatedLinks({ items }: { items: Related[] }) {
       {items.map((r) => (
         <li key={r.href} data-reveal>
           <Link href={r.href} className="card group flex h-full flex-col p-6 transition hover:-translate-y-0.5 hover:border-brand-500/60 hover:shadow-card">
-            {r.kicker && <span className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-accent">{r.kicker}</span>}
+            {r.kicker && <span className="text-sm font-semibold text-accent">{r.kicker.replace(/^\d+\s*·\s*/, '')}</span>}
             <span className="mt-2 font-display text-lg font-bold text-fg">{r.title}</span>
             <span className="mt-2 flex-1 text-[0.95rem] text-fg-muted">{r.text}</span>
-            <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">Ver mais <Icon name="arrowRight" size={16} className="transition group-hover:translate-x-0.5" /></span>
+            <span className="mt-4 text-sm font-semibold text-accent underline underline-offset-4 group-hover:no-underline">Ver mais</span>
           </Link>
         </li>
       ))}
