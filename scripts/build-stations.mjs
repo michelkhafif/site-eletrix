@@ -30,3 +30,8 @@ fs.writeFileSync(path.join(ROOT, 'src/data/stations-later.json'), JSON.stringify
 console.log('mostrar:', out(show).length, 'depois:', out(later).length);
 const cities = [...new Set(out(show).map((s) => `${s.city}/${s.uf}`))];
 console.log(cities.length, 'cidades', cities.join(' | '));
+
+// Arquivo único para o mapa estático da home: operando + a instalar (nunca residenciais privativos).
+const tag = (list, status) => out(list).map((s) => ({ name: s.name, city: s.city, uf: s.uf, lat: s.lat, lng: s.lng, status }));
+fs.writeFileSync(path.join(ROOT, 'src/data/estacoes.json'), JSON.stringify([...tag(show, 'operando'), ...tag(later, 'a-instalar')]));
+console.log('estacoes.json:', tag(show, 'operando').length + tag(later, 'a-instalar').length, 'pontos');

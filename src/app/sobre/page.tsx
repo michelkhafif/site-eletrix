@@ -72,15 +72,6 @@ export default function AboutPage() {
         ]} />
       </Band>
 
-      <Band tone="paper" id="ceo" eyebrow="Liderança" title="Michel Khafif, CEO.">
-        <Split media={<MediaFrame className="aspect-[4/5] max-h-[520px] lg:w-[80%]"><Picture name="ceo" alt="Michel Khafif, CEO da Eletrix" fill sizes="(min-width:1024px) 420px, 100vw" position="50% 25%" /></MediaFrame>}>
-          <Prose>
-            <p>Michel Khafif é CEO da Eletrix. Em 2025, assinou no Estadão Mobilidade o artigo sobre como prédios estão ganhando com a recarga elétrica.</p>
-            <p>Para entrevistas e pautas, fale com o time pelo e-mail <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>. Veja também a página de <Link href="/imprensa/">imprensa</Link>.</p>
-          </Prose>
-        </Split>
-      </Band>
-
       <Band tone="light" id="parceiros" eyebrow="Parceiros e clientes" title="Em boa companhia.">
         <FeaturedLogos tone="light" />
       </Band>
@@ -100,8 +91,7 @@ export default function AboutPage() {
 
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Conheça o que fazemos.">
         <RelatedLinks items={[
-          { href: '/empreendimentos/', kicker: 'Portfólio', title: 'Empreendimentos', text: 'Onde a Eletrix opera.' },
-          { href: '/estacoes/', kicker: 'Rede', title: 'Mapa de estações', text: 'Os pontos em operação.' },
+          { href: '/#estacoes', kicker: 'Rede', title: 'Onde a Eletrix opera', text: 'Empreendimentos e mapa de estações.' },
           { href: '/imprensa/', kicker: 'Imprensa', title: 'Na imprensa', text: 'A Eletrix no Estadão.' },
         ]} />
       </Band>

@@ -4,13 +4,11 @@ import { JsonLd } from '@/components/seo/JsonLd';
 import { serviceLd } from '@/lib/jsonld';
 import { PageHero } from '@/components/sections/PageHero';
 import { Band, Prose } from '@/components/sections/Band';
-import { Steps, FeatureGrid, CheckList, Callout, Split, MediaFrame, RelatedLinks, PriceCard } from '@/components/sections/Blocks';
+import { Steps, FeatureGrid, CheckList, Callout, Split, MediaFrame, RelatedLinks } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
 import { CTABand } from '@/components/sections/CTABand';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
-import { Container, Section } from '@/components/ui/Section';
-import { It41Calculator } from '@/components/forms/It41Calculator';
 import { faqs } from '@/data/faqs';
 import { wa } from '@/data/whatsapp';
 import { whatsappLink } from '@/config/site';
@@ -21,17 +19,17 @@ export const metadata = pageMeta(PATH);
 export default function It41Page() {
   return (
     <>
-      <JsonLd data={serviceLd({ name: 'Adequação à IT-41 do Corpo de Bombeiros para carregadores veiculares', description: 'Quadro identificado, botoeira de emergência por pavimento e sinalização S.A.V.E. em cada carregador. R$ 1.799 por pavimento e R$ 449 por carregador.', path: PATH, areaServed: 'São Paulo' })} />
+      <JsonLd data={serviceLd({ name: 'Adequação à IT-41 do Corpo de Bombeiros para carregadores veiculares', description: 'Quadro identificado, botoeira de emergência por pavimento e sinalização S.A.V.E. em cada carregador.', path: PATH, areaServed: 'São Paulo' })} />
       <PageHero
         crumbs={[{ name: 'Adequação IT-41', href: PATH }]}
         eyebrow="05 · Regularizar"
         title="Adequação à IT-41: recarga regularizada e pronta para o AVCB."
-        lead="A IT-41 do Corpo de Bombeiros de São Paulo passou a incluir os sistemas de recarga de veículos elétricos. A Eletrix instala o quadro identificado, a botoeira de emergência por pavimento e a sinalização em cada carregador, com preço público."
+        lead="A IT-41 do Corpo de Bombeiros de São Paulo passou a incluir os sistemas de recarga de veículos elétricos. A Eletrix instala o quadro identificado, a botoeira de emergência por pavimento e a sinalização em cada carregador."
         actions={<>
-          <Button href="#simulador" size="lg" icon="chevronDown">Simular adequação IT-41</Button>
-          <Button href={whatsappLink(wa.it41)} variant="onDark" size="lg" icon="whatsapp">Falar no WhatsApp</Button>
+          <Button href={whatsappLink(wa.it41)} size="lg" icon="whatsapp">Agendar visita técnica</Button>
+          <Button href="#o-que-instalamos" variant="onDark" size="lg" icon="chevronDown">Ver o que instalamos</Button>
         </>}
-        chips={['R$ 1.799 por pavimento', 'R$ 449 por carregador', 'Materiais e mão de obra inclusos']}
+        chips={['Orçamento após visita técnica', 'ART inclusa', 'Materiais e mão de obra inclusos']}
         image={{ name: 'case-7', alt: 'Carregador Eletrix instalado em parede de garagem, com sinalização e numeração da vaga', position: '50% 40%' }}
       />
 
@@ -61,22 +59,6 @@ export default function It41Page() {
         </div>
         <div className="mt-8"><Callout icon="info" title="Como funciona, na prática">A botoeira aciona o módulo no quadro de cada vaga e desliga todos os carregadores ao mesmo tempo. Uma depende da outra: para a botoeira funcionar, todos os carregadores do andar precisam ter o módulo.</Callout></div>
       </Band>
-
-      <Section tone="light" id="simulador" labelledBy="simulador-t">
-        <Container>
-          <header data-reveal className="max-w-3xl">
-            <p className="eyebrow mb-4">Simulador de orçamento</p>
-            <h2 id="simulador-t" className="text-h2">Quanto custa adequar o seu prédio?</h2>
-            <p className="mt-5 text-lead text-fg-muted">Informe quantos pavimentos de garagem e quantos carregadores existem. O valor sai dos preços públicos da Eletrix.</p>
-          </header>
-          <div data-reveal className="mt-10"><It41Calculator /></div>
-          <div className="mt-8 grid gap-5 md:grid-cols-2">
-            <PriceCard label="Adequação do pavimento" price="R$ 1.799 por pavimento" items={['Botoeira a até 5 m da entrada', 'Desliga todos os carregadores do andar', 'Placas fotoluminescentes na botoeira e nos quadros', 'Materiais e mão de obra inclusos']} />
-            <PriceCard label="Adequação do carregador" price="R$ 449 por carregador" items={['Módulo de desligamento no quadro da vaga', 'Interligação com a botoeira', 'Sinalização S.A.V.E.', 'Para carregadores de até 7,4 kW já instalados conforme as normas NBR']} />
-          </div>
-          <p className="mt-6 text-fg-muted">Exemplo: prédio com 2 andares de garagem e 6 carregadores = 2 × R$ 1.799 + 6 × R$ 449 = <strong className="text-fg">R$ 6.292</strong>. Situações diferentes são avaliadas na visita técnica.</p>
-        </Container>
-      </Section>
 
       <Band tone="dark" id="por-que" eyebrow="Por que adequar" title="Três razões para não deixar para depois." lead="A adequação não é só burocracia. Ela protege quem usa a garagem, o patrimônio do prédio e quem responde por ele.">
         <FeatureGrid items={[
@@ -109,7 +91,7 @@ export default function It41Page() {
       <Band tone="paper" id="passo-a-passo" eyebrow="Como contratar" title="Da visita técnica à entrega com ART.">
         <Steps items={[
           { title: 'Visita técnica', text: 'Levantamos pavimentos, carregadores, quadros e o que já existe.' },
-          { title: 'Proposta', text: 'Você recebe o orçamento com base nos preços públicos e nas particularidades do prédio.' },
+          { title: 'Proposta', text: 'Você recebe o orçamento de acordo com as particularidades do prédio.' },
           { title: 'Execução', text: 'Instalamos o quadro identificado, as botoeiras, os módulos e as placas.' },
           { title: 'Entrega com ART', text: 'Vistoria final com o síndico e entrega da documentação para o AVCB.' },
         ]} />

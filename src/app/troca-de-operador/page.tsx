@@ -90,7 +90,7 @@ export default function SwitchPage() {
       <FAQ items={faqs.troca} tone="paper" />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Ao assumir, a Eletrix também:">
         <RelatedLinks items={[
-          { href: '/adequacao-it-41/', kicker: '05', title: 'Adequação IT-41', text: 'Preços públicos e simulador.' },
+          { href: '/adequacao-it-41/', kicker: '05', title: 'Adequação IT-41', text: 'Quadro, botoeira e sinalização.' },
           { href: '/eletrix-hub/', kicker: '06', title: 'Eletrix Hub', text: 'O modelo comercial para alto fluxo.' },
           { href: '/guias/it-41-carregador-veicular/', kicker: 'Guia', title: 'IT-41 explicada', text: 'O que a norma exige.' },
         ]} />

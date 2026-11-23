@@ -89,7 +89,7 @@ export default function CompaniesPage() {
             </li>
           ))}
         </ul>
-        <p className="mt-6"><Button href="/empreendimentos/" variant="secondary">Ver todos os empreendimentos</Button></p>
+        <p className="mt-6"><Button href="/#estacoes" variant="secondary">Ver onde a Eletrix opera</Button></p>
         <div className="mt-14"><FeaturedLogos tone="light" /></div>
       </Band>
 

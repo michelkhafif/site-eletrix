@@ -83,7 +83,7 @@ export default function InfraPage() {
         <RelatedLinks items={[
           { href: '/laudo-de-demanda/', kicker: '02 · Medir', title: 'Laudo de demanda', text: 'O primeiro passo do caminho.' },
           { href: '/controle-de-demanda/', kicker: '04 · Controlar', title: 'Controle de demanda', text: 'Para ter mais carregadores sem sobrecarga.' },
-          { href: '/adequacao-it-41/', kicker: '05 · Regularizar', title: 'Adequação IT-41', text: 'Preços públicos e simulador.' },
+          { href: '/adequacao-it-41/', kicker: '05 · Regularizar', title: 'Adequação IT-41', text: 'Quadro, botoeira e sinalização.' },
         ]} />
       </Band>
       <CTABand title="Prédio pronto antes de os carros chegarem." text="Agende a visita técnica e receba o orçamento com projeto executivo." whatsappMessage={wa.infra} bg="arquipeo-jardim" />

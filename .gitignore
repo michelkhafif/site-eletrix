@@ -11,3 +11,4 @@ Thumbs.db
 *.tsbuildinfo
 _materiais/
 CLAUDE.md
+scripts/map-cache/

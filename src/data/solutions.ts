@@ -97,7 +97,7 @@ export const solutions: Solution[] = [
     tagline: 'Recarga regularizada e pronta para o AVCB.',
     summary: 'Quadro identificado, botoeira de emergência por pavimento e sinalização S.A.V.E. em cada ponto, com preço público.',
     icon: 'shield',
-    price: 'R$ 1.799 por pavimento + R$ 449 por carregador',
+    price: 'Orçamento após visita técnica',
     image: 'case-7',
   },
   {

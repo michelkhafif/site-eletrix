@@ -1,10 +1,9 @@
 import { pageMeta } from '@/lib/seo';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { organizationLd, websiteLd } from '@/lib/jsonld';
-import { Hero, LogoStrip, WhichCase, HubFeature, Journey, ProjectsShowcase, Network, Why, SwitchOperator, AppSection, Testimonials, PressSection, GuidesTeaser } from '@/components/sections/home';
-import { FAQ } from '@/components/sections/FAQ';
+import { Hero, LogoStrip } from '@/components/sections/home';
+import { WhichCase, HubFeature, Journey, Stations, Why, SwitchOperator, AppSection, Testimonials, PressSection, HomeDuvidas } from '@/components/sections/HomeSections';
 import { FinalContact } from '@/components/sections/FinalContact';
-import { faqs } from '@/data/faqs';
 
 export const metadata = pageMeta('/');
 
@@ -18,15 +17,13 @@ export default function Home() {
       <WhichCase />
       <HubFeature />
       <Journey />
-      <ProjectsShowcase />
-      <Network />
+      <Stations />
       <Why />
       <SwitchOperator />
       <AppSection />
       <Testimonials />
       <PressSection />
-      <GuidesTeaser />
-      <FAQ items={faqs.home} tone="light" />
+      <HomeDuvidas />
       <FinalContact />
     </>
   );

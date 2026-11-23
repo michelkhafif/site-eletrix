@@ -59,7 +59,7 @@ export default function CondosPage() {
           { icon: 'gauge', title: '“O prédio aguenta?” → Medir', text: <>O laudo de demanda mede o consumo real por 7 dias e indica quantos carregadores cabem. <Link href="/laudo-de-demanda/">Ver laudo</Link>.</> },
           { icon: 'route', title: '“Como evitar a bagunça?” → Preparar', text: <>A infraestrutura seca leva as eletrocalhas até as vagas, com padrão único e fim dos “gatos”. <Link href="/infraestrutura-seca/">Ver infraestrutura</Link>.</> },
           { icon: 'sliders', title: '“E se todos carregarem ao mesmo tempo?” → Controlar', text: <>O controle de demanda ajusta a potência dos carregadores para nunca passar do limite seguro. <Link href="/controle-de-demanda/">Ver controle</Link>.</> },
-          { icon: 'shield', title: '“E os Bombeiros?” → Regularizar', text: <>A adequação à IT-41 deixa a recarga pronta para o AVCB, com preço público e simulador. <Link href="/adequacao-it-41/">Ver IT-41</Link>.</> },
+          { icon: 'shield', title: '“E os Bombeiros?” → Regularizar', text: <>A adequação à IT-41 deixa a recarga pronta para o AVCB, com ART e documentação para o AVCB. <Link href="/adequacao-it-41/">Ver IT-41</Link>.</> },
         ]} />
       </Band>
 

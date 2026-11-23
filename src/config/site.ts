@@ -60,10 +60,8 @@ export const site = {
   },
 
   app: {
-    rating: '4,8',
-    // TODO: confirmar links oficiais das lojas
-    appStore: 'https://apps.apple.com/br/search?term=eletrix',
-    playStore: 'https://play.google.com/store/search?q=eletrix&c=apps',
+    appStore: 'https://apps.apple.com/br/app/eletrix/id6444454547',
+    playStore: 'https://play.google.com/store/apps/details?id=com.coderbox.eletrix&hl=pt_BR&gl=US',
   },
 
   form: {

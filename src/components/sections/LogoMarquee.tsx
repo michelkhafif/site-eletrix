@@ -1,8 +1,5 @@
-'use client';
-import { useState } from 'react';
 import { withBase } from '@/config/site';
 import { logoInfo, partners } from '@/data/partners';
-import { Icon } from '@/components/ui/Icon';
 
 /** Tamanho visual padronizado: mesma "área" para todos, com limites para logos muito largos ou quadrados. */
 const boost: Record<string, number> = { 'tishman-speyer': 1.7, bresco: 1.5, garageinn: 1.35, 'elias-victor-nigri': 1.35, bbz: 1.2, 'padrao-park': 1.3, 'paris-condominios': 1.3, guardian: 1.2, 'cushman-wakefield': 1.15, winpark: 1.15, intercity: 1.15 };
@@ -35,28 +32,24 @@ function LogoImg({ slug, name, tone, scale = 1, eager }: { slug: string; name: s
  * Com movimento reduzido a faixa some e entra uma grade estática com todos os logos.
  */
 export function LogoMarquee({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
-  const [paused, setPaused] = useState(false);
   const list = partners;
   return (
     <div>
       <div className="marquee-wrap relative">
-        <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_7%,#000_93%,transparent)]" data-paused={paused} role="group" aria-label="Parceiros e clientes da Eletrix">
+        {/* Sem botão de pausa: a rolagem para ao passar o mouse ou receber foco, e some com movimento reduzido */}
+        <div className="marquee relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_7%,#000_93%,transparent)]" role="group" aria-label="Parceiros e clientes da Eletrix" tabIndex={0}>
           <ul className="marquee-track flex items-center py-3">
             {[...list, ...list].map((p, i) => (
-              <li key={`${p.slug}-${i}`} aria-hidden={i >= list.length ? true : undefined} className="flex h-14 w-[190px] shrink-0 items-center justify-center">
-                <LogoImg slug={p.slug} name={i >= list.length ? '' : p.name} tone={tone} eager={i < 8} />
+              <li key={`${p.slug}-${i}`} aria-hidden={i >= list.length ? true : undefined} className="flex h-20 w-[240px] shrink-0 items-center justify-center">
+                <LogoImg slug={p.slug} name={i >= list.length ? '' : p.name} tone={tone} scale={1.45} eager={i < 6} />
               </li>
             ))}
           </ul>
         </div>
-        <button type="button" onClick={() => setPaused((v) => !v)} aria-pressed={paused}
-          className={`mx-auto mt-4 flex items-center gap-1.5 rounded-full px-3 py-1 text-xs transition ${tone === 'dark' ? 'text-muted-dark hover:text-white' : 'text-muted hover:text-ink-900'}`}>
-          <Icon name={paused ? 'play' : 'pause'} size={13} /> {paused ? 'Retomar rolagem' : 'Pausar rolagem'}
-        </button>
       </div>
-      <ul className="logos-static grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-8" aria-label="Parceiros e clientes da Eletrix">
+      <ul className="logos-static grid-cols-2 items-center justify-items-center gap-x-6 gap-y-8 sm:grid-cols-4 lg:grid-cols-6" aria-label="Parceiros e clientes da Eletrix">
         {list.map((p) => (
-          <li key={p.slug} className="flex h-14 w-full items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} scale={0.9} /></li>
+          <li key={p.slug} className="flex h-16 w-full items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} scale={1.1} /></li>
         ))}
       </ul>
     </div>

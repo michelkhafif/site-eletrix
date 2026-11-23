@@ -29,7 +29,7 @@ export function CityPage({ city }: { city: City }) {
         lead={city.lead}
         actions={<>
           <Button href={whatsappLink(city.ctaMessage)} icon="whatsapp" size="lg">Falar no WhatsApp</Button>
-          <Button href="/estacoes/" variant="onDark" size="lg">Ver o mapa de estações</Button>
+          <Button href="/#estacoes" variant="onDark" size="lg">Ver o mapa de estações</Button>
         </>}
         bg={{ name: city.heroImage, position: '50% 40%' }}
       />
@@ -55,7 +55,7 @@ export function CityPage({ city }: { city: City }) {
             </div>
           ))}
         </div>
-        <p className="mt-10"><Button href="/estacoes/" variant="onDark">Abrir o mapa interativo</Button></p>
+        <p className="mt-10"><Button href="/#estacoes" variant="onDark">Ver o mapa de estações</Button></p>
       </Band>
 
       <Band tone="light" id="solucoes" eyebrow="Soluções" title={city.focusIntro}>

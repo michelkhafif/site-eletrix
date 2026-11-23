@@ -79,7 +79,7 @@ export const guides: Guide[] = [
         title: 'Como adequar o prédio, passo a passo',
         blocks: [
           { t: 'ol', items: ['Descubra a data de vencimento do AVCB e converse com quem cuida dele.', 'Faça um levantamento do que já existe: carregadores instalados, quadros, circuitos e pontos de desligamento.', 'Meça a demanda. A IT-41 pede estudo de demanda e curva de carga, e o laudo mostra quantos carregadores o prédio comporta.', 'Instale o quadro identificado, a botoeira de emergência por pavimento e o módulo de desligamento e a sinalização em cada carregador.', 'Guarde a ART e a documentação para a vistoria.'] },
-          { t: 'p', text: 'A Eletrix cobra preços públicos por esse serviço: R$ 1.799 por pavimento (botoeira a até 5 m da entrada, que desliga todos os carregadores do andar, mais as placas fotoluminescentes) e R$ 449 por carregador (módulo de desligamento no quadro da vaga, interligação com a botoeira e sinalização S.A.V.E.), com materiais e mão de obra. Um prédio com 2 andares de garagem e 6 carregadores paga R$ 6.292. Você pode simular o seu caso na calculadora da página de adequação.' },
+          { t: 'p', text: 'A Eletrix faz esse serviço completo: botoeira de emergência por pavimento, módulo de desligamento no quadro de cada vaga, placas fotoluminescentes e sinalização S.A.V.E., com materiais, mão de obra e ART. O orçamento sai depois da visita técnica, porque depende do número de pavimentos e de carregadores.' },
           { t: 'callout', tone: 'warn', title: 'Uma dependência importante', text: 'A botoeira de pavimento aciona o módulo no quadro de cada vaga. Para ela funcionar, todos os carregadores do andar precisam ter o módulo. Adequar só a botoeira, ou só alguns carregadores, não resolve.' },
         ],
       },
@@ -91,7 +91,7 @@ export const guides: Guide[] = [
       { q: 'Posso deixar para a renovação do AVCB?', a: 'Em edificações existentes, as exigências valem na renovação. Mas adequar com antecedência evita corrida de última hora e riscos de segurança no dia a dia.' },
     ],
     next: [
-      { href: '/adequacao-it-41/', title: 'Adequação à IT-41', text: 'Preços públicos e simulador de orçamento.' },
+      { href: '/adequacao-it-41/', title: 'Adequação à IT-41', text: 'Quadro, botoeira e sinalização, com ART.' },
       { href: '/laudo-de-demanda/', title: 'Laudo de demanda', text: 'O estudo de demanda que a norma pede.' },
       { href: '/guias/lei-carregador-condominio-sao-paulo/', title: 'Lei 18.403/2026', text: 'O direito do morador de instalar o carregador.' },
     ],
@@ -192,8 +192,7 @@ export const guides: Guide[] = [
               ['Carregador Intelbras Business 7,4 kW', 'R$ 4.699 (de R$ 5.400)'],
               ['Visita técnica para instalação na vaga', 'Gratuita'],
               ['Laudo de demanda (para o prédio)', 'A partir de R$ 2.799'],
-              ['Adequação IT-41 do pavimento', 'R$ 1.799 por pavimento'],
-              ['Adequação IT-41 do carregador', 'R$ 449 por carregador'],
+              ['Adequação IT-41 do prédio', 'Orçamento após visita técnica'],
             ],
           },
           { t: 'p', text: 'Os valores dos carregadores referem-se ao equipamento e estão sujeitos à disponibilidade em estoque. Instalação, infraestrutura elétrica, proteções e ART são orçadas à parte, conforme o local.' },
@@ -204,7 +203,7 @@ export const guides: Guide[] = [
         title: 'O que faz a instalação custar mais ou menos',
         blocks: [
           { t: 'ul', items: ['A distância entre a vaga e o medidor: é o fator que mais varia, porque define o comprimento do cabo e das eletrocalhas.', 'Se o prédio já tem infraestrutura seca: com o caminho pronto, a instalação é mais simples, e nos prédios com infraestrutura seca da Eletrix o morador tem desconto.', 'Se a ligação será no medidor da unidade ou no quadro da administração.', 'Se o prédio já tem as proteções e a sinalização da IT-41, ou se a adequação ainda precisa ser feita.', 'Se a instalação é em área interna ou externa.'] },
-          { t: 'callout', title: 'Exemplo de adequação à IT-41', text: 'Um prédio com 2 andares de garagem e 6 carregadores paga 2 × R$ 1.799 + 6 × R$ 449 = R$ 6.292, com materiais e mão de obra inclusos. O custo é do prédio e se divide entre os usuários da forma que o condomínio decidir.' },
+          { t: 'callout', title: 'Adequação à IT-41', text: 'O custo da adequação depende de quantos pavimentos de garagem e quantos carregadores o prédio tem, e é informado depois da visita técnica. Ele é do prédio e se divide entre os usuários da forma que o condomínio decidir.' },
         ],
       },
       {
@@ -224,7 +223,7 @@ export const guides: Guide[] = [
     next: [
       { href: '/instalacao-carregador-residencial/', title: 'Agendar visita técnica', text: 'Gratuita, para morador.' },
       { href: '/carregadores/', title: 'Ver os carregadores', text: 'Três modelos a partir de R$ 2.799.' },
-      { href: '/adequacao-it-41/', title: 'Simular a IT-41', text: 'Calculadora de orçamento por pavimento e carregador.' },
+      { href: '/adequacao-it-41/', title: 'Adequação à IT-41', text: 'Quadro, botoeira e sinalização, com ART.' },
     ],
   },
 

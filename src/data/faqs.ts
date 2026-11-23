@@ -9,7 +9,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       q: 'Quanto custa?',
-      a: 'Os preços públicos são: laudo de demanda a partir de R$ 2.799; adequação à IT-41 por R$ 1.799 por pavimento mais R$ 449 por carregador; carregadores residenciais a partir de R$ 2.799. A instalação na vaga e a infraestrutura dependem do local e são orçadas depois de uma visita técnica. O Eletrix Hub é em comodato, sem mensalidade para o empreendimento.',
+      a: 'Os preços públicos são: laudo de demanda a partir de R$ 2.799; carregadores residenciais a partir de R$ 2.799. A instalação na vaga, a infraestrutura e a adequação à IT-41 dependem do local e são orçadas depois de uma visita técnica. O Eletrix Hub é em comodato, sem mensalidade para o empreendimento.',
     },
     {
       q: 'O condomínio pode proibir o carregador na minha vaga?',
@@ -129,7 +129,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       q: 'E se o prédio já tiver carregadores instalados?',
-      a: 'A Eletrix avalia o que existe. Se estiverem de acordo com as normas NBR, a adequação à IT-41 custa R$ 449 por carregador mais R$ 1.799 por pavimento. Se a operadora atual não dá suporte, a troca de operador resolve as duas coisas juntas.',
+      a: 'A Eletrix avalia o que existe. Se estiverem de acordo com as normas NBR, a adequação à IT-41 é orçada na visita técnica. Se a operadora atual não dá suporte, a troca de operador resolve as duas coisas juntas.',
     },
   ],
 
@@ -283,7 +283,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       q: 'Quanto custa?',
-      a: 'R$ 1.799 por pavimento e R$ 449 por carregador, com materiais e mão de obra inclusos. Um prédio com 2 andares de garagem e 6 carregadores paga 2 × R$ 1.799 + 6 × R$ 449 = R$ 6.292. Situações diferentes são avaliadas na visita técnica.',
+      a: 'O valor depende do número de pavimentos de garagem e de carregadores, e é informado depois da visita técnica. O orçamento inclui materiais e mão de obra.',
     },
     {
       q: 'Serve para carregadores de outra marca?',
@@ -352,7 +352,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       q: 'Em quais celulares funciona?',
-      a: 'iOS e Android. O app Eletrix tem nota 4,8 na App Store.',
+      a: 'iOS e Android.',
     },
     {
       q: 'Meu carro é compatível?',
@@ -394,4 +394,13 @@ export const generalFaq: { group: string; items: FaqItem[] }[] = [
   { group: 'Síndico e gestor', items: [...faqs.laudo.slice(0, 2), ...faqs.it41.slice(0, 4), ...faqs.infra.slice(0, 1)] },
   { group: 'Comércio, empresa e condomínio', items: [...faqs.hub.slice(0, 5), ...faqs.rent.slice(0, 2), ...faqs.troca.slice(0, 2)] },
   { group: 'Usuário da rede', items: [...faqs.app.slice(0, 3), ...faqs.suporte.slice(0, 3)] },
+];
+
+/** Dúvidas da home: cada resposta curta leva ao guia correspondente (estrutura de SEO aprovada). */
+export const homeDuvidas: { q: string; a: string; href: string }[] = [
+  { q: 'O condomínio pode proibir o carregador na minha vaga?', a: 'Em São Paulo, a Lei Estadual nº 18.403/2026 garante ao condômino o direito de instalar a estação na vaga privativa, desde que cumpra os requisitos técnicos e de segurança. O condomínio só pode negar com justificativa técnica.', href: '/guias/lei-carregador-condominio-sao-paulo/' },
+  { q: 'Quanto custa instalar um carregador?', a: 'Depende da distância entre a vaga e o medidor. Os carregadores começam em R$ 2.799 e a visita técnica é gratuita: o preço da instalação sai depois dela.', href: '/guias/quanto-custa-instalar-carregador-carro-eletrico/' },
+  { q: 'Quem paga a energia do carregador?', a: 'Quando o carregador é ligado ao medidor da unidade, o consumo entra na conta de luz do próprio morador, sem rateio com o condomínio. Também é possível ligar no quadro da administração e estruturar a cobrança pelo uso.', href: '/guias/cobranca-energia-carregador-condominio/' },
+  { q: 'O que é a IT-41?', a: 'É a instrução técnica do Corpo de Bombeiros de São Paulo que passou a incluir a recarga de veículos elétricos (Portaria CCB-003/970/2026). Em prédios existentes, as exigências valem na renovação do AVCB.', href: '/guias/it-41-carregador-veicular/' },
+  { q: 'Qual potência de carregador devo escolher?', a: 'Praticamente todos os carros elétricos vendidos no Brasil limitam a recarga em corrente alternada a 7,4 kW. Potências maiores encarecem a infraestrutura sem ganho real no dia a dia.', href: '/guias/qual-potencia-carregador-carro-eletrico/' },
 ];

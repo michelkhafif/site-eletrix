@@ -193,7 +193,7 @@ export default function HubPage() {
         <RelatedLinks items={[
           { href: '/eletrix-rent/', kicker: '07', title: 'Eletrix Rent', text: 'Locação com mensalidade fixa para fluxos menores.' },
           { href: '/troca-de-operador/', kicker: 'Migração', title: 'Troca de operador', text: 'Assumimos a operação e regularizamos.' },
-          { href: '/empreendimentos/', kicker: 'Portfólio', title: 'Empreendimentos', text: 'Onde a Eletrix opera.' },
+          { href: '/#estacoes', kicker: 'Rede', title: 'Onde a Eletrix opera', text: 'Empreendimentos e mapa de estações.' },
         ]} />
       </Band>
       <CTABand title="Vamos conversar sobre o seu empreendimento?" text="Agende uma visita técnica. A Eletrix analisa a demanda e apresenta a proposta, com a infraestrutura negociada." whatsappMessage={wa.empreendimento} bg="thera-praca" />

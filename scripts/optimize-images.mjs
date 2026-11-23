@@ -57,8 +57,7 @@ const images = {
   'hub-garagem': E + 'eletrix_hub_garagem.jpg',
   'hub-recarga': E + 'eletrix_hub_recarga.jpg',
   'estadao-orelhao': E + 'imprensa_estadao_1.jpg',
-  'estadao-predios': E + 'imprensa_estadao_2.jpg',
-  ceo: E + 'michel_khafif_ceo.jpg',
+  'estadao-predios': E + 'imprensa_estadao_2_sem-rosto.jpg',
 };
 
 const WIDTHS = [480, 800, 1280];

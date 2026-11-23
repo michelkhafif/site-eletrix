@@ -9,9 +9,7 @@ import { Picture } from '@/components/ui/Picture';
 import { extraSolutions, profiles, solutions, type Profile } from '@/data/solutions';
 
 const mainLinks = [
-  { href: '/empreendimentos/', label: 'Empreendimentos' },
-  { href: '/estacoes/', label: 'Estações' },
-  { href: '/guias/', label: 'Guias' },
+  { href: '/#estacoes', label: 'Estações' },
   { href: '/sobre/', label: 'Sobre' },
 ];
 
@@ -20,7 +18,7 @@ const profileOrder: Profile[] = ['morador', 'sindico', 'negocio'];
 function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
   const group = (p: Profile) => solutions.filter((s) => s.profile === p);
   return (
-    <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-lift lg:grid-cols-[1fr_1fr_1.1fr_0.9fr]">
+    <div className="grid gap-0 divide-x divide-white overflow-hidden rounded-2xl border border-white bg-ink-900 shadow-lift lg:grid-cols-[1fr_1fr_1.1fr_0.9fr]">
       {profileOrder.map((p) => (
         <div key={p} className="bg-ink-900 p-6">
           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-400">{profiles[p].title}</p>
@@ -54,10 +52,10 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
               </li>
             )}
             {p === 'negocio' &&
-              extraSolutions.filter((e) => e.slug !== 'carregadores').map((e) => (
+              extraSolutions.filter((e) => e.slug !== 'carregadores' && e.slug !== 'white-label').map((e) => (
                 <li key={e.slug}>
                   <Link href={e.href} onClick={onNavigate} className="group flex items-start gap-3 rounded-xl p-2.5 transition hover:bg-white/5">
-                    <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-500/10 text-brand-400"><Icon name={e.slug === 'white-label' ? 'palette' : 'refresh'} size={17} /></span>
+                    <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-500/10 text-brand-400"><Icon name="refresh" size={17} /></span>
                     <span>
                       <span className="text-[0.95rem] font-semibold text-white">{e.name}</span>
                       <span className="mt-0.5 block text-[0.82rem] leading-snug text-muted-dark">{e.summary}</span>
@@ -74,7 +72,7 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
         <div className="absolute inset-x-0 bottom-0 p-6">
           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-400">Em destaque</p>
           <p className="mt-1 font-display text-xl font-bold text-white">Eletrix Hub</p>
-          <p className="mt-1 text-sm text-muted-dark">Qualidade de serviço à altura de um AAA.</p>
+          <p className="mt-1 text-sm text-muted-dark">Para prédios corporativos e shoppings.</p>
           <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-400">Conhecer <Icon name="arrowRight" size={16} className="transition group-hover:translate-x-0.5" /></span>
         </div>
       </Link>
@@ -90,6 +88,8 @@ export function Header() {
   const [mobileSol, setMobileSol] = useState(false);
   const megaBtn = useRef<HTMLButtonElement>(null);
   const wrap = useRef<HTMLDivElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const burger = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
@@ -111,8 +111,16 @@ export function Header() {
     const key = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         if (mega) megaBtn.current?.focus();
+        if (mobile) burger.current?.focus();
         setMega(false);
         setMobile(false);
+      }
+      if (e.key === 'Tab' && mobile) {
+        const nodes = [burger.current, ...Array.from(panel.current?.querySelectorAll<HTMLElement>('a[href],button:not([disabled])') ?? [])].filter(Boolean) as HTMLElement[];
+        if (!nodes.length) return;
+        const first = nodes[0], last = nodes[nodes.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     };
     const click = (e: MouseEvent) => { if (mega && wrap.current && !wrap.current.contains(e.target as Node)) setMega(false); };
@@ -138,6 +146,7 @@ export function Header() {
   const active = (href: string) => pathname.startsWith(href);
 
   return (
+    <>
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-[background,border-color,backdrop-filter] duration-300 ${
         solid || mega || mobile ? 'border-b border-white/10 bg-ink-950/90 backdrop-blur-xl' : 'border-b border-transparent bg-gradient-to-b from-ink-950/70 to-transparent'
@@ -175,12 +184,13 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-1 lg:flex">
-          <Link href="/app/" className="hidden h-10 items-center rounded-full px-3 text-sm text-muted-dark transition hover:text-white xl:flex">App</Link>
-          <Link href="/suporte/" className="hidden h-10 items-center rounded-full px-3 text-sm text-muted-dark transition hover:text-white xl:flex">Suporte</Link>
+          <Link href="/app/" className="hidden h-10 items-center rounded-full px-3 text-sm text-white/80 transition hover:text-white lg:flex">App</Link>
+          <Link href="/suporte/" className="hidden h-10 items-center rounded-full px-3 text-sm text-white/80 transition hover:text-white lg:flex">Suporte</Link>
           <Button href="/contato/" size="sm" className="ml-2">Fale com a Eletrix</Button>
         </div>
 
         <button
+          ref={burger}
           type="button"
           className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white lg:hidden"
           aria-label={mobile ? 'Fechar menu' : 'Abrir menu'}
@@ -192,43 +202,43 @@ export function Header() {
         </button>
       </div>
 
+    </header>
       {mobile && (
-        <div id="menu-mobile" className="fixed inset-x-0 bottom-0 top-[var(--header-h)] overflow-y-auto bg-ink-950 lg:hidden" data-tone="dark">
-          <nav aria-label="Menu móvel" className="container-x flex min-h-full flex-col py-6">
+        <div id="menu-mobile" ref={panel} role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-x-0 bottom-0 top-0 z-40 overflow-y-auto overscroll-contain bg-ink-950 pt-[var(--header-h)] lg:hidden" style={{ height: '100dvh' }} data-tone="dark">
+          <nav aria-label="Menu móvel" className="container-x flex min-h-full flex-col pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4">
             <button type="button" aria-expanded={mobileSol} onClick={() => setMobileSol((v) => !v)}
-              className="flex items-center justify-between border-b border-white/10 py-4 text-left font-display text-xl font-bold text-white">
+              className="flex min-h-14 items-center justify-between border-b border-white/10 py-3 text-left font-display text-xl font-bold text-white">
               Soluções <Icon name="chevronDown" className={`transition-transform ${mobileSol ? 'rotate-180' : ''}`} />
             </button>
             {mobileSol && (
               <div className="space-y-6 border-b border-white/10 py-5">
                 {profileOrder.map((p) => (
                   <div key={p}>
-                    <p className="text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-400">{profiles[p].title}</p>
-                    <ul className="mt-2">
+                    <p className="font-display text-sm font-bold text-brand-400">{profiles[p].title}</p>
+                    <ul className="mt-1">
                       {solutions.filter((s) => s.profile === p).map((s) => (
-                        <li key={s.slug}><Link href={s.href} className="flex items-center justify-between py-2.5 text-[0.98rem] text-white/90">{s.name}{s.step && <span className="text-xs text-muted-dark">{s.step}</span>}</Link></li>
+                        <li key={s.slug}><Link href={s.href} onClick={() => setMobile(false)} className="flex min-h-12 items-center justify-between text-[1rem] text-white/90">{s.name}{s.step && <span className="text-xs text-muted-dark">{s.step}</span>}</Link></li>
                       ))}
-                      {p === 'morador' && <li><Link href="/carregadores/" className="block py-2.5 text-[0.98rem] text-white/90">Carregadores</Link></li>}
-                      {p === 'negocio' && extraSolutions.filter((e) => e.slug !== 'carregadores').map((e) => <li key={e.slug}><Link href={e.href} className="block py-2.5 text-[0.98rem] text-white/90">{e.name}</Link></li>)}
+                      {p === 'morador' && <li><Link href="/carregadores/" onClick={() => setMobile(false)} className="flex min-h-12 items-center text-[1rem] text-white/90">Carregadores</Link></li>}
+                      {p === 'negocio' && extraSolutions.filter((e) => e.slug !== 'carregadores' && e.slug !== 'white-label').map((e) => <li key={e.slug}><Link href={e.href} onClick={() => setMobile(false)} className="flex min-h-12 items-center text-[1rem] text-white/90">{e.name}</Link></li>)}
                     </ul>
                   </div>
                 ))}
               </div>
             )}
             {mainLinks.map((l) => (
-              <Link key={l.href} href={l.href} className="border-b border-white/10 py-4 font-display text-xl font-bold text-white">{l.label}</Link>
+              <Link key={l.href} href={l.href} onClick={() => setMobile(false)} className="flex min-h-14 items-center border-b border-white/10 py-3 font-display text-xl font-bold text-white">{l.label}</Link>
             ))}
-            <div className="mt-4 flex gap-6 text-muted-dark">
-              <Link href="/app/" className="py-2">App</Link>
-              <Link href="/suporte/" className="py-2">Suporte</Link>
-              <Link href="/imprensa/" className="py-2">Imprensa</Link>
+            <div className="mt-2 flex gap-2 text-white/80">
+              <Link href="/app/" onClick={() => setMobile(false)} className="flex min-h-12 items-center pr-5">App</Link>
+              <Link href="/suporte/" onClick={() => setMobile(false)} className="flex min-h-12 items-center pr-5">Suporte</Link>
             </div>
             <div className="mt-auto pt-8">
-              <Button href="/contato/" size="lg" className="w-full">Fale com a Eletrix</Button>
+              <Button href="/contato/" size="lg" className="w-full" onClick={() => setMobile(false)}>Fale com a Eletrix</Button>
             </div>
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }

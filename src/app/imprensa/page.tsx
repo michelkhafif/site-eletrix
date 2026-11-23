@@ -47,7 +47,7 @@ export default function PressPage() {
         <RelatedLinks items={[
           { href: '/sobre/', kicker: 'Empresa', title: 'Sobre a Eletrix', text: 'Missão, números e jeito de trabalhar.' },
           { href: '/eletrix-hub/', kicker: 'Produto', title: 'Eletrix Hub', text: 'O modelo que é pauta nas matérias.' },
-          { href: '/empreendimentos/', kicker: 'Portfólio', title: 'Empreendimentos', text: 'Onde a Eletrix opera.' },
+          { href: '/#estacoes', kicker: 'Rede', title: 'Onde a Eletrix opera', text: 'Empreendimentos e mapa de estações.' },
         ]} />
       </Band>
       <CTABand title="Quer a Eletrix no seu empreendimento?" whatsappMessage="Olá! Vim pelo site e quero agendar uma visita técnica para o meu empreendimento." bg="totem-orelhao" />

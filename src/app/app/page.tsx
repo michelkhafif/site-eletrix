@@ -34,7 +34,7 @@ export default function AppPage() {
         crumbs={[{ name: 'App Eletrix', href: PATH }]}
         eyebrow="App Eletrix · iOS e Android"
         title="App para recarregar o carro elétrico: encontre, carregue e pague pelo celular."
-        lead={`Localize as estações no mapa, inicie e acompanhe a recarga e pague com cartão de crédito ou saldo em carteira. Nota ${site.app.rating} na App Store.`}
+        lead={`Localize as estações no mapa, inicie e acompanhe a recarga e pague com cartão de crédito ou saldo em carteira.`}
         actions={<StoreBadges />}
         image={{ name: 'app-mapa', alt: 'Tela do app Eletrix com o mapa de estações de recarga em São Paulo, com aglomerados numerados e pinos verdes', position: '50% 0%' }}
       />
@@ -75,7 +75,7 @@ export default function AppPage() {
       <FAQ items={faqs.app} tone="light" />
       <Band tone="paper" id="continue" eyebrow="Continue por aqui" title="Para o usuário da rede.">
         <RelatedLinks items={[
-          { href: '/estacoes/', kicker: 'Mapa', title: 'Mapa de estações', text: 'Encontre o ponto mais próximo.' },
+          { href: '/#estacoes', kicker: 'Mapa', title: 'Onde a Eletrix opera', text: 'Veja onde estão as estações.' },
           { href: '/suporte/', kicker: 'Ajuda', title: 'Suporte 24 horas', text: 'Se algo não funcionar, fale com a gente.' },
           { href: '/carregadores/', kicker: 'Em casa', title: 'Carregadores', text: 'Leve a recarga para a sua vaga.' },
         ]} />

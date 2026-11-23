@@ -25,8 +25,7 @@ export default function PartnersPage() {
       </Band>
       <Band tone="paper" id="continue" eyebrow="Continue por aqui" title="Veja onde a Eletrix opera.">
         <RelatedLinks items={[
-          { href: '/empreendimentos/', kicker: 'Portfólio', title: 'Empreendimentos', text: 'Edifícios, centros logísticos e shoppings.' },
-          { href: '/estacoes/', kicker: 'Rede', title: 'Mapa de estações', text: 'Os pontos em operação.' },
+          { href: '/#estacoes', kicker: 'Rede', title: 'Onde a Eletrix opera', text: 'Empreendimentos e mapa de estações.' },
           { href: '/eletrix-hub/', kicker: '06', title: 'Eletrix Hub', text: 'O modelo para empreendimentos.' },
         ]} />
       </Band>

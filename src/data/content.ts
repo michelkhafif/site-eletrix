@@ -6,7 +6,7 @@ export type Testimonial = { quote: string; role: string; placeholder: true };
 export const testimonials: Testimonial[] = [
   {
     quote: 'Tínhamos carregadores parados e reclamação toda semana. Com a Eletrix, a troca foi feita sem custo para o condomínio, a IT-41 ficou resolvida e eu não recebo mais ligação de usuário. Hoje o prédio ainda recebe pela energia.',
-    role: 'Gerente predial, edifício corporativo AAA, Vila Olímpia (SP)',
+    role: 'Gerente predial, edifício corporativo, Vila Olímpia (SP)',
     placeholder: true,
   },
   {
@@ -41,7 +41,7 @@ export const press: PressItem[] = [
     year: 2025,
     title: 'Como prédios estão ganhando com a recarga elétrica',
     image: 'estadao-predios',
-    imageAlt: 'Página do Estadão com a matéria sobre prédios que ganham com a recarga elétrica, assinada por Michel Khafif',
+    imageAlt: 'Página do Estadão com a matéria sobre prédios que ganham com a recarga elétrica',
     url: null,
   },
   {

@@ -1,16 +1,16 @@
 {
   "/": {
-    "title": "Estações de recarga para prédios e condomínios | Eletrix",
-    "description": "Operadora de recarga para veículos elétricos. Hub, Rent, instalação na vaga, laudo, infraestrutura e IT-41. Qualidade de serviço à altura de um AAA.",
+    "title": "Recarga de carro elétrico para prédios e vagas | Eletrix",
+    "description": "Rede de recarga para carros elétricos: Hub e Rent para empreendimentos, instalação na vaga, laudo, infraestrutura e IT-41.",
     "og": {
-      "headline": "Qualidade de serviço à altura de um AAA.",
+      "headline": "Rede de recarga para carros elétricos, do prédio à sua vaga.",
       "kicker": "Eletrix",
       "bg": "aqwa-por-do-sol"
     }
   },
   "/eletrix-hub/": {
     "title": "Eletrix Hub: eletroposto tarifado para empreendimentos",
-    "description": "Carregador em comodato por 36 meses, sem mensalidade. Energia 100% reembolsada com bônus ao local, suporte 24h e seguro de até R$ 500 mil.",
+    "description": "Carregador em comodato por 36 meses, sem mensalidade, para prédios corporativos e shoppings. Energia 100% reembolsada com bônus ao local e suporte 24h.",
     "og": {
       "headline": "Eletrix Hub",
       "kicker": "Recarga tarifada para empreendimentos",
@@ -91,7 +91,7 @@
   },
   "/adequacao-it-41/": {
     "title": "Adequação IT-41 do Corpo de Bombeiros para carregador",
-    "description": "Quadro identificado, botoeira por pavimento e sinalização S.A.V.E. R$ 1.799 por pavimento e R$ 449 por carregador. Simule o seu orçamento.",
+    "description": "Quadro identificado, botoeira por pavimento e sinalização S.A.V.E. Orçamento após visita técnica.",
     "og": {
       "headline": "Recarga regularizada e pronta para o AVCB.",
       "kicker": "Adequação IT-41 · Regularizar",
@@ -116,30 +116,12 @@
       "bg": "case-6"
     }
   },
-  "/empreendimentos/": {
-    "title": "Empreendimentos onde a Eletrix opera | Eletrix",
-    "description": "Edifícios corporativos, centros logísticos e shoppings que escolheram a Eletrix. Conheça alguns dos empreendimentos atendidos em SP, RJ, PR e mais.",
-    "og": {
-      "headline": "Os empreendimentos que escolhem a Eletrix.",
-      "kicker": "Empreendimentos",
-      "bg": "river-one-fim-de-tarde"
-    }
-  },
-  "/estacoes/": {
-    "title": "Onde carregar carro elétrico em São Paulo e Brasil",
-    "description": "Mapa das estações Eletrix em prédios, hotéis, shoppings e estacionamentos. Encontre o ponto mais próximo e recarregue pelo app Eletrix.",
-    "og": {
-      "headline": "Encontre uma estação Eletrix.",
-      "kicker": "Mapa de estações",
-      "bg": "app-mapa"
-    }
-  },
   "/app/": {
     "title": "App Eletrix: recarregue seu carro elétrico pelo celular",
     "description": "Localize estações no mapa, inicie e acompanhe a recarga e pague com cartão de crédito ou saldo em carteira. Disponível para iOS e Android.",
     "og": {
       "headline": "Recarregue pelo app Eletrix.",
-      "kicker": "iOS e Android · nota 4,8 na App Store",
+      "kicker": "iOS e Android",
       "bg": "app-mapa"
     }
   },

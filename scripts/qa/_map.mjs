@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+import path from 'node:path'; import fs from 'node:fs'; import { pathToFileURL } from 'node:url';
+const root = path.resolve('.');
+fs.writeFileSync('qa/_map.html', `<body style="margin:0;background:#050b14;display:flex;gap:20px"><img src="../public/mapa/rede-brasil.svg" height=780><img src="../public/mapa/rede-grande-sp.svg" height=700></body>`);
+const b = await chromium.launch({ channel: 'msedge' });
+const p = await b.newPage({ viewport: { width: 1300, height: 800 } });
+await p.goto(pathToFileURL(path.resolve('qa/_map.html')).href);
+await p.waitForTimeout(1500);
+await p.screenshot({ path: 'qa/map-preview.png' });
+await b.close(); fs.unlinkSync('qa/_map.html');

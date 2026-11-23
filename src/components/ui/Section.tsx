@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export type Tone = 'dark' | 'ink' | 'light' | 'paper';
+export type Tone = 'dark' | 'ink' | 'light' | 'paper' | 'brand';
 
 export function Section({
   tone = 'light', id, className = '', children, labelledBy, tight,
@@ -21,7 +21,7 @@ export function SectionHeader({
 }: { eyebrow?: string; title: ReactNode; lead?: ReactNode; align?: 'left' | 'center'; id?: string; as?: 'h1' | 'h2'; className?: string }) {
   return (
     <header data-reveal className={`${align === 'center' ? 'mx-auto text-center' : ''} max-w-3xl ${className}`}>
-      {eyebrow && <p className={`eyebrow mb-4 ${align === 'center' ? 'justify-center' : ''}`}>{eyebrow}</p>}
+      {eyebrow && <p className={`eyebrow mb-3 ${align === 'center' ? 'justify-center' : ''}`}>{eyebrow}</p>}
       <Tag id={id} className={Tag === 'h1' ? 'text-h1' : 'text-h2'}>{title}</Tag>
       {lead && <p className="mt-5 text-lead text-fg-muted">{lead}</p>}
     </header>
