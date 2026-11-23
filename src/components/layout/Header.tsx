@@ -31,10 +31,8 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
                     <Icon name={s.icon} size={17} />
                   </span>
                   <span>
-                    <span className="flex items-center gap-2 text-[0.95rem] font-semibold text-white">
-                      {s.name}
-                      {s.step && <span className="rounded-full border border-white/15 px-2 py-px text-xs font-medium text-muted-dark">{s.step}</span>}
-                    </span>
+                    {s.step && <span className="block text-xs font-semibold text-brand-400">{s.step}</span>}
+                    <span className="block text-[0.95rem] font-semibold leading-snug text-white">{s.name}</span>
                     <span className="mt-0.5 block text-[0.82rem] leading-snug text-muted-dark">{s.tagline}</span>
                   </span>
                 </Link>

@@ -111,3 +111,6 @@ details[open] > summary .chev { transform: rotate(180deg); }
 html.motion .led-beam { animation: led-sweep 9s cubic-bezier(.45,0,.2,1) 1.2s infinite; }
 @keyframes led-glow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
 html.motion .led-glow { animation: led-glow 4.5s ease-in-out infinite; }
+
+/* Seções abaixo da primeira dobra só são desenhadas perto da rolagem (menos estilo/layout no carregamento) */
+main > section:not(:first-child) { content-visibility: auto; contain-intrinsic-size: auto 720px; }

@@ -28,7 +28,7 @@ export function Picture({ name, alt, sizes = '100vw', priority = false, classNam
         alt={alt}
         sizes={sizes}
         loading={priority ? 'eager' : 'lazy'}
-        decoding={priority ? 'sync' : 'async'}
+        decoding={priority ? 'auto' : 'async'}
         {...(priority ? { fetchPriority: 'high' as const } : {})}
         className={`${fill ? 'h-full w-full object-cover' : 'h-auto w-full'} ${className}`}
         style={position ? { objectPosition: position } : undefined}

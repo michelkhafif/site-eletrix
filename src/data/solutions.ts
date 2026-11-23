@@ -106,7 +106,7 @@ export const solutions: Solution[] = [
     code: '06',
     name: 'Eletrix Hub',
     profile: 'negocio',
-    tagline: 'Qualidade de serviço à altura de um AAA.',
+    tagline: 'Recarga tarifada para prédios corporativos e shoppings.',
     summary: 'Estações tarifadas em comodato por 36 meses, sem mensalidade. A Eletrix opera tudo e reembolsa 100% da energia, com bônus ao local.',
     icon: 'building',
     price: 'Comodato, sem mensalidade',
