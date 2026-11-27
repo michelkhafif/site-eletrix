@@ -16,11 +16,11 @@ export default function Home() {
       <LogoStrip />
       <WhichCase />
       <HubFeature />
+      <AppSection />
       <Journey />
       <Stations />
       <Why />
       <SwitchOperator />
-      <AppSection />
       <Testimonials />
       <PressSection />
       <HomeDuvidas />

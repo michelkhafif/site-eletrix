@@ -45,7 +45,8 @@ const images = {
   'eco-sapucai': P + '20_ECO-Sapucai_RJ_render.jpg',
   'bresco-viracopos': P + '21_Bresco-Viracopos_Campinas.jpg',
   'maringa-park': P + '22_Shopping-Maringa-Park_PR.jpg',
-  'app-mapa': E + 'eletrix_app.jpg',
+  // captura real do app, com uma barra de status limpa (sem horário e carga do aparelho de quem tirou a foto)
+  'app-tela': { file: E + 'eletrix_app.jpg', statusBar: true },
   'totem-orelhao': E + 'eletrix_carregador_totem_orelhao.jpg',
   'case-1': E + 'eletrix_case_1.jpg',
   'case-2': E + 'eletrix_case_2.jpg',
@@ -71,12 +72,13 @@ const manifest = {};
 
 async function processImage(name, entry) {
   // a entrada é um caminho ou { file, crop, tone }: recorte e ajuste de luz aplicados antes de redimensionar
-  const { file: rel, crop, tone } = typeof entry === 'string' ? { file: entry } : entry;
+  const { file: rel, crop, tone, statusBar } = typeof entry === 'string' ? { file: entry } : entry;
   let file = path.join(SRC, rel);
-  if (crop || tone) {
+  if (crop || tone || statusBar) {
     let img = sharp(file).rotate();
     if (crop) img = img.extract(crop);
     if (tone) img = img.modulate(tone);
+    if (statusBar) img = img.composite([{ input: await cleanStatusBar(file), top: 0, left: 0 }]);
     file = await img.png().toBuffer();
   }
   const meta = await sharp(file).metadata();
@@ -250,6 +252,23 @@ async function processBrand() {
     fs.writeFileSync(path.join(OUT_BRAND, dest), svg);
     console.log('brand', dest, w, h);
   }
+}
+
+/** Barra de status neutra por cima da original: 9:41, sinal, Wi-Fi e bateria sem porcentagem. */
+async function cleanStatusBar(file) {
+  const { width } = await sharp(file).metadata();
+  const { data } = await sharp(file).extract({ left: 4, top: 4, width: 1, height: 1 }).raw().toBuffer({ resolveWithObject: true });
+  const bg = `rgb(${data[0]},${data[1]},${data[2]})`;
+  const k = width / 590;
+  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${Math.round(74 * k)}" viewBox="0 0 590 74">
+    <rect width="590" height="74" fill="${bg}"/>
+    <text x="70" y="52" font-family="Arial, Helvetica, sans-serif" font-size="25" font-weight="700" fill="#000">9:41</text>
+    <g fill="#000">
+      <rect x="418" y="43" width="5" height="9" rx="1.5"/><rect x="427" y="39" width="5" height="13" rx="1.5"/><rect x="436" y="35" width="5" height="17" rx="1.5"/><rect x="445" y="31" width="5" height="21" rx="1.5"/>
+      <path d="M472 51.5l-6.5-7.2a9.6 9.6 0 0 1 13 0z"/><path d="M459 37a19 19 0 0 1 26 0l-3.4 3.6a14 14 0 0 0-19.2 0z"/>
+      <rect x="497" y="33" width="34" height="18" rx="5" fill="none" stroke="#000" stroke-opacity=".4" stroke-width="2"/><rect x="500" y="36" width="28" height="12" rx="3"/><path d="M533 38.5c2 .6 3 2 3 3.500s-1 2.900-3 3.500z" fill-opacity=".45"/>
+    </g>
+  </svg>`);
 }
 
 /** Foto do hero bem pequena e desfocada: preenche o fundo do hero no desktop (cerca de 1 KB). */

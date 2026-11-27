@@ -5,6 +5,7 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { Picture } from '@/components/ui/Picture';
 import { StoreBadges } from '@/components/ui/StoreBadges';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
+import { WhatsAppGlyph } from '@/components/ui/WhatsAppGlyph';
 import { CheckList } from './Blocks';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqLd } from '@/lib/jsonld';
@@ -70,16 +71,19 @@ export function WhichCase() {
 }
 
 /* ------------------------------------------------------------------ HUB */
-const hubPoints: { icon: IconName; title: string; text: string }[] = [
+const hubPoints: { icon: IconName; title: string; text: string; anchor?: { href: string; label: string } }[] = [
   { icon: 'key', title: 'Comodato por 36 meses', text: 'Sem mensalidade para o empreendimento.' },
   { icon: 'handshake', title: 'Rescisão sem multa', text: 'A qualquer momento, por qualquer das partes.' },
   { icon: 'receipt', title: 'Energia 100% reembolsada', text: 'Com bônus ao local sobre cada kWh cobrado.' },
   { icon: 'headset', title: 'Suporte 24 horas', text: 'Carregador funcionando em até 12 horas.' },
+  { icon: 'chart', title: 'Dashboard de gerenciamento', text: 'Recargas e carregadores acompanhados em um só painel.' },
+  { icon: 'phoneApp', title: 'Aplicativo individualizado', text: 'A experiência no app personalizada para o empreendimento.', anchor: { href: '#app', label: 'Veja o app' } },
 ];
 
+/** Hub e app formam um capítulo só: o iPhone da seção seguinte "sai" daqui, e um item aponta para ele. */
 export function HubFeature() {
   return (
-    <Section tone="ink" labelledBy="hub-t" className="overflow-hidden">
+    <Section tone="ink" id="eletrix-hub" labelledBy="hub-t" className="!pb-36 lg:!pb-44">
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
@@ -88,23 +92,69 @@ export function HubFeature() {
             <ul className="mt-9 grid gap-x-8 gap-y-6 sm:grid-cols-2">
               {hubPoints.map((p) => (
                 <li key={p.title} className="flex gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-500 text-ink-950"><Icon name={p.icon} size={21} /></span>
+                  <span className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl ${p.anchor ? 'bg-white text-ink-950 ring-4 ring-brand-500/40' : 'bg-brand-500 text-ink-950'}`}><Icon name={p.icon} size={21} /></span>
                   <span>
                     <span className="block font-display font-bold text-white">{p.title}</span>
                     <span className="block text-[0.95rem] text-fg-muted">{p.text}</span>
+                    {p.anchor && (
+                      <a href={p.anchor.href} className="mt-1.5 inline-flex min-h-8 items-center gap-1 text-[0.95rem] font-semibold text-brand-400 underline-offset-4 hover:underline">
+                        {p.anchor.label}<Icon name="chevronDown" size={16} />
+                      </a>
+                    )}
                   </span>
                 </li>
               ))}
             </ul>
             <div className="mt-9 flex flex-wrap gap-3">
-              <Button href="/eletrix-hub/" size="lg">Conhecer o Eletrix Hub</Button>
-              <Button href={whatsappLink(wa.hub)} variant="onDark" size="lg" icon="whatsapp">Falar no WhatsApp</Button>
+              <Button href={contactHref({ perfil: 'empreendimento', interesse: 'eletrix-hub' })} size="lg">Quero o Eletrix Hub</Button>
+              <Button href={whatsappLink(wa.hub)} variant="onDark" size="lg">
+                <span className="inline-flex items-center gap-2"><WhatsAppGlyph size={18} /> Falar no WhatsApp</span>
+              </Button>
             </div>
+            <p className="mt-5 text-[0.97rem] text-fg-muted">Quer os detalhes do modelo? <Link href="/eletrix-hub/" className="font-semibold text-brand-400 underline underline-offset-4 hover:no-underline">Ver como funciona o Hub</Link></p>
           </div>
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
             <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-lift ring-1 ring-white/10">
-              <Picture name="hub-garagem" alt="Garagem com estações de recarga Eletrix instaladas lado a lado" fill sizes="(min-width:1024px) 460px, 90vw" position="22% 50%" />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent" />
+              <Picture name="totem-orelhao" alt="Dois totens orelhão Eletrix com carregadores, ao lado de um carro elétrico carregando" fill sizes="(min-width:1024px) 480px, 90vw" position="42% 16%" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/45 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+      </Container>
+    </Section>
+  );
+}
+
+/* ------------------------------------------------------------------ APP (logo depois do Hub) */
+const appSteps = ['Baixe o app e cadastre a forma de pagamento.', 'Ache a estação no mapa e conecte o carro.', 'Inicie e acompanhe a recarga pelo app.'];
+
+export function AppSection() {
+  return (
+    <Section tone="paper" labelledBy="app-t" className="!pt-0 md:!pt-0">
+      {/* alvo do menu "App": fica na altura do topo do iPhone, que avança sobre a seção de cima */}
+      <span id="app" aria-hidden="true" className="absolute left-0 -top-28 h-px w-px lg:-top-64" />
+      <Container>
+        <div className="grid items-start gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          <div className="relative z-10 -mt-24 lg:order-2 lg:-mt-60 lg:justify-self-center">
+            <PhoneMockup className="!w-[min(236px,62vw)] lg:!w-[290px]">
+              <Picture name="app-tela" alt="Tela do app Eletrix com o mapa das estações de recarga em São Paulo" fill sizes="290px" position="50% 0%" />
+            </PhoneMockup>
+          </div>
+          <div className="lg:order-1 lg:pt-20">
+            <h2 id="app-t" className="text-h2 max-w-xl">Encontre, recarregue e pague pelo celular.</h2>
+            <p className="mt-4 max-w-lg text-lead text-fg-muted">O app Eletrix é a porta de entrada do motorista em cada estação, com pagamento por cartão de crédito ou saldo em carteira.</p>
+            <ol className="mt-7 space-y-3.5">
+              {appSteps.map((t, i) => (
+                <li key={t} className="flex items-center gap-3.5 text-[1.02rem] text-fg">
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-500 font-display text-sm font-extrabold text-ink-950">{i + 1}</span>{t}
+                </li>
+              ))}
+            </ol>
+            <div className="mt-8 flex flex-col items-start gap-4 xl:flex-row xl:items-center xl:gap-5">
+              <Button href={site.app.download} size="lg" variant="dark" className="w-full sm:w-auto">
+                <span className="inline-flex items-center gap-2"><Icon name="download" size={19} className="text-brand-400" /> Baixe o App</span>
+              </Button>
+              <StoreBadges />
             </div>
           </div>
         </div>
@@ -243,36 +293,6 @@ export function SwitchOperator() {
             <p className="font-display text-lg font-bold">Em muitos casos, sem custo para o condomínio.</p>
             <p className="mt-1 text-sm text-fg-muted">As condições são avaliadas por empreendimento.</p>
             <CheckList className="mt-5" items={['Equipamentos substituídos', 'Adequação à IT-41', 'Suporte 24 horas', 'Reembolso da energia e repasse ao prédio']} />
-          </div>
-        </div>
-      </Container>
-    </Section>
-  );
-}
-
-/* ------------------------------------------------------------------ APP */
-export function AppSection() {
-  return (
-    <Section tone="light" labelledBy="app-t" className="overflow-hidden">
-      <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="order-2 lg:order-1">
-            <h2 id="app-t" className="text-h2">Encontre, recarregue e pague pelo celular.</h2>
-            <p className="mt-4 max-w-xl text-lead text-fg-muted">No app Eletrix você acha a estação no mapa, inicia a recarga e paga com cartão de crédito ou saldo em carteira.</p>
-            <ol className="mt-7 space-y-3.5">
-              {['Baixe o app e cadastre a forma de pagamento.', 'Encontre a estação e conecte o carro.', 'Inicie a recarga pelo app.'].map((t, i) => (
-                <li key={t} className="flex items-center gap-3.5 text-[1.02rem] text-fg">
-                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-500 font-display text-sm font-extrabold text-ink-950">{i + 1}</span>{t}
-                </li>
-              ))}
-            </ol>
-            <div className="mt-8"><StoreBadges /></div>
-          </div>
-          <div className="relative order-1 lg:order-2">
-            <div className="absolute left-1/2 top-1/2 h-[80%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true" />
-            <PhoneMockup>
-              <Picture name="app-mapa" alt="Tela do app Eletrix com o mapa das estações de recarga" fill sizes="270px" position="50% 0%" />
-            </PhoneMockup>
           </div>
         </div>
       </Container>
