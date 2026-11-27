@@ -168,7 +168,7 @@ const stepIcon: Record<string, IconName> = { Medir: 'gauge', Preparar: 'route', 
 
 export function Journey() {
   return (
-    <Section tone="light" labelledBy="jornada-t">
+    <Section tone="light" labelledBy="jornada-t" className="!pb-12 md:!pb-16">
       <Container>
         <div className="max-w-2xl">
           <h2 id="jornada-t" className="text-h2">Para síndicos e gestores: medir, preparar, controlar e regularizar.</h2>
@@ -189,7 +189,21 @@ export function Journey() {
             </li>
           ))}
         </ol>
-        <div className="mt-12"><Button href="/condominios/">Ver o caminho completo para condomínios</Button></div>
+        {/* fechamento da seção: um bloco que encerra as quatro etapas, alinhado à mesma grade */}
+        <div data-tone="ink" className="relative mt-12 overflow-hidden rounded-3xl p-6 md:mt-14 md:p-9 lg:grid lg:grid-cols-4 lg:items-center lg:gap-x-6">
+          <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-brand-700 via-brand-500 to-brand-300" />
+          <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-32 h-80 w-80 rounded-full bg-brand-500/25 blur-[90px]" />
+          <div className="relative flex gap-4 lg:col-span-3 lg:items-center">
+            <span className="hidden h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand-500 text-ink-950 sm:grid"><Icon name="clipboard" size={26} /></span>
+            <div>
+              <p className="font-display text-[1.45rem] font-extrabold leading-tight text-white md:text-[1.7rem]">Não sabe por onde começar?</p>
+              <p className="mt-1.5 text-fg-muted">A gente avalia o seu prédio e indica o primeiro passo. <Link href="/condominios/" className="font-semibold text-brand-400 underline underline-offset-4 hover:no-underline">Ver o caminho completo</Link></p>
+            </div>
+          </div>
+          <div className="relative mt-6 lg:mt-0 lg:justify-self-end">
+            <Button href={contactHref({ perfil: 'sindico' })} size="lg" className="w-full lg:w-auto">Agendar avaliação do prédio</Button>
+          </div>
+        </div>
       </Container>
     </Section>
   );
