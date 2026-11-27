@@ -33,7 +33,8 @@
   --card: rgba(255, 255, 255, 0.05);
   --accent: #10b7ff;
 }
-[data-tone='light'] { background: #ffffff; color: var(--fg); --hair: #dde4ed; }
+/* nas seções brancas, os cartões ganham um azul muito claro: nada de caixa branca sobre branco */
+[data-tone='light'] { background: #ffffff; color: var(--fg); --hair: #d5e6f2; --card: #f2f9fe; }
 /* "paper" é o azul bem claro da marca: dá ritmo de cor entre as seções brancas */
 [data-tone='paper'] { background: #e3f5fe; color: var(--fg); --hair: #bfe3f6; --card: #ffffff; }
 /* "brand" é o azul pleno da marca, para faixas de chamada */

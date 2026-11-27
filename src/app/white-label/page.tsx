@@ -6,6 +6,7 @@ import { Band, Prose } from '@/components/sections/Band';
 import { Steps, FeatureGrid, Callout, Split, MediaFrame, RelatedLinks, CompareTable } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
 import { CTABand } from '@/components/sections/CTABand';
+import { ContactButton } from '@/components/ui/ContactButton';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
 import { faqs } from '@/data/faqs';
@@ -26,7 +27,7 @@ export default function WhiteLabelPage() {
         lead="Carregadores e experiência no app personalizados com a marca da sua rede, com a assinatura Powered by Eletrix. A instalação, o suporte, a manutenção e o pagamento continuam com a Eletrix."
         actions={<>
           <Button href={whatsappLink(wa.whitelabel)} icon="whatsapp" size="lg">Falar no WhatsApp</Button>
-          <Button href="/contato/" variant="onDark" size="lg">Pedir proposta</Button>
+          <ContactButton variant="onDark" size="lg">Pedir proposta</ContactButton>
         </>}
         chips={['Carregadores personalizados', 'App com a sua marca', 'Powered by Eletrix']}
         image={{ name: 'case-6', alt: 'Carregador Eletrix em totem de piso numerado, instalado em uma garagem', position: '50% 50%' }}

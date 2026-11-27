@@ -8,6 +8,7 @@ import { Steps, FeatureGrid, CompareTable, Split, MediaFrame, RelatedLinks, Pric
 import { FAQ } from '@/components/sections/FAQ';
 import { DuvidasSobre } from '@/components/sections/DuvidasSobre';
 import { CTABand } from '@/components/sections/CTABand';
+import { ContactButton } from '@/components/ui/ContactButton';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
 import { faqs } from '@/data/faqs';
@@ -28,7 +29,7 @@ export default function RentPage() {
         lead="O carregador é da Eletrix e a operação também. O seu condomínio, hotel ou comércio investe na infraestrutura e paga uma mensalidade fixa. Quem recarrega paga pela recarga, e a energia é 100% reembolsada."
         actions={<>
           <Button href={whatsappLink(wa.rent)} icon="whatsapp" size="lg">Falar no WhatsApp</Button>
-          <Button href="/contato/" variant="onDark" size="lg">Pedir proposta</Button>
+          <ContactButton variant="onDark" size="lg">Pedir proposta</ContactButton>
         </>}
         chips={['Mensalidade fixa', 'Sem comprar o equipamento', 'Energia 100% reembolsada', 'Suporte 24 horas']}
         image={{ name: 'case-5', alt: 'Carregador Eletrix instalado em pedestal numerado em uma garagem', position: '50% 45%' }}

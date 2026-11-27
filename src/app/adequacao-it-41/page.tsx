@@ -71,7 +71,7 @@ export default function It41Page() {
       </Band>
 
       <Band tone="light" id="exigencias" eyebrow="A norma, em resumo" title="O que a IT-41 pede para recarga de veículos elétricos." lead="Resumo didático da Portaria CCB-003/970/2026. A leitura completa está no nosso guia.">
-        <details className="group rounded-2xl border border-hair bg-white px-6 shadow-card">
+        <details className="group rounded-2xl border border-hair bg-card px-6 shadow-card">
           <summary className="flex min-h-14 items-center justify-between gap-4 py-3 font-display text-[1.05rem] font-semibold text-fg">
             Ver o resumo da norma
             <Icon name="chevronDown" size={20} className="chev shrink-0 text-accent transition-transform duration-200" />

@@ -1,15 +1,16 @@
 import {
   ArrowRight, ArrowUpRight, BadgeCheck, Building2, CalendarCheck, Check, ChevronDown, Clock, Cable, FileText, Gauge, Handshake,
-  Headset, Home, KeyRound, Layers, Leaf, LineChart, MapPin, Menu, MessageCircle, Plug, Phone, Route, Scale, ShieldCheck, SlidersHorizontal,
+  Headset, Home, KeyRound, Layers, Leaf, LineChart, MapPin, Menu, Plug, Phone, Route, Scale, ShieldCheck, SlidersHorizontal,
   Smartphone, Sparkles, X, Zap, Wrench, Mail, Pause, Play, Info, AlertTriangle, ClipboardCheck, Network, Lock,
   RefreshCw, Palette, Receipt, Ruler, BatteryCharging, Car, Search, Star, Download,
 } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
+import { WhatsAppGlyph } from './WhatsAppGlyph';
 
 const icons = {
   arrowRight: ArrowRight, arrowUpRight: ArrowUpRight, badge: BadgeCheck, building: Building2, calendar: CalendarCheck, check: Check,
   chevronDown: ChevronDown, clock: Clock, cable: Cable, file: FileText, gauge: Gauge, handshake: Handshake, headset: Headset, home: Home,
-  key: KeyRound, layers: Layers, leaf: Leaf, chart: LineChart, pin: MapPin, menu: Menu, whatsapp: MessageCircle, plug: Plug, phone: Phone,
+  key: KeyRound, layers: Layers, leaf: Leaf, chart: LineChart, pin: MapPin, menu: Menu, plug: Plug, phone: Phone,
   route: Route, scale: Scale, shield: ShieldCheck, sliders: SlidersHorizontal, phoneApp: Smartphone, sparkles: Sparkles, close: X,
   zap: Zap, wrench: Wrench, mail: Mail, pause: Pause, play: Play, info: Info,
   alert: AlertTriangle, clipboard: ClipboardCheck, network: Network, lock: Lock, refresh: RefreshCw, palette: Palette,
@@ -32,9 +33,10 @@ const brandPaths = {
   ),
 } as const;
 
-export type IconName = keyof typeof icons | keyof typeof brandPaths;
+export type IconName = keyof typeof icons | keyof typeof brandPaths | 'whatsapp';
 
 export function Icon({ name, size = 20, strokeWidth = 1.6, ...rest }: { name: IconName } & LucideProps) {
+  if (name === 'whatsapp') return <WhatsAppGlyph size={Number(size)} className={rest.className} />;
   if (name === 'instagram' || name === 'linkedin') {
     return (
       <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" className={rest.className}>

@@ -99,6 +99,8 @@ export default function HubPage() {
           { icon: 'palette', title: 'Placas e comunicação visual', text: 'Sinalização clara para o motorista encontrar e usar a estação.' },
           { icon: 'network', title: 'Internet para a operação', text: 'Quando necessário, a conexão que mantém a estação online também é incluída.' },
           { icon: 'headset', title: 'Suporte 24 horas', text: 'Em caso de problema, o carregador volta a funcionar em até 12 horas.' },
+          { icon: 'chart', title: 'Dashboard de gerenciamento', text: 'Recargas e carregadores acompanhados em um só painel, mediante solicitação.' },
+          { icon: 'phoneApp', title: 'Aplicativo individualizado', text: 'A experiência no app personalizada para o empreendimento.' },
         ]} />
       </Band>
 

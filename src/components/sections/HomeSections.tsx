@@ -80,7 +80,7 @@ const hubPoints: { icon: IconName; title: string; text: string; anchor?: { href:
   { icon: 'handshake', title: 'Rescisão sem multa', text: 'A qualquer momento, por qualquer das partes.' },
   { icon: 'receipt', title: 'Energia 100% reembolsada', text: 'Com bônus ao local sobre cada kWh cobrado.' },
   { icon: 'headset', title: 'Suporte 24 horas', text: 'Carregador funcionando em até 12 horas.' },
-  { icon: 'chart', title: 'Dashboard de gerenciamento', text: 'Recargas e carregadores acompanhados em um só painel.' },
+  { icon: 'chart', title: 'Dashboard de gerenciamento', text: 'Recargas e carregadores em um painel, mediante solicitação.' },
   { icon: 'phoneApp', title: 'Aplicativo individualizado', text: 'A experiência no app personalizada para o empreendimento.', anchor: { href: '#app', label: 'Veja o app' } },
 ];
 
@@ -235,16 +235,16 @@ export function Stations() {
                 </li>
               ))}
             </ul>
-            <p className="mt-7 hidden max-w-sm border-l-2 border-brand-500 pl-4 text-[0.97rem] text-fg-muted lg:block">Cada ponto azul marca um endereço com recarga Eletrix, em operação ou em instalação. No detalhe, a capital paulista.</p>
+            <p className="mt-7 hidden max-w-sm border-l-2 border-brand-500 pl-4 text-[0.97rem] text-fg-muted lg:block">Os pontos azuis marcam endereços com recarga Eletrix, em operação ou em instalação. No detalhe, a Grande São Paulo.</p>
           </div>
           <figure className="relative mx-auto w-full max-w-[560px]">
             <img
               src={withBase('/mapa/rede-brasil.svg')}
-              alt={`Mapa do Brasil com as estações da Eletrix, do Pará ao Rio Grande do Sul, e um detalhe ampliado da cidade de São Paulo`}
+              alt={`Mapa do Brasil com as estações da Eletrix, do Pará ao Rio Grande do Sul, e um detalhe ampliado da Grande São Paulo`}
               width={mapSummary.main[0]} height={mapSummary.main[1]} loading="lazy" decoding="async"
               className="block h-auto w-full"
             />
-            <figcaption className="absolute -translate-y-full pb-1.5 text-[0.72rem] font-semibold text-brand-300 sm:text-sm" style={{ left: `${mapSummary.inset.left}%`, top: `${mapSummary.inset.top}%` }}>São Paulo, capital</figcaption>
+            <figcaption className="absolute -translate-y-full pb-1.5 text-[0.72rem] font-semibold text-brand-300 sm:text-sm" style={{ left: `${mapSummary.inset.left}%`, top: `${mapSummary.inset.top}%` }}>Grande São Paulo</figcaption>
           </figure>
         </div>
       </Container>
@@ -418,7 +418,7 @@ export function HomeDuvidas() {
             <p className="mt-4 text-lead text-fg-muted">As perguntas que mais aparecem na assembleia e na portaria.</p>
             <div className="mt-7"><Button href="/guias/" variant="secondary">Ver todas as dúvidas</Button></div>
           </div>
-          <div className="divide-y divide-hair rounded-2xl border border-hair bg-white px-6 shadow-card">
+          <div className="divide-y divide-hair rounded-2xl border border-hair bg-card px-6 shadow-card">
             {homeDuvidas.map((f) => (
               <details key={f.q} className="group">
                 <summary className="flex items-start justify-between gap-6 py-5 text-left font-display text-[1.08rem] font-semibold leading-snug text-fg transition hover:text-accent">

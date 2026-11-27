@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { BASE_PATH } from '@/config/site';
 import { Icon } from '@/components/ui/Icon';
 import { SupportOptions } from './SupportOptions';
+import { contactByPath, contactHref } from '@/data/services';
 
 const SUPPORT_PATH = `${BASE_PATH}/suporte/`;
 
@@ -99,7 +100,7 @@ export function SupportDialog() {
         </div>
         <div className="mt-5"><SupportOptions /></div>
         <p className="mt-4 text-sm text-fg-muted">
-          Quer contratar a Eletrix? <Link href="/contato/" onClick={close} className="font-semibold text-accent underline underline-offset-4 hover:no-underline">Fale com o comercial</Link>.
+          Quer contratar a Eletrix? <Link href={contactHref(contactByPath[pathname])} onClick={close} className="font-semibold text-accent underline underline-offset-4 hover:no-underline">Fale com o comercial</Link>.
         </p>
       </div>
     </dialog>
