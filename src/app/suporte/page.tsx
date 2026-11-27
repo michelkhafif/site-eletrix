@@ -1,59 +1,42 @@
 import { pageMeta } from '@/lib/seo';
-import { PageHero } from '@/components/sections/PageHero';
-import { Band } from '@/components/sections/Band';
-import { FeatureGrid, Steps, Callout } from '@/components/sections/Blocks';
 import { FAQ } from '@/components/sections/FAQ';
-import { Button } from '@/components/ui/Button';
+import { CheckList } from '@/components/sections/Blocks';
+import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Container, Section } from '@/components/ui/Section';
+import { SupportOptions } from '@/components/support/SupportOptions';
 import { faqs } from '@/data/faqs';
-import { site, whatsappLink } from '@/config/site';
-import { wa } from '@/data/whatsapp';
 
 const PATH = '/suporte/';
 export const metadata = pageMeta(PATH);
 
+/** Versão em página do popup de suporte (sem JavaScript e para o Google). Mesmo conteúdo, enxuto. */
 export default function SupportPage() {
-  const msg = 'Olá! Preciso de suporte em uma estação Eletrix.';
   return (
     <>
-      <PageHero
-        crumbs={[{ name: 'Suporte', href: PATH }]}
-        eyebrow="Suporte ao usuário · 24 horas"
-        title="Suporte Eletrix: ajuda para recarga e estações, a qualquer hora."
-        lead="Se a recarga não iniciou, foi interrompida ou você tem uma dúvida sobre o app, chame o suporte no WhatsApp. Informe o local e o número da estação, que está na placa do carregador."
-        actions={<>
-          <Button href={whatsappLink(msg, 'support')} icon="whatsapp" size="lg">Chamar o suporte no WhatsApp</Button>
-          <Button href="/app/" variant="onDark" size="lg">Ver como usar o app</Button>
-        </>}
-        chips={[`WhatsApp ${site.contact.phoneSupportDisplay}`, 'Atendimento 24 horas']}
-      />
-
-      <Band tone="light" id="antes" eyebrow="Antes de chamar" title="O que costuma resolver a recarga que não inicia.">
-        <Steps columns={4} items={[
-          { title: 'Plugue bem encaixado', text: 'Confirme que o plugue está totalmente conectado ao carro e que o carro está destravado.' },
-          { title: 'Estação selecionada', text: 'No app, selecione a estação correta ou leia o QR code da placa.' },
-          { title: 'Pagamento válido', text: 'Verifique se há cartão de crédito válido ou saldo em carteira no app.' },
-          { title: 'App atualizado', text: 'Atualize o app na App Store ou no Google Play e tente novamente.' },
-        ]} />
-        <div className="mt-8"><Callout icon="info" title="Ainda não resolveu?">Chame o suporte no WhatsApp e informe o local, o número da estação e o que aparece no app. A equipe atende 24 horas.</Callout></div>
-      </Band>
-
-      <Band tone="paper" id="quem" eyebrow="Quem chamar" title="Cada canal para um assunto.">
-        <FeatureGrid columns={2} items={[
-          { icon: 'headset', title: 'Suporte às estações', text: <>Usuários, moradores e gestores com problema em uma estação em operação. WhatsApp <a href={whatsappLink(msg, 'support')} target="_blank" rel="noopener noreferrer">{site.contact.phoneSupportDisplay}</a>, 24 horas.</> },
-          { icon: 'handshake', title: 'Comercial e orçamentos', text: <>Visita técnica, proposta, Hub, Rent, laudo e IT-41. WhatsApp <a href={whatsappLink(wa.default)} target="_blank" rel="noopener noreferrer">{site.contact.phoneCommercialDisplay}</a>.</> },
-        ]} />
-      </Band>
-
-      <Section tone="dark" tight id="gestores" labelledBy="g-t">
-        <Container>
-          <div className="grid items-center gap-8 md:grid-cols-[1fr_auto]">
-            <div data-reveal>
-              <p className="eyebrow mb-3">Para gestores de empreendimentos</p>
-              <h2 id="g-t" className="text-h3 max-w-2xl text-white">Carregador parado em um Hub?</h2>
-              <p className="mt-3 max-w-2xl text-muted-dark">O suporte funciona 24 horas e, em caso de problema, o carregador volta a funcionar em até 12 horas. Acione o mesmo canal de suporte.</p>
+      <section data-tone="dark" aria-labelledby="sup-t" className="relative overflow-hidden pb-16 pt-[calc(var(--header-h)+28px)] md:pb-24 md:pt-[calc(var(--header-h)+48px)]">
+        <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-full bg-brand-500/15 blur-[120px]" />
+        <Container className="relative">
+          <div className="max-w-3xl">
+            <div className="mb-6 hidden sm:block"><Breadcrumbs items={[{ name: 'Suporte', href: PATH }]} /></div>
+            <h1 id="sup-t" className="text-h1 text-white">Suporte Eletrix</h1>
+            <p className="mt-3 max-w-xl text-lead text-muted-dark">Problema em uma estação? Tenha em mãos o local e o número que está na placa do carregador.</p>
+            <div data-tone="light" className="mt-7 rounded-3xl p-3 shadow-lift sm:p-5">
+              <SupportOptions columns />
             </div>
-            <Button href={whatsappLink(msg, 'support')} size="lg" icon="whatsapp">Acionar o suporte</Button>
+          </div>
+        </Container>
+      </section>
+
+      <Section tone="paper" tight labelledBy="antes-t">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-12">
+            <h2 id="antes-t" className="text-h3">A recarga não iniciou? Confira antes de ligar</h2>
+            <CheckList items={[
+              'O plugue está totalmente encaixado no carro, e o carro está destravado.',
+              'No app, a estação escolhida é a certa (ou você leu o QR code da placa).',
+              'Há cartão de crédito válido ou saldo em carteira no app.',
+              'O app está atualizado na App Store ou no Google Play.',
+            ]} />
           </div>
         </Container>
       </Section>

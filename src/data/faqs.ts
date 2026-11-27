@@ -352,26 +352,26 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       q: 'A recarga não iniciou. O que faço?',
-      a: 'Verifique se o plugue está bem encaixado e se há saldo ou cartão válido no app. Se persistir, chame o suporte 24 horas no WhatsApp.',
+      a: 'Verifique se o plugue está bem encaixado e se há saldo ou cartão válido no app. Se persistir, ligue para o suporte no 0800 444 1044, a qualquer hora, ou chame no WhatsApp das 8h às 20h.',
     },
   ],
 
   suporte: [
     {
       q: 'Qual o horário do suporte?',
-      a: 'O suporte funciona 24 horas.',
+      a: 'Pelo telefone 0800 444 1044, o suporte atende 24 horas, todos os dias. Pelo WhatsApp +55 11 91955-2120, das 8h às 20h.',
     },
     {
       q: 'Como falo com o suporte?',
-      a: 'Pelo WhatsApp +55 11 91955-2120. Informe o local e o número da estação, que está na placa do carregador.',
+      a: 'Ligue para o 0800 444 1044, a qualquer hora, ou chame no WhatsApp +55 11 91955-2120, das 8h às 20h. Informe o local e o número da estação, que está na placa do carregador.',
     },
     {
       q: 'A recarga não iniciou ou foi interrompida. O que faço?',
-      a: 'Confira se o plugue está totalmente encaixado, se o carro está destravado e se o app mostra saldo ou cartão válido. Se continuar, chame o suporte.',
+      a: 'Confira se o plugue está totalmente encaixado, se o carro está destravado e se o app mostra saldo ou cartão válido. Se continuar, ligue para o 0800 444 1044 ou chame o suporte no WhatsApp, das 8h às 20h.',
     },
     {
       q: 'Sou morador ou síndico e preciso de manutenção?',
-      a: 'Use o mesmo canal de suporte. Em caso de problema em estação de Hub, o carregador volta a funcionar em até 12 horas.',
+      a: 'Use os mesmos canais de suporte. Em caso de problema em estação de Hub, o carregador volta a funcionar em até 12 horas.',
     },
     {
       q: 'Quero contratar a Eletrix. É o mesmo número?',

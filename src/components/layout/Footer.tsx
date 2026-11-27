@@ -63,8 +63,12 @@ export function Footer() {
                 <a href={whatsappLink(wa.default)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 items-center font-semibold transition hover:text-brand-400">{site.contact.phoneCommercialDisplay}</a>
               </li>
               <li>
-                <span className="block text-sm text-muted-dark">Suporte às estações, 24 horas</span>
-                <a href={whatsappLink('Olá! Preciso de suporte em uma estação Eletrix.', 'support')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 items-center font-semibold transition hover:text-brand-400">{site.contact.phoneSupportDisplay}</a>
+                <span className="block text-sm text-muted-dark">Suporte por telefone, 24 horas</span>
+                <a href={`tel:${site.contact.support0800Tel}`} className="inline-flex min-h-9 items-center font-semibold transition hover:text-brand-400">{site.contact.support0800Display}</a>
+              </li>
+              <li>
+                <span className="block text-sm text-muted-dark">Suporte no WhatsApp, das 8h às 20h</span>
+                <a href={whatsappLink(wa.suporte, 'support')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 items-center font-semibold transition hover:text-brand-400">{site.contact.phoneSupportDisplay}</a>
               </li>
               <li><a href={`mailto:${site.contact.email}`} className="inline-flex min-h-9 items-center transition hover:text-brand-400">{site.contact.email}</a></li>
               <li><address className="not-italic leading-snug text-white/75">{a.street}<br />{a.district}, {a.city}/{a.state}<br />CEP {a.zip}</address></li>

@@ -6,6 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat';
 import { MotionProvider } from '@/components/ui/MotionProvider';
 import { Analytics } from '@/components/layout/Analytics';
+import { SupportDialog } from '@/components/support/SupportDialog';
 import { SITE_URL, site, withBase } from '@/config/site';
 
 // Fontes variáveis self-hosted (subconjunto latin, cobre o português). Build sem dependência de rede.
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="conteudo" style={{ minHeight: '60vh' }}>{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <SupportDialog />
         <MotionProvider />
         <Analytics />
       </body>

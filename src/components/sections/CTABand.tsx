@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Container, Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
 import { Picture } from '@/components/ui/Picture';
-import { whatsappLink } from '@/config/site';
+import { site, whatsappLink } from '@/config/site';
 
 type Props = {
   title: ReactNode;
@@ -30,7 +30,7 @@ export function CTABand({ title, text, whatsappMessage, whatsappLabel = 'Falar n
             <Button href={whatsappLink(whatsappMessage)} icon="whatsapp" size="lg">{whatsappLabel}</Button>
             <Button href={secondary.href} variant="onDark" size="lg">{secondary.label}</Button>
           </div>
-          <p className="mt-6 text-sm text-muted-dark">Atendimento comercial no WhatsApp +55 11 96575-5730 · Suporte 24 horas nas estações.</p>
+          <p className="mt-6 text-sm text-muted-dark">Comercial no WhatsApp {site.contact.phoneCommercialDisplay}. Suporte das estações 24 horas pelo {site.contact.support0800Display}.</p>
         </div>
       </Container>
     </Section>

@@ -91,6 +91,18 @@
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .marquee-track { animation: marquee 140s linear infinite; width: max-content; }
 
+/* ---------- Popup (suporte): folha de baixo no celular, janela central no desktop ---------- */
+dialog.sheet {
+  width: 100%; max-width: 100%; max-height: calc(100dvh - 2.5rem); margin: auto 0 0; padding: 0; border: 0;
+  background: transparent; overflow: auto; overscroll-behavior: contain;
+}
+@media (min-width: 640px) { dialog.sheet { width: min(30rem, calc(100vw - 2rem)); margin: auto; } }
+dialog.sheet::backdrop { background: rgba(5, 11, 20, 0.72); backdrop-filter: blur(3px); }
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes sheet-pop { from { opacity: 0; transform: translateY(10px) scale(0.98); } to { opacity: 1; transform: none; } }
+dialog.sheet[open] { animation: sheet-up 0.26s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@media (min-width: 640px) { dialog.sheet[open] { animation: sheet-pop 0.2s ease-out; } }
+
 /* ---------- Accordion nativo ---------- */
 details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }

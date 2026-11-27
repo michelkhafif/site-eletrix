@@ -14,6 +14,8 @@ export const wa = {
   troca: 'Olá! Vim pelo site. O meu prédio já tem carregadores de outra operadora e quero saber como migrar para a Eletrix.',
   whitelabel: 'Olá! Vim pelo site e quero conversar sobre o white label Powered by Eletrix para a minha marca.',
   geral: 'Olá! Vim pelo site da Eletrix e quero tirar uma dúvida.',
+  /** Vai para o número de suporte (usuários das estações) */
+  suporte: 'Olá! Preciso de suporte em uma estação Eletrix.',
 } as const;
 
 export const waByPath: Record<string, string> = {

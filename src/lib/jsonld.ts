@@ -1,6 +1,7 @@
 import { SITE_URL, absoluteUrl, site } from '@/config/site';
 
 export const orgId = `${SITE_URL}/#organization`;
+const allDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
 export function organizationLd() {
   return {
@@ -26,7 +27,14 @@ export function organizationLd() {
     },
     contactPoint: [
       { '@type': 'ContactPoint', contactType: 'sales', telephone: site.contact.phoneCommercialTel, email: site.contact.email, availableLanguage: 'pt-BR' },
-      { '@type': 'ContactPoint', contactType: 'customer support', telephone: `+${site.contact.whatsappSupport}`, availableLanguage: 'pt-BR' },
+      {
+        '@type': 'ContactPoint', contactType: 'customer support', telephone: site.contact.support0800Display, contactOption: 'TollFree', availableLanguage: 'pt-BR',
+        hoursAvailable: { '@type': 'OpeningHoursSpecification', dayOfWeek: allDays, opens: '00:00', closes: '23:59' },
+      },
+      {
+        '@type': 'ContactPoint', contactType: 'customer support', name: 'Suporte por WhatsApp', telephone: `+${site.contact.whatsappSupport}`, availableLanguage: 'pt-BR',
+        hoursAvailable: { '@type': 'OpeningHoursSpecification', dayOfWeek: allDays, opens: '08:00', closes: '20:00' },
+      },
     ],
     sameAs: [site.social.instagram, site.social.linkedin].filter(Boolean),
   };
