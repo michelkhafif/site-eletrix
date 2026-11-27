@@ -28,10 +28,10 @@ export const site = {
   locale: 'pt-BR',
 
   stats: [
-    { value: 250, prefix: '+', suffix: '', label: 'estações de recarga' },
-    { value: 20, prefix: '+', suffix: '', label: 'cidades' },
-    { value: 10, prefix: '+', suffix: '', label: 'estados' },
-    { value: 5, prefix: '+', suffix: ' mil', label: 'clientes' },
+    { value: 300, prefix: '+', suffix: '', label: 'estações de recarga' },
+    { value: 22, prefix: '+', suffix: '', label: 'cidades' },
+    { value: 11, prefix: '+', suffix: '', label: 'estados' },
+    { value: 6, prefix: '+', suffix: ' mil', label: 'clientes' },
   ],
 
   contact: {
@@ -39,9 +39,14 @@ export const site = {
     whatsappCommercial: '5511965755730',
     phoneCommercialDisplay: '+55 11 96575-5730',
     phoneCommercialTel: '+5511965755730',
-    // Suporte a usuários das estações: só na área de suporte/app
+    // Suporte a usuários das estações: popup de suporte, página /suporte/ e rodapé
     whatsappSupport: '5511919552120',
     phoneSupportDisplay: '+55 11 91955-2120',
+    /** O WhatsApp de suporte atende neste horário; fora dele, vale o 0800 */
+    whatsappSupportHours: 'Das 8h às 20h',
+    support0800Display: '0800 444 1044',
+    support0800Tel: '08004441044',
+    support0800Hours: '24 horas, todos os dias',
     email: 'contato@eletrix5.com.br',
     address: {
       street: 'Av. Angélica, 688 – Conj. 801',
@@ -60,6 +65,8 @@ export const site = {
   },
 
   app: {
+    /** Todo botão "Baixe o App": abre a Google Play ou a App Store conforme o celular */
+    download: 'https://coderbox.com.br/redirect/?empresa=eletrix',
     appStore: 'https://apps.apple.com/br/app/eletrix/id6444454547',
     playStore: 'https://play.google.com/store/apps/details?id=com.coderbox.eletrix&hl=pt_BR&gl=US',
   },

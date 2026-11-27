@@ -25,7 +25,7 @@ export const faqs: Record<string, FaqItem[]> = {
     },
     {
       q: 'Vocês atendem fora de São Paulo?',
-      a: 'Sim. A Eletrix tem estações em mais de 20 cidades e mais de 10 estados. Fale com o time comercial para confirmar o atendimento na sua cidade.',
+      a: 'Sim. A Eletrix tem mais de 300 estações em mais de 22 cidades e mais de 11 estados. Fale com o time comercial para confirmar o atendimento na sua cidade.',
     },
   ],
 
