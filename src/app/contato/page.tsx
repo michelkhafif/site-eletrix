@@ -54,7 +54,7 @@ export default function ContactPage() {
               <div className="mb-5 hidden lg:block"><Breadcrumbs items={[{ name: 'Contato', href: PATH }]} /></div>
               <h1 id="contato-t" className="font-display text-[1.75rem] font-extrabold leading-tight tracking-tight text-white lg:text-[3.25rem] lg:leading-[1.06]">Fale com a Eletrix</h1>
               <p className="mt-1 text-[0.97rem] text-muted-dark lg:mt-4 lg:text-lead">Escolha um canal ou envie o formulário.</p>
-              <ul className="mt-4 grid grid-cols-3 gap-2 lg:mt-8 lg:grid-cols-1 lg:gap-3" aria-label="Canais de contato">
+              <ul data-wa-avoid className="mt-4 grid grid-cols-3 gap-2 lg:mt-8 lg:grid-cols-1 lg:gap-3" aria-label="Canais de contato">
                 <li>
                   <a href={whatsappLink(wa.default)} target="_blank" rel="noopener noreferrer" className={channel}>
                     <span className={`${bubble} bg-[#25D366] text-white`}><WhatsAppGlyph size={22} /></span>

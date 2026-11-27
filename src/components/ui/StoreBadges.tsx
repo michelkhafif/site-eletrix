@@ -14,7 +14,7 @@ const PlayMark = () => (
 export function StoreBadges({ className = '' }: { className?: string }) {
   const cls = 'inline-flex h-12 items-center gap-3 rounded-xl border border-white/20 bg-black px-4 text-white transition hover:border-white/50';
   return (
-    <div className={`flex flex-wrap gap-3 ${className}`}>
+    <div className={`flex flex-wrap gap-3 ${className}`} data-wa-avoid>
       <a href={site.app.appStore} target="_blank" rel="noopener noreferrer" className={cls}>
         <AppleMark />
         <span className="leading-tight"><span className="block text-[0.62rem] uppercase tracking-wider text-white/70">Baixar na</span>{' '}<span className="block text-[0.95rem] font-semibold">App Store</span></span>

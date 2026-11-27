@@ -8,7 +8,7 @@ export function SupportOptions({ columns = false }: { columns?: boolean }) {
   const c = site.contact;
   const base = 'group flex items-center gap-4 rounded-2xl p-4 text-left transition active:translate-y-px sm:p-5';
   return (
-    <ul className={`grid gap-3 ${columns ? 'sm:grid-cols-2 sm:gap-4' : ''}`}>
+    <ul data-wa-avoid className={`grid gap-3 ${columns ? 'sm:grid-cols-2 sm:gap-4' : ''}`}>
       <li>
         <a href={`tel:${c.support0800Tel}`} className={`${base} h-full bg-ink-900 text-white ring-1 ring-brand-400/40 hover:bg-ink-800 hover:ring-brand-400`}>
           <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-brand-500 text-ink-950"><Icon name="phone" size={22} strokeWidth={2} /></span>

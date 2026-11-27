@@ -45,13 +45,13 @@ export function Button({ href, children, variant = 'primary', size = 'md', icon 
   if (isExternal) {
     const newTab = href.startsWith('http');
     return (
-      <a href={href} className={cls} aria-label={ariaLabel} onClick={onClick} {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+      <a href={href} className={cls} aria-label={ariaLabel} onClick={onClick} data-wa-avoid {...(newTab ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
         {inner}
       </a>
     );
   }
   return (
-    <Link href={href} className={cls} aria-label={ariaLabel} onClick={onClick}>
+    <Link href={href} className={cls} aria-label={ariaLabel} onClick={onClick} data-wa-avoid>
       {inner}
     </Link>
   );

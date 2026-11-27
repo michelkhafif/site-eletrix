@@ -115,7 +115,7 @@ export function ProjectCarousel({ slides, title, label }: { slides: Slide[]; tit
       onFocus={() => setFocus(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocus(false); }}>
       <div className="container-x flex items-center justify-between gap-4">
         <h3 className="font-display text-[1.35rem] font-bold text-white md:text-2xl">{title}</h3>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" data-wa-avoid>
           <button type="button" className={`${button} hidden sm:grid`} onClick={() => go(-1, true)} aria-label="Prédio anterior"><Icon name="arrowRight" size={20} className="rotate-180" /></button>
           {!reduced && (
             <button type="button" className={button} onClick={() => setPaused((v) => !v)} aria-label={paused ? 'Retomar a passagem automática' : 'Pausar a passagem automática'}>
@@ -140,7 +140,7 @@ export function ProjectCarousel({ slides, title, label }: { slides: Slide[]; tit
         </ul>
       </div>
 
-      <div className="container-x mt-5 flex items-center gap-4">
+      <div className="container-x mt-5 flex items-center gap-4" data-wa-avoid>
         <button type="button" className={`${button} sm:hidden`} onClick={() => go(-1, true)} aria-label="Prédio anterior"><Icon name="arrowRight" size={20} className="rotate-180" /></button>
         <div aria-hidden="true" className="relative h-[3px] flex-1 overflow-hidden rounded-full bg-white/15 sm:max-w-xs">
           <span className="absolute inset-y-0 left-0 rounded-full bg-brand-500 transition-[transform] duration-500 ease-out" style={{ width: `${100 / n}%`, transform: `translateX(${real * 100}%)` }} />

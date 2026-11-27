@@ -20,7 +20,7 @@ export function Hero() {
           <h1 id="hero-t" className="max-w-[18ch] text-[clamp(1.85rem,0.45rem+6.4vw,2.9rem)] font-extrabold leading-[1.06] tracking-[-0.035em] text-white md:max-w-none md:text-[clamp(2.4rem,0.8rem+3.4vw,4.2rem)] md:leading-[1.05]">
             Rede de recarga para carros elétricos, do prédio à sua vaga.
           </h1>
-          <div className="mt-6 grid max-w-xl grid-cols-2 gap-3 md:mt-9">
+          <div className="mt-6 grid max-w-xl grid-cols-2 gap-3 md:mt-9" data-wa-avoid>
             <Link href={contactHref({ perfil: 'empreendimento' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl bg-brand-500 px-4 py-3 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.85)] transition hover:bg-brand-400 active:translate-y-px md:px-5 md:py-4">
               <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-base lg:text-lg">Tenho um empreendimento</span>
               <span className="mt-0.5 hidden text-sm text-ink-950/75 lg:block">Hub, Rent, troca de operador</span>
@@ -30,10 +30,10 @@ export function Hero() {
               <span className="mt-0.5 hidden text-sm text-white/75 lg:block">Visita técnica gratuita</span>
             </Link>
           </div>
-          <p className="mt-4 text-[0.95rem] text-white/80">
+          <p className="mt-4 text-[0.95rem] text-white/80" data-wa-avoid>
             Precisa se adequar à norma? <span className="sm:hidden"><br /></span><Link href={contactHref({ interesse: 'adequacao-it-41' })} className="font-semibold text-brand-400 underline underline-offset-4 hover:text-brand-300">Adequação à norma IT-41</Link>
           </p>
-          <dl className="mt-7 grid max-w-2xl grid-cols-4 gap-3 border-t border-white/15 pt-5 sm:gap-6 md:mt-11 md:pt-6">
+          <dl data-wa-avoid className="mt-7 grid max-w-2xl grid-cols-4 gap-3 border-t border-white/15 pt-5 sm:gap-6 md:mt-11 md:pt-6">
             {site.stats.map((s, i) => (
               <div key={s.label} className="flex flex-col">
                 <dt className="order-2 mt-1.5 text-[0.72rem] leading-tight text-white/75 sm:text-sm">{s.label}</dt>

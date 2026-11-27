@@ -127,6 +127,10 @@ dialog.sheet::backdrop { background: rgba(5, 11, 20, 0.72); backdrop-filter: blu
 dialog.sheet[open] { animation: sheet-up 0.26s cubic-bezier(0.2, 0.8, 0.2, 1); }
 @media (min-width: 640px) { dialog.sheet[open] { animation: sheet-pop 0.2s ease-out; } }
 
+/* Balão do botão do WhatsApp: entrada suave (sem animação com movimento reduzido) */
+@keyframes wa-in { from { opacity: 0; transform: translateX(10px) scale(0.96); } to { opacity: 1; transform: none; } }
+.wa-bubble { animation: wa-in 0.35s ease-out; transform-origin: right bottom; }
+
 /* Menu do celular aberto: o botão flutuante do WhatsApp sai da frente */
 html[data-menu-open] .wa-float { visibility: hidden; }
 
