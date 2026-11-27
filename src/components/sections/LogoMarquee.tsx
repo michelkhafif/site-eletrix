@@ -86,13 +86,42 @@ export function FeaturedLogos({ tone = 'dark', limit }: { tone?: 'dark' | 'light
   );
 }
 
-/** Grade completa e parada, usada quando a pessoa pede menos movimento. */
-export function LogoGrid({ tone = 'dark' }: { tone?: 'dark' | 'light' }) {
+/** Cartão de logo da página de parceiros: o logo cresce junto com o cartão. */
+function Tile({ p, name }: { p: Partner; name: string }) {
+  const l = logoInfo(p.slug);
+  const { w } = box(p.slug, 1.08);
   return (
-    <ul className="grid grid-cols-2 items-center justify-items-center gap-x-6 gap-y-9 sm:grid-cols-4 lg:grid-cols-7">
-      {partners.map((p) => (
-        <li key={p.slug} className="flex h-16 w-full items-center justify-center"><LogoImg slug={p.slug} name={p.name} tone={tone} /></li>
-      ))}
-    </ul>
+    <li className="partner-tile flex shrink-0 items-center justify-center rounded-2xl border border-white/[0.09] bg-white/[0.035] transition-colors duration-200 hover:border-brand-400/50 hover:bg-white/[0.07]">
+      <img src={withBase(l.file)} alt={name} width={l.w} height={l.h} loading="lazy" decoding="async" className="logo-mono block h-auto max-w-none" style={{ width: `calc(var(--tile) * ${(w / 220).toFixed(4)})` }} />
+    </li>
+  );
+}
+
+/**
+ * Três faixas em direções alternadas e velocidades um pouco diferentes. Pausam com o mouse em cima
+ * ou com o foco; com movimento reduzido, dão lugar a uma grade parada (7 x 4 no desktop).
+ */
+export function PartnerRows() {
+  const rows = ([1, 2, 3] as const).map((r) => partners.filter((p) => p.row === r));
+  const durations = [64, 76, 70];
+  return (
+    <>
+      <div className="partner-rows space-y-3 md:space-y-4" tabIndex={0} role="group" aria-label="Logos dos parceiros. Passe o mouse ou foque nesta área para pausar.">
+        {rows.map((list, i) => (
+          <div key={i} className="marquee">
+            <div className="marquee-track flex" style={{ animationDuration: `${durations[i]}s`, animationDirection: i === 1 ? 'reverse' : 'normal' }}>
+              {[false, true].map((copy) => (
+                <ul key={String(copy)} className={`flex shrink-0 gap-3 pr-3 md:gap-4 md:pr-4 ${copy ? 'marquee-copy' : ''}`} aria-hidden={copy || undefined}>
+                  {list.map((p) => <Tile key={p.slug} p={p} name={copy ? '' : p.name} />)}
+                </ul>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <ul className="partner-grid container-x grid grid-cols-2 gap-3 sm:grid-cols-4 md:gap-4 lg:grid-cols-7">
+        {partners.map((p) => <Tile key={p.slug} p={p} name={p.name} />)}
+      </ul>
+    </>
   );
 }

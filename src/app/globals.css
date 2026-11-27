@@ -98,6 +98,23 @@
   .marquee-copy { display: none; }
 }
 
+/* Página de parceiros: três faixas com cartões; pausam com mouse ou foco */
+.partner-rows { --tile: clamp(148px, 15vw, 330px); }
+.partner-rows:hover .marquee-track, .partner-rows:focus-visible .marquee-track, .partner-rows:focus .marquee-track { animation-play-state: paused; }
+.partner-rows:focus-visible { outline: 2px solid #10b7ff; outline-offset: -2px; }
+.partner-rows .partner-tile { width: var(--tile); height: calc(var(--tile) * 0.5); }
+.partner-grid { display: none; --tile: 176px; }
+.partner-grid .partner-tile { width: 100%; height: 100px; }
+@media (min-width: 640px) and (max-width: 1023px) { .partner-grid { --tile: 164px; } }
+@media (max-width: 639px) { .partner-grid { --tile: 42vw; } }
+/* nos cartões, os logos brilham um pouco mais */
+.partner-tile .logo-mono { opacity: 0.8; max-width: 80%; }
+.partner-tile:hover .logo-mono { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .partner-rows { display: none; }
+  .partner-grid { display: grid; }
+}
+
 /* ---------- Popup (suporte): folha de baixo no celular, janela central no desktop ---------- */
 dialog.sheet {
   width: 100%; max-width: 100%; max-height: calc(100dvh - 2.5rem); margin: auto 0 0; padding: 0; border: 0;
