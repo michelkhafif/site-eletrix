@@ -1,22 +1,43 @@
 /** Dados de conteúdo reutilizados em várias páginas. */
 
-export type Testimonial = { quote: string; role: string; placeholder: true };
+export type Testimonial = {
+  quote: string;
+  /** Trecho (idêntico ao do depoimento) que recebe destaque visual */
+  highlight: string;
+  role: string;
+  place: string;
+  /** Foto real da operação Eletrix, apenas ilustrativa: não identifica o local do depoimento */
+  photo: string;
+  placeholder: true;
+};
 
-/** PROVISÓRIOS: substituir por depoimentos reais antes do lançamento oficial (docs/PENDENCIAS.md). */
+/**
+ * PROVISÓRIOS: substituir por depoimentos reais antes do lançamento oficial (ver GO-LIVE.md).
+ * Para esconder a seção: site.flags.showPlaceholderTestimonials = false.
+ */
 export const testimonials: Testimonial[] = [
   {
     quote: 'Tínhamos carregadores parados e reclamação toda semana. Com a Eletrix, a troca foi feita sem custo para o condomínio, a IT-41 ficou resolvida e eu não recebo mais ligação de usuário. Hoje o prédio ainda recebe pela energia.',
-    role: 'Gerente predial, edifício corporativo, Vila Olímpia (SP)',
+    highlight: 'eu não recebo mais ligação de usuário',
+    role: 'Gerente predial',
+    place: 'Edifício corporativo, Vila Olímpia (SP)',
+    photo: 'case-2',
     placeholder: true,
   },
   {
     quote: 'O que mais pesou foi o atendimento. Quando um carregador dá problema, eles resolvem no mesmo dia. Para quem administra vários prédios, isso faz toda a diferença.',
-    role: 'Coordenadora de facilities, administradora de imóveis corporativos (SP)',
+    highlight: 'eles resolvem no mesmo dia',
+    role: 'Coordenadora de facilities',
+    place: 'Administradora de imóveis corporativos (SP)',
+    photo: 'case-1',
     placeholder: true,
   },
   {
     quote: 'Os moradores começaram a comprar carro elétrico e eu não sabia por onde começar. Fizeram o laudo, montaram a infraestrutura e cada um instala na própria vaga, pagando na própria conta de luz. Acabou a discussão em assembleia.',
-    role: 'Síndico, condomínio residencial, Pinheiros (SP)',
+    highlight: 'Acabou a discussão em assembleia',
+    role: 'Síndico',
+    place: 'Condomínio residencial, Pinheiros (SP)',
+    photo: 'case-5',
     placeholder: true,
   },
 ];
@@ -29,8 +50,8 @@ export type PressItem = {
   title: string;
   image: string;
   imageAlt: string;
-  /** TODO: URL original da matéria (não disponível no briefing). Não inventar. */
-  url: string | null;
+  /** Matéria no site do Estadão (abre em nova aba) */
+  url: string;
 };
 
 export const press: PressItem[] = [
@@ -42,7 +63,7 @@ export const press: PressItem[] = [
     title: 'Como prédios estão ganhando com a recarga elétrica',
     image: 'estadao-predios',
     imageAlt: 'Página do Estadão com a matéria sobre prédios que ganham com a recarga elétrica',
-    url: null,
+    url: 'https://mobilidade.estadao.com.br/inovacao/como-predios-estao-ganhando-com-a-recarga-eletrica/',
   },
   {
     slug: 'orelhao-ponto-de-recarga',
@@ -52,7 +73,8 @@ export const press: PressItem[] = [
     title: 'O “orelhão” que virou ponto de recarga',
     image: 'estadao-orelhao',
     imageAlt: 'Página do Estadão com a matéria sobre o orelhão que virou ponto de recarga, com foto de carros carregando em Barueri',
-    url: null,
+    // CONFIRMAR: o endereço enviado para este card fala de Fórmula E e não pôde ser aberto para conferência (REDESIGN-PENDENCIAS.md).
+    url: 'https://mobilidade.estadao.com.br/mobilidade-para-que/descarbonizacao-formula-e-faz-pesquisas-para-ampliar-a-recuperacao-de-energia-nas-frenagens/',
   },
 ];
 

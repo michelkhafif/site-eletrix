@@ -12,7 +12,8 @@ import { faqLd } from '@/lib/jsonld';
 import { journey, profiles, solutions, type Profile } from '@/data/solutions';
 import { carouselSlugs, projectBy } from '@/data/projects';
 import { ProjectCarousel } from './ProjectCarousel';
-import { press, testimonials } from '@/data/content';
+import { press, testimonials, type Testimonial } from '@/data/content';
+import { PressCard } from './PressCard';
 import { homeDuvidas } from '@/data/faqs';
 import mapSummary from '@/data/map.generated.json';
 import { site, whatsappLink, withBase } from '@/config/site';
@@ -337,24 +338,50 @@ export function SwitchOperator() {
 }
 
 /* ------------------------------------------------------------------ DEPOIMENTOS (provisórios) */
+/** O depoimento aparece uma vez só; o trecho que resume o resultado ganha destaque. */
+function Quote({ t }: { t: Testimonial }) {
+  const [before, after] = t.quote.split(t.highlight);
+  return <>{before}<mark>{t.highlight}</mark>{after}</>;
+}
+
 export function Testimonials() {
   if (!site.flags.showPlaceholderTestimonials) return null;
+  const [main, ...others] = testimonials;
   return (
-    <Section tone="ink" labelledBy="dep-t">
-      <Container>
+    <Section tone="ink" labelledBy="dep-t" className="overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-0 h-[480px] w-[480px] rounded-full bg-brand-500/10 blur-[130px]" />
+      <Container className="relative">
         <SectionHeader id="dep-t" title="O que muda quando a operação funciona." />
         {/* TODO: depoimentos provisórios (placeholder: true). Substituir por reais antes do lançamento oficial. */}
-        <ul className="mt-10 grid gap-6 lg:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <li key={i}>
-              <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.05] p-7" data-placeholder={t.placeholder}>
-                <span aria-hidden="true" className="font-display text-5xl leading-none text-brand-500">“</span>
-                <blockquote className="mt-2 flex-1 text-[1.02rem] leading-relaxed text-white/90">{t.quote}</blockquote>
-                <figcaption className="mt-6 border-t border-white/10 pt-4 text-sm text-muted-dark">{t.role}</figcaption>
+        <div className="mt-10 grid gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:gap-6">
+          <figure data-placeholder={main.placeholder} className="flex flex-col overflow-hidden rounded-3xl bg-ink-800 ring-1 ring-white/10">
+            <div aria-hidden="true" className="relative h-52 sm:h-64 lg:h-auto lg:min-h-[17rem] lg:flex-1">
+              <div className="absolute inset-0"><Picture name={main.photo} alt="" fill sizes="(min-width:1024px) 640px, 100vw" position="50% 52%" /></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-800 via-ink-800/10 to-transparent" />
+            </div>
+            <div className="relative px-6 pb-7 md:px-10 md:pb-10">
+              <span aria-hidden="true" className="-mt-9 block h-10 font-display text-[7rem] font-extrabold leading-[0.9] text-brand-500 drop-shadow-[0_4px_18px_rgba(5,11,20,.8)] md:-mt-12 md:h-12 md:text-[8.5rem]">“</span>
+              <blockquote className="quote mt-3 font-display text-[1.3rem] font-semibold leading-[1.45] text-white/80 md:text-[1.6rem] md:leading-[1.42]"><p><Quote t={main} /></p></blockquote>
+              <figcaption className="mt-6 flex items-center gap-4">
+                <span aria-hidden="true" className="h-10 w-1 shrink-0 rounded-full bg-brand-500" />
+                <span><span className="block font-display text-lg font-bold text-white">{main.role}</span><span className="block text-sm text-fg-muted">{main.place}</span></span>
+              </figcaption>
+            </div>
+          </figure>
+          <div className="grid gap-5 lg:grid-rows-2 lg:gap-6">
+            {others.map((t) => (
+              <figure key={t.role} data-tone="light" data-placeholder={t.placeholder} className="grid overflow-hidden rounded-3xl shadow-lift sm:grid-cols-[38%_1fr] lg:grid-cols-[34%_1fr]">
+                <div aria-hidden="true" className="relative h-36 sm:h-auto">
+                  <div className="absolute inset-0"><Picture name={t.photo} alt="" fill sizes="(min-width:1024px) 200px, (min-width:640px) 38vw, 100vw" position="50% 54%" /></div>
+                </div>
+                <div className="flex flex-col justify-center p-6 md:p-7">
+                  <blockquote className="quote quote-light text-[1.04rem] leading-[1.6] text-fg-muted"><p><span aria-hidden="true">“</span><Quote t={t} /><span aria-hidden="true">”</span></p></blockquote>
+                  <figcaption className="mt-5 border-t border-hair pt-4"><span className="block font-display font-bold text-fg">{t.role}</span><span className="block text-sm text-fg-muted">{t.place}</span></figcaption>
+                </div>
               </figure>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
       </Container>
     </Section>
   );
@@ -365,25 +392,15 @@ export function PressSection() {
   return (
     <Section tone="paper" labelledBy="imp-t">
       <Container>
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeader id="imp-t" title="A Eletrix no Estadão." />
-          <Button href="/imprensa/" variant="secondary">Ver imprensa</Button>
-        </div>
+        <SectionHeader id="imp-t" title="A Eletrix no Estadão." />
         <ul className="mt-10 grid gap-6 md:grid-cols-2">
           {press.map((p) => (
-            <li key={p.slug}>
-              <Link href="/imprensa/" className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-card transition hover:shadow-lift">
-                <div className="aspect-[16/9] overflow-hidden bg-white">
-                  <Picture name={p.image} alt={p.imageAlt} fill sizes="(min-width:768px) 600px, 100vw" className="transition duration-500 group-hover:scale-[1.02]" />
-                </div>
-                <div className="p-6">
-                  <p className="text-sm font-semibold text-accent">{p.outlet} {p.section}, {p.year}</p>
-                  <h3 className="mt-1.5 font-display text-xl font-bold leading-snug">{p.title}</h3>
-                </div>
-              </Link>
-            </li>
+            <li key={p.slug}><PressCard item={p} /></li>
           ))}
         </ul>
+        <div className="mt-10 flex justify-center">
+          <Button href="/imprensa/" variant="secondary" size="lg">Ver imprensa</Button>
+        </div>
       </Container>
     </Section>
   );
