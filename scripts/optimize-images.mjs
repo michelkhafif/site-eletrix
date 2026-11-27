@@ -21,6 +21,7 @@ for (const d of [OUT_IMG, OUT_LOGO, OUT_BRAND, DATA]) fs.mkdirSync(d, { recursiv
 // nome limpo -> arquivo de origem
 const P = '01_Fotos_Predios/';
 const E = '02_Fotos_Eletrix/';
+const R3 = 'rodada-3/';
 const images = {
   'aqwa-por-do-sol': P + '01_Aqwa-Corporate_RJ_por-do-sol.jpg',
   'aqwa-noite': P + '02_Aqwa-Corporate_RJ_noite.jpg',
@@ -58,14 +59,26 @@ const images = {
   'hub-recarga': E + 'eletrix_hub_recarga.jpg',
   'estadao-orelhao': E + 'imprensa_estadao_1.jpg',
   'estadao-predios': E + 'imprensa_estadao_2_sem-rosto.jpg',
+  // "Qual é o seu caso?": três fotos reais, mesmo formato 4:3, enquadradas no carregador
+  'caso-morador': { file: R3 + '02_Fotos_Qual-o-seu-caso/morador_carregador-azul-marinho_vertical.jpg', crop: { left: 0, top: 326, width: 640, height: 480 }, tone: { brightness: 1.05, saturation: 1.04 } },
+  'caso-sindico': { file: R3 + '02_Fotos_Qual-o-seu-caso/sindico-gestor_carregador-azul-com-placas_horizontal.jpg', crop: { left: 40, top: 40, width: 1176, height: 882 }, tone: { brightness: 1.04, saturation: 1.04 } },
+  'caso-negocio': { file: E + 'eletrix_hub_garagem.jpg', crop: { left: 55, top: 0, width: 1022, height: 767 }, tone: { brightness: 1.14, saturation: 1.02 } },
 };
 
 const WIDTHS = [480, 800, 1280];
 const HERO = ['aqwa-por-do-sol', 'thera-praca', 'river-one-fim-de-tarde', 'pinheiros-one-aerea'];
 const manifest = {};
 
-async function processImage(name, rel) {
-  const file = path.join(SRC, rel);
+async function processImage(name, entry) {
+  // a entrada é um caminho ou { file, crop, tone }: recorte e ajuste de luz aplicados antes de redimensionar
+  const { file: rel, crop, tone } = typeof entry === 'string' ? { file: entry } : entry;
+  let file = path.join(SRC, rel);
+  if (crop || tone) {
+    let img = sharp(file).rotate();
+    if (crop) img = img.extract(crop);
+    if (tone) img = img.modulate(tone);
+    file = await img.png().toBuffer();
+  }
   const meta = await sharp(file).metadata();
   const aspect = meta.height / meta.width;
   const wl = HERO.includes(name) ? [...WIDTHS, 1920] : WIDTHS;
@@ -94,37 +107,37 @@ async function processImage(name, rel) {
 //   elias     = vazado só dentro dos círculos vermelhos (o texto é branco)
 //   shpaisman = o vermelho do símbolo fica mais claro que o bloco preto, para o "S" aparecer
 const LOGOS = '03_Logos/';
-const R3 = 'rodada-3/03_Logos_Parceiros_nov2026/';
+const NEW = R3 + '03_Logos_Parceiros_nov2026/';
 const V = LOGOS + 'svg_vetor/';
 const O = LOGOS + 'oficiais/';
 const partnerLogos = {
-  argoplan: { src: R3 + 'argoplan.png' },
+  argoplan: { src: NEW + 'argoplan.png' },
   atrio: { src: LOGOS + 'png_cor_transparente/atrio.png' }, // a versão nova saiu pequena (150 x 24)
   barzel: { src: V + 'barzel.svg' },
   bbz: { src: V + 'bbz.svg', ink: 'light' },
   bresco: { src: O + 'bresco.png' },
-  brookfield: { src: R3 + 'brookfield.png' },
+  brookfield: { src: NEW + 'brookfield.png' },
   cbre: { src: V + 'cbre.svg' },
   'cushman-wakefield': { src: V + 'cushman-wakefield.svg' },
   cyrela: { src: V + 'cyrela.svg' },
-  'elias-victor-nigri': { src: R3 + 'elias-victor-nigri.png', ink: 'elias' },
-  garageinn: { src: R3 + 'garageinn.png', ink: 'knockout' },
+  'elias-victor-nigri': { src: NEW + 'elias-victor-nigri.png', ink: 'elias' },
+  garageinn: { src: NEW + 'garageinn.png', ink: 'knockout' },
   hersil: { src: O + 'hersil.svg' },
-  housi: { src: R3 + 'housi.png' },
+  housi: { src: NEW + 'housi.png' },
   innova: { src: V + 'innova.svg' },
   intelbras: { src: V + 'intelbras.svg' },
-  intercity: { src: R3 + 'intercity.png', ink: 'knockout' },
+  intercity: { src: NEW + 'intercity.png', ink: 'knockout' },
   jaime: { src: V + 'jaime.svg', ink: 'knockout' },
   jll: { src: V + 'jll.svg' },
   kinea: { src: O + 'kinea.svg' },
   link: { src: LOGOS + 'png_cor_transparente/link.png' },
-  livoltek: { src: R3 + 'livoltek.png' },
+  livoltek: { src: NEW + 'livoltek.png' },
   patria: { src: LOGOS + 'png_branco/patria.png' },
   safra: { src: O + 'safra.svg', wordmarkOnly: true }, // mesmo logotipo, sem o brasão
   shpaisman: { src: V + 'shpaisman.svg', ink: 'shpaisman' },
-  'tishman-speyer': { src: R3 + 'tishman-speyer.png' },
+  'tishman-speyer': { src: NEW + 'tishman-speyer.png' },
   totvs: { src: V + 'totvs.svg' },
-  vitacon: { src: R3 + 'vitacon.png' },
+  vitacon: { src: NEW + 'vitacon.png' },
   weg: { src: LOGOS + 'png_branco/weg.png' }, // o SVG tem fundo azul sólido
 };
 const logoManifest = {};
@@ -245,8 +258,11 @@ async function processAmbient() {
   console.log('img hero-ambiente');
 }
 
+// uso: node scripts/optimize-images.mjs [img|logos|ambiente] [prefixo, para refazer só algumas imagens]
 const only = process.argv[2];
-if (!only || only === 'img') for (const [n, f] of Object.entries(images)) await processImage(n, f);
+const prefix = process.argv[3];
+if (prefix) Object.assign(manifest, JSON.parse(fs.readFileSync(path.join(DATA, 'images.generated.json'), 'utf8')));
+if (!only || only === 'img') for (const [n, f] of Object.entries(images)) if (!prefix || n.startsWith(prefix)) await processImage(n, f);
 if (!only || only === 'img' || only === 'ambiente') await processAmbient();
 if (!only || only === 'logos') {
   for (const s of Object.keys(partnerLogos)) await processLogo(s);

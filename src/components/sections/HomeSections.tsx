@@ -5,7 +5,6 @@ import { Icon, type IconName } from '@/components/ui/Icon';
 import { Picture } from '@/components/ui/Picture';
 import { StoreBadges } from '@/components/ui/StoreBadges';
 import { PhoneMockup } from '@/components/ui/PhoneMockup';
-import { MoradorArt, SindicoArt, NegocioArt } from '@/components/ui/CaseIllustrations';
 import { CheckList } from './Blocks';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqLd } from '@/lib/jsonld';
@@ -16,14 +15,19 @@ import { homeDuvidas } from '@/data/faqs';
 import mapSummary from '@/data/map.generated.json';
 import { site, whatsappLink, withBase } from '@/config/site';
 import { wa } from '@/data/whatsapp';
+import { contactHref } from '@/data/services';
 
 /* ------------------------------------------------------------------ QUAL É O SEU CASO */
 const caseCtas: Record<Profile, { href: string; label: string }> = {
-  morador: { href: '/instalacao-carregador-residencial/', label: 'Instalar na minha vaga' },
-  sindico: { href: '/condominios/', label: 'Ver o caminho do prédio' },
-  negocio: { href: '/empresas/', label: 'Ver soluções para empresas' },
+  morador: { href: contactHref({ interesse: 'instalacao-vaga' }), label: 'Pedir visita técnica' },
+  sindico: { href: contactHref({ perfil: 'sindico' }), label: 'Falar com um especialista' },
+  negocio: { href: contactHref({ perfil: 'empreendimento' }), label: 'Quero oferecer recarga' },
 };
-const caseArt: Record<Profile, () => React.JSX.Element> = { morador: MoradorArt, sindico: SindicoArt, negocio: NegocioArt };
+const casePhoto: Record<Profile, { name: string; alt: string }> = {
+  morador: { name: 'caso-morador', alt: 'Carregador Eletrix azul-marinho instalado na parede da garagem, com quadro de proteção e placas S.A.V.E.' },
+  sindico: { name: 'caso-sindico', alt: 'Carregador azul Eletrix em garagem de condomínio, com quadro identificado, botoeira e placas S.A.V.E.' },
+  negocio: { name: 'caso-negocio', alt: 'Garagem com cinco estações de recarga Eletrix lado a lado' },
+};
 
 export function WhichCase() {
   const order: Profile[] = ['morador', 'sindico', 'negocio'];
@@ -34,10 +38,13 @@ export function WhichCase() {
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {order.map((p) => {
             const list = solutions.filter((s) => s.profile === p);
-            const Art = caseArt[p];
+            const photo = casePhoto[p];
             return (
               <article key={p} className="flex flex-col overflow-hidden rounded-3xl bg-white shadow-card ring-1 ring-ink-900/5">
-                <div className="aspect-[16/9] bg-ink-900 px-6 pt-4"><Art /></div>
+                <div className="relative aspect-[4/3] bg-ink-900">
+                  <Picture name={photo.name} alt={photo.alt} fill sizes="(min-width:1024px) 400px, (min-width:640px) 90vw, 100vw" />
+                  <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-ink-950/20 to-transparent" />
+                </div>
                 <div className="flex flex-1 flex-col p-6 md:p-7">
                   <h3 className="font-display text-xl font-bold leading-tight text-ink-900">{profiles[p].title}</h3>
                   <p className="mt-1 text-[1.02rem] font-medium text-accent">“{profiles[p].question}”</p>
