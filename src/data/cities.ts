@@ -111,7 +111,7 @@ export const cities: City[] = [
     uf: 'PR',
     h1: 'Carregador de carro elétrico em Curitiba: estações Eletrix em hotéis e empreendimentos.',
     eyebrow: 'Eletrix em Curitiba e no Paraná',
-    lead: 'Em Curitiba, a recarga Eletrix está nos hotéis: quatro unidades da rede Confiance, o Intercity Batel, o Novotel e o Slaviero Full Jazz, entre outros. O hóspede recarrega durante a estadia, e o hotel oferece o serviço sem comprar o equipamento.',
+    lead: 'Em Curitiba, a recarga Eletrix está principalmente em hotéis, como o Intercity Batel e o Novotel. O hóspede recarrega durante a estadia, e o hotel oferece o serviço sem comprar o equipamento.',
     stationCities: ['Curitiba', 'Guarapuava', 'Ponta Grossa', 'São José dos Pinhais'],
     heroImage: 'maringa-park',
     heroAlt: 'Shopping Maringá Park, no Paraná',
@@ -136,7 +136,7 @@ export const cities: City[] = [
     focus: ['eletrix-rent', 'eletrix-hub', 'laudo-de-demanda', 'infraestrutura-seca'],
     focusIntro: 'Soluções para hotéis, comércios e condomínios de Curitiba.',
     faq: [
-      { q: 'A Eletrix tem estações em Curitiba?', a: 'Sim, principalmente em hotéis, como as unidades da rede Confiance, o Intercity Batel, o Novotel e o Slaviero Full Jazz. Veja o mapa para os pontos em operação.' },
+      { q: 'A Eletrix tem estações em Curitiba?', a: 'Sim, principalmente em hotéis, como o Intercity Batel e o Novotel. Use o app para localizar as estações.' },
       { q: 'O meu hotel pode oferecer recarga sem comprar o carregador?', a: 'Sim. No Eletrix Rent, o carregador é da Eletrix, e o hotel paga uma mensalidade fixa. No Hub, o carregador fica em comodato por 36 meses, sem mensalidade.' },
       { q: 'A Eletrix atende outras cidades do Paraná?', a: 'Sim, como Guarapuava, Ponta Grossa e São José dos Pinhais. Fale com o time comercial para confirmar o atendimento na sua cidade.' },
       { q: 'Qual a regra de segurança no Paraná?', a: 'A IT-41 é do Corpo de Bombeiros de São Paulo. No Paraná, valem as exigências do Corpo de Bombeiros do estado, confirmadas na visita técnica. A instalação segue as NBR 5410 e 17019.' },

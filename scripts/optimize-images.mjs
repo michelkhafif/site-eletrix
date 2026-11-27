@@ -86,17 +86,50 @@ async function processImage(name, rel) {
 }
 
 // ---------- logos ----------
-// svg quando o vetor é bom; senão PNG → WebP. Ordem de preferência definida por partner.
+// Os 28 parceiros (lista definitiva de nov/2026). Para cada um, a melhor fonte do mesmo logo.
+// Saída: WebP em um único tom (a "tinta" é o canal alfa), então o site aplica o mesmo cinza a todos.
+// "ink" diz como preservar recortes internos (partes claras dentro de formas coloridas):
+//   knockout  = pixels claros e sem cor viram vazado (G da GarageInn, J do Jaime, flor da Intercity)
+//   light     = só as partes claras viram tinta (BBZ: letras vazadas nos quadrados)
+//   elias     = vazado só dentro dos círculos vermelhos (o texto é branco)
+//   shpaisman = o vermelho do símbolo fica mais claro que o bloco preto, para o "S" aparecer
 const LOGOS = '03_Logos/';
-const svgOk = ['barzel', 'cbre', 'cushman-wakefield', 'cyrela', 'hazak', 'innova', 'intelbras', 'jaime', 'jll', 'plenty-park', 'rrm-estacionamentos', 'shpaisman', 'sl', 'totvs', 'weg', 'winpark'];
-const pngOnly = [
-  'argoplan', 'atrio', 'bbz', 'bresco', 'brookfield', 'confiance-hotel', 'elias-victor-nigri', 'garageinn', 'guardian',
-  'hersil', 'housi', 'inteli', 'intercity', 'kinea', 'link', 'padrao-park', 'paris-condominios', 'patria', 'pepe',
-  'safra', 'slaviero-hoteis', 'tishman-speyer', 'vitacon',
-];
+const R3 = 'rodada-3/03_Logos_Parceiros_nov2026/';
+const V = LOGOS + 'svg_vetor/';
+const O = LOGOS + 'oficiais/';
+const partnerLogos = {
+  argoplan: { src: R3 + 'argoplan.png' },
+  atrio: { src: LOGOS + 'png_cor_transparente/atrio.png' }, // a versão nova saiu pequena (150 x 24)
+  barzel: { src: V + 'barzel.svg' },
+  bbz: { src: V + 'bbz.svg', ink: 'light' },
+  bresco: { src: O + 'bresco.png' },
+  brookfield: { src: R3 + 'brookfield.png' },
+  cbre: { src: V + 'cbre.svg' },
+  'cushman-wakefield': { src: V + 'cushman-wakefield.svg' },
+  cyrela: { src: V + 'cyrela.svg' },
+  'elias-victor-nigri': { src: R3 + 'elias-victor-nigri.png', ink: 'elias' },
+  garageinn: { src: R3 + 'garageinn.png', ink: 'knockout' },
+  hersil: { src: O + 'hersil.svg' },
+  housi: { src: R3 + 'housi.png' },
+  innova: { src: V + 'innova.svg' },
+  intelbras: { src: V + 'intelbras.svg' },
+  intercity: { src: R3 + 'intercity.png', ink: 'knockout' },
+  jaime: { src: V + 'jaime.svg', ink: 'knockout' },
+  jll: { src: V + 'jll.svg' },
+  kinea: { src: O + 'kinea.svg' },
+  link: { src: LOGOS + 'png_cor_transparente/link.png' },
+  livoltek: { src: R3 + 'livoltek.png' },
+  patria: { src: LOGOS + 'png_branco/patria.png' },
+  safra: { src: O + 'safra.svg', wordmarkOnly: true }, // mesmo logotipo, sem o brasão
+  shpaisman: { src: V + 'shpaisman.svg', ink: 'shpaisman' },
+  'tishman-speyer': { src: R3 + 'tishman-speyer.png' },
+  totvs: { src: V + 'totvs.svg' },
+  vitacon: { src: R3 + 'vitacon.png' },
+  weg: { src: LOGOS + 'png_branco/weg.png' }, // o SVG tem fundo azul sólido
+};
 const logoManifest = {};
 
-/** Recorta o viewBox do SVG para o conteúdo visível. */
+/** Recorta o viewBox do SVG para o conteúdo visível (usado no logo da própria Eletrix). */
 async function cropSvg(svgText) {
   svgText = svgText.replace(/<c2pa:manifest[\s\S]*?(<\/c2pa:manifest>|\/>)/g, '').replace(/ xmlns:c2pa="[^"]*"/g, '');
   const vb = svgText.match(/viewBox="([\d.\-\s]+)"/);
@@ -135,26 +168,62 @@ async function cropSvg(svgText) {
   return { svg: out, w: f(nw), h: f(nh) };
 }
 
+const smooth = (a, b, v) => { const t = Math.min(1, Math.max(0, (v - a) / (b - a))); return t * t * (3 - 2 * t); };
+
+/** Quanto de tinta cada pixel opaco recebe (0 = vazado, 1 = cheio). */
+function inkWeight(mode, r, g, b, fx, fy) {
+  const L = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+  const sat = (Math.max(r, g, b) - Math.min(r, g, b)) / 255;
+  const paleness = smooth(0.6, 0.8, L) * (1 - smooth(0.22, 0.42, sat));
+  if (mode === 'knockout') return 1 - paleness;
+  if (mode === 'light') return smooth(0.72, 0.86, L);
+  if (mode === 'elias') return fx < 0.43 && fy < 0.52 ? smooth(0.25, 0.5, sat) : 1;
+  if (mode === 'shpaisman') return fx < 0.19 && sat > 0.25 && r > g * 1.4 ? 0.42 : 1;
+  return 1;
+}
+
 async function processLogo(slug) {
-  const off = ['svg', 'png'].map((e) => path.join(SRC, LOGOS, 'oficiais', `${slug}.${e}`)).find((f) => fs.existsSync(f));
-  if (off && off.endsWith('.svg')) {
-    const { svg, w, h } = await cropSvg(fs.readFileSync(off, 'utf8'));
-    fs.writeFileSync(path.join(OUT_LOGO, `${slug}.svg`), svg);
-    logoManifest[slug] = { file: `/logos/${slug}.svg`, w: Math.round(w), h: Math.round(h) };
-  } else if (svgOk.includes(slug) && !off) {
-    const text = fs.readFileSync(path.join(SRC, LOGOS, 'svg_vetor', `${slug}.svg`), 'utf8');
-    const { svg, w, h } = await cropSvg(text);
-    fs.writeFileSync(path.join(OUT_LOGO, `${slug}.svg`), svg);
-    logoManifest[slug] = { file: `/logos/${slug}.svg`, w: Math.round(w), h: Math.round(h) };
-  } else {
-    const file = off || path.join(SRC, LOGOS, 'png_cor_transparente', `${slug}.png`);
-    const trimmed = await sharp(file).trim({ threshold: 10 }).toBuffer();
-    const out = path.join(OUT_LOGO, `${slug}.webp`);
-    await sharp(trimmed).resize({ width: 520, withoutEnlargement: true }).webp({ quality: 90, alphaQuality: 95 }).toFile(out);
-    const m = await sharp(out).metadata();
-    logoManifest[slug] = { file: `/logos/${slug}.webp`, w: m.width, h: m.height };
+  const { src, ink = 'solid', wordmarkOnly } = partnerLogos[slug];
+  const file = path.join(SRC, src);
+  let input = sharp(file);
+  if (file.endsWith('.svg')) {
+    const m = await sharp(file).metadata();
+    input = sharp(file, { density: Math.min(2400, Math.max(72, (72 * 1400) / m.width)) });
   }
-  console.log('logo', slug);
+  let { data, info } = await input.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  let { width: W, height: H } = info;
+  if (wordmarkOnly) {
+    // corta o símbolo à esquerda: procura o maior vão de colunas vazias e fica com o que vem depois
+    const used = Array.from({ length: W }, (_, x) => { for (let y = 0; y < H; y++) if (data[(y * W + x) * 4 + 3] > 20) return true; return false; });
+    let best = [0, 0], from = -1;
+    for (let x = 0; x < W; x++) {
+      if (!used[x] && from < 0) from = x;
+      if (used[x] && from >= 0) { if (from > 0 && x - from > best[1] - best[0]) best = [from, x]; from = -1; }
+    }
+    const r = await sharp(data, { raw: { width: W, height: H, channels: 4 } }).extract({ left: best[1], top: 0, width: W - best[1], height: H }).raw().toBuffer({ resolveWithObject: true });
+    data = r.data; W = r.info.width; H = r.info.height;
+  }
+  // caixa do conteúdo (antes da tinta, para as frações das regiões)
+  let x0 = W, y0 = H, x1 = 0, y1 = 0;
+  for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (data[(y * W + x) * 4 + 3] > 48) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  const bw = x1 - x0 + 1, bh = y1 - y0 + 1;
+  const out = Buffer.alloc(bw * bh * 4);
+  let sum = 0;
+  for (let y = 0; y < bh; y++) for (let x = 0; x < bw; x++) {
+    const k = ((y + y0) * W + (x + x0)) * 4;
+    const o = (y * bw + x) * 4;
+    // piso de ruído: alguns arquivos têm pixels quase invisíveis no fundo
+    const clean = Math.max(0, data[k + 3] - 34) * (255 / 221);
+    const a = clean * inkWeight(ink, data[k], data[k + 1], data[k + 2], x / bw, y / bh);
+    out[o] = 10; out[o + 1] = 18; out[o + 2] = 32; out[o + 3] = Math.round(a);
+    sum += a / 255;
+  }
+  const dest = path.join(OUT_LOGO, `${slug}.webp`);
+  await sharp(out, { raw: { width: bw, height: bh, channels: 4 } }).resize({ width: 560, height: 200, fit: 'inside', withoutEnlargement: true }).webp({ quality: 86, alphaQuality: 96 }).toFile(dest);
+  const meta = await sharp(dest).metadata();
+  // densidade de tinta: logos cheios parecem maiores e precisam de um pouco menos de área
+  logoManifest[slug] = { file: `/logos/${slug}.webp`, w: meta.width, h: meta.height, d: Number((sum / (bw * bh)).toFixed(3)) };
+  console.log('logo', slug, `${meta.width}x${meta.height}`, logoManifest[slug].d);
 }
 
 async function processBrand() {
@@ -180,7 +249,9 @@ const only = process.argv[2];
 if (!only || only === 'img') for (const [n, f] of Object.entries(images)) await processImage(n, f);
 if (!only || only === 'img' || only === 'ambiente') await processAmbient();
 if (!only || only === 'logos') {
-  for (const s of [...svgOk, ...pngOnly]) await processLogo(s);
+  for (const s of Object.keys(partnerLogos)) await processLogo(s);
+  // apaga logos que saíram da lista
+  for (const f of fs.readdirSync(OUT_LOGO)) if (!Object.values(logoManifest).some((l) => l.file.endsWith(`/${f}`))) fs.rmSync(path.join(OUT_LOGO, f));
   await processBrand();
 }
 if (!only || only === 'img') fs.writeFileSync(path.join(DATA, 'images.generated.json'), JSON.stringify(manifest, null, 1));

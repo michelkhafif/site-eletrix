@@ -84,12 +84,19 @@
 /* Sem animação de entrada por seção: o único movimento automático é o do hero (LED), a contagem dos números e os pins. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *:not(.marquee-track), *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
 }
 
-/* ---------- Marquee de logos ---------- */
+/* ---------- Trilho de logos ---------- */
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-track { animation: marquee 140s linear infinite; width: max-content; }
+.marquee-track { animation: marquee 80s linear infinite; width: max-content; }
+/* movimento reduzido: fileira parada, que a pessoa arrasta se quiser */
+@media (prefers-reduced-motion: reduce) {
+  .marquee { overflow-x: auto; scrollbar-width: thin; -webkit-mask-image: none; mask-image: none; }
+  .marquee-track { animation: none; }
+  .marquee-copy { display: none; }
+}
 
 /* ---------- Popup (suporte): folha de baixo no celular, janela central no desktop ---------- */
 dialog.sheet {

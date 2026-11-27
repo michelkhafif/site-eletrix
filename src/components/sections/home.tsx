@@ -55,7 +55,7 @@ export function LogoStrip() {
     <Section tone="light" tight className="!py-9 md:!py-12">
       <Container>
         <p className="mb-5 text-center text-[0.95rem] font-medium text-fg-muted">Quem já carrega com a Eletrix</p>
-        <LogoMarquee tone="light" />
+        <LogoMarquee />
       </Container>
     </Section>
   );
