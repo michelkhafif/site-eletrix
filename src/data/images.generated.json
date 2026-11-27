@@ -103,39 +103,9 @@
   ],
   "fallback": 1280
  },
- "cea-aerea": {
-  "w": 1280,
-  "h": 1024,
-  "widths": [
-   480,
-   800,
-   1280
-  ],
-  "fallback": 1280
- },
- "cea-fachada": {
-  "w": 1280,
-  "h": 853,
-  "widths": [
-   480,
-   800,
-   1280
-  ],
-  "fallback": 1280
- },
  "faria-lima-financial-center": {
   "w": 1280,
   "h": 1919,
-  "widths": [
-   480,
-   800,
-   1280
-  ],
-  "fallback": 1280
- },
- "castelo-branco-office-park": {
-  "w": 1280,
-  "h": 857,
   "widths": [
    480,
    800,
@@ -156,16 +126,6 @@
  "biosquare": {
   "w": 1280,
   "h": 1707,
-  "widths": [
-   480,
-   800,
-   1280
-  ],
-  "fallback": 1280
- },
- "berrini-500": {
-  "w": 1280,
-  "h": 1322,
   "widths": [
    480,
    800,
@@ -390,5 +350,110 @@
    589
   ],
   "fallback": 589
+ },
+ "predio-plaza-centenario": {
+  "w": 1200,
+  "h": 1200,
+  "widths": [
+   480,
+   800,
+   1200
+  ],
+  "fallback": 1200
+ },
+ "predio-quantum": {
+  "w": 1024,
+  "h": 576,
+  "widths": [
+   480,
+   800,
+   1024
+  ],
+  "fallback": 1024
+ },
+ "predio-b500": {
+  "w": 683,
+  "h": 1024,
+  "widths": [
+   480,
+   683
+  ],
+  "fallback": 683
+ },
+ "predio-cea": {
+  "w": 1024,
+  "h": 767,
+  "widths": [
+   480,
+   800,
+   1024
+  ],
+  "fallback": 1024
+ },
+ "predio-aqwa": {
+  "w": 1280,
+  "h": 852,
+  "widths": [
+   480,
+   800,
+   1280
+  ],
+  "fallback": 1280
+ },
+ "predio-cbop": {
+  "w": 680,
+  "h": 510,
+  "widths": [
+   480,
+   680
+  ],
+  "fallback": 680
+ },
+ "predio-pinheiros-corporate": {
+  "w": 1060,
+  "h": 1060,
+  "widths": [
+   480,
+   800,
+   1060
+  ],
+  "fallback": 1060
+ },
+ "predio-jk-square": {
+  "w": 924,
+  "h": 579,
+  "widths": [
+   480,
+   800,
+   924
+  ],
+  "fallback": 924
+ },
+ "predio-river-one": {
+  "w": 800,
+  "h": 600,
+  "widths": [
+   480,
+   800
+  ],
+  "fallback": 800
+ },
+ "predio-spazio-faria-lima": {
+  "w": 820,
+  "h": 584,
+  "widths": [
+   480,
+   800,
+   820
+  ],
+  "fallback": 820
+ },
+ "predio-bfl1355": {
+  "w": 415,
+  "h": 481,
+  "widths": [
+   415
+  ],
+  "fallback": 415
  }
 }

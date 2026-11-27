@@ -10,13 +10,16 @@ import { CheckList } from './Blocks';
 import { JsonLd } from '@/components/seo/JsonLd';
 import { faqLd } from '@/lib/jsonld';
 import { journey, profiles, solutions, type Profile } from '@/data/solutions';
-import { projects } from '@/data/projects';
+import { carouselSlugs, projectBy } from '@/data/projects';
+import { ProjectCarousel } from './ProjectCarousel';
 import { press, testimonials } from '@/data/content';
 import { homeDuvidas } from '@/data/faqs';
 import mapSummary from '@/data/map.generated.json';
 import { site, whatsappLink, withBase } from '@/config/site';
 import { wa } from '@/data/whatsapp';
 import { contactHref } from '@/data/services';
+
+const carouselProjects = carouselSlugs.map(projectBy);
 
 /* ------------------------------------------------------------------ QUAL É O SEU CASO */
 const caseCtas: Record<Profile, { href: string; label: string }> = {
@@ -209,42 +212,61 @@ export function Journey() {
   );
 }
 
-/* ------------------------------------------------------------------ ESTAÇÕES: fotos + mapa */
-const stationPhotos = ['thera-corporate', 'river-one', 'pinheiros-one', 'arquipeo', 'faria-lima-financial-center', 'centro-empresarial-do-aco'].map((slug) => projects.find((p) => p.slug === slug)!);
+/* ------------------------------------------------------------------ ESTAÇÕES: mapa em cima, prédios embaixo */
+const regions = ['Norte', 'Nordeste', 'Centro-Oeste', 'Sudeste', 'Sul'];
 
 export function Stations() {
+  const [estacoes, cidades, estados] = site.stats;
   return (
-    <Section tone="dark" id="estacoes" labelledBy="est-t" className="scroll-mt-16">
-      <Container>
-        <div className="max-w-2xl">
-          <h2 id="est-t" className="text-h2">Onde a Eletrix opera.</h2>
-          <p className="mt-4 text-lead text-fg-muted">Prédios corporativos em São Paulo e estações por todo o país.</p>
-        </div>
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:items-stretch">
-          <ul className="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:-mx-8 md:px-8 lg:mx-0 lg:grid lg:grid-cols-2 lg:grid-rows-3 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden" aria-label="Empreendimentos atendidos em São Paulo">
-            {stationPhotos.map((p) => (
-              <li key={p.slug} className="relative aspect-[4/5] w-[68%] shrink-0 snap-start overflow-hidden rounded-2xl sm:w-[42%] lg:aspect-auto lg:w-auto">
-                <div className="absolute inset-0"><Picture name={p.image} alt={p.alt} fill position={p.focus} sizes="(min-width:1024px) 300px, 70vw" /></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-transparent to-transparent" />
-                <p className="absolute inset-x-0 bottom-0 p-3.5 font-display text-[0.95rem] font-bold leading-tight text-white">{p.name}<span className="block text-xs font-normal text-white/75">{p.city}</span></p>
-              </li>
-            ))}
-          </ul>
-          <div className="relative overflow-hidden rounded-3xl bg-ink-950 ring-1 ring-brand-500/25">
-            <div className="absolute inset-0 bg-[radial-gradient(60%_50%_at_30%_70%,rgba(16,183,255,.16),transparent)]" aria-hidden="true" />
+    <Section tone="dark" id="estacoes" labelledBy="est-t" className="scroll-mt-0 overflow-hidden !pb-14 md:!pb-20">
+      <div aria-hidden="true" className="pointer-events-none absolute -left-32 top-24 h-[520px] w-[520px] rounded-full bg-brand-500/[0.09] blur-[140px]" />
+      <Container className="relative">
+        <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <div>
+            <h2 id="est-t" className="text-[clamp(2.1rem,1.4rem+2.9vw,3.6rem)] font-extrabold leading-[1.06] tracking-[-0.03em]">Onde a Eletrix opera.</h2>
+            <p className="mt-5 max-w-md text-lead text-fg-muted">
+              Mais de <strong className="font-semibold text-white">{estacoes.value} estações de recarga</strong> em mais de {cidades.value} cidades e {estados.value} estados, nas cinco regiões do país.
+            </p>
+            <ul aria-label="Regiões com estações Eletrix" className="mt-7 flex max-w-lg flex-wrap gap-2">
+              {regions.map((r) => (
+                <li key={r} className="inline-flex items-center gap-1.5 rounded-full border border-brand-400/35 bg-brand-500/[0.08] py-1.5 pl-3 pr-3.5 text-[0.82rem] font-semibold text-white">
+                  <span aria-hidden="true" className="h-2 w-2 rounded-full bg-brand-500 shadow-[0_0_10px_2px_rgba(16,183,255,.7)]" />{r}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-7 hidden max-w-sm border-l-2 border-brand-500 pl-4 text-[0.97rem] text-fg-muted lg:block">Cada ponto azul marca um endereço com recarga Eletrix, em operação ou em instalação. No detalhe, a capital paulista.</p>
+          </div>
+          <figure className="relative mx-auto w-full max-w-[560px]">
             <img
               src={withBase('/mapa/rede-brasil.svg')}
-              alt="Mapa do Brasil com as estações da Eletrix: maior concentração em São Paulo e presença no Sul, no Rio de Janeiro e na Bahia"
+              alt={`Mapa do Brasil com as estações da Eletrix, do Pará ao Rio Grande do Sul, e um detalhe ampliado da cidade de São Paulo`}
               width={mapSummary.main[0]} height={mapSummary.main[1]} loading="lazy" decoding="async"
-              className="relative block h-auto w-full"
+              className="block h-auto w-full"
             />
-            <figure className="absolute bottom-3 right-3 w-[40%] overflow-hidden rounded-2xl bg-ink-950 shadow-lift ring-1 ring-brand-400/60">
-              <img src={withBase('/mapa/rede-grande-sp.svg')} alt="Detalhe da Grande São Paulo com as estações" width={mapSummary.inset[0]} height={mapSummary.inset[1]} loading="lazy" decoding="async" className="block h-auto w-full" />
-              <figcaption className="absolute left-2 top-2 rounded-full bg-ink-950/85 px-2 py-0.5 text-[0.7rem] font-semibold text-white">Grande São Paulo</figcaption>
-            </figure>
-          </div>
+            <figcaption className="absolute -translate-y-full pb-1.5 text-[0.72rem] font-semibold text-brand-300 sm:text-sm" style={{ left: `${mapSummary.inset.left}%`, top: `${mapSummary.inset.top}%` }}>São Paulo, capital</figcaption>
+          </figure>
         </div>
       </Container>
+
+      <div className="relative mt-14 md:mt-20">
+        <div aria-hidden="true" className="absolute inset-x-0 -top-7 h-px bg-gradient-to-r from-transparent via-brand-500/60 to-transparent md:-top-10" />
+        <ProjectCarousel
+          title="Alguns endereços da rede"
+          label="Prédios com recarga Eletrix"
+          slides={carouselProjects.map((p) => ({
+            name: p.name,
+            node: (
+              <article className="relative aspect-square overflow-hidden rounded-2xl bg-ink-800 ring-1 ring-white/10">
+                <Picture name={p.image} alt={p.alt} fill position={p.focus} sizes="(min-width:1280px) 384px, (min-width:768px) 336px, 72vw" />
+                <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/10 to-transparent" />
+                <h4 className="absolute inset-x-0 bottom-0 p-4 font-display text-[1.05rem] font-bold leading-tight text-white md:p-5 md:text-lg">
+                  {p.name}<span className="mt-0.5 block font-sans text-sm font-normal text-white/80">{p.city}, {p.uf}</span>
+                </h4>
+              </article>
+            ),
+          }))}
+        />
+      </div>
     </Section>
   );
 }

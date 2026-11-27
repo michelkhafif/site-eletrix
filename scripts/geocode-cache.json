@@ -1,0 +1,416 @@
+{
+ "Clube de Campo SP|São Paulo|SP": {
+  "name": "Clube de Campo SP",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.7317093,
+  "lng": -46.7197635,
+  "precision": "rua (aproximado)",
+  "hash": "9272c21039"
+ },
+ "Biosquare|São Paulo|SP": {
+  "name": "Biosquare",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5664996,
+  "lng": -46.6846568,
+  "precision": "numero",
+  "hash": "3dbe48322a"
+ },
+ "Park Europeu|Blumenau|SC": {
+  "name": "Park Europeu",
+  "city": "Blumenau",
+  "uf": "SC",
+  "lat": -26.8866763,
+  "lng": -49.0685402,
+  "precision": "numero",
+  "hash": "b302ef3be4"
+ },
+ "Norte Sul Plaza|Campo Grande|MS": {
+  "name": "Norte Sul Plaza",
+  "city": "Campo Grande",
+  "uf": "MS",
+  "lat": -20.4801142,
+  "lng": -54.6265672,
+  "precision": "numero",
+  "hash": "2a9e02aea2"
+ },
+ "Montes Claros Shopping|Montes Claros|MG": {
+  "name": "Montes Claros Shopping",
+  "city": "Montes Claros",
+  "uf": "MG",
+  "lat": -16.7421596,
+  "lng": -43.8705071,
+  "precision": "numero",
+  "hash": "b572111e37"
+ },
+ "JF 913|São Paulo|SP": {
+  "name": "JF 913",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5857285,
+  "lng": -46.6787682,
+  "precision": "numero",
+  "hash": "eebdfeb2f5"
+ },
+ "JK Tower|São Paulo|SP": {
+  "name": "JK Tower",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5868362,
+  "lng": -46.6753949,
+  "precision": "rua (aproximado)",
+  "hash": "cfcff2e05f"
+ },
+ "Eco Sapucai|Rio de Janeiro|RJ": {
+  "name": "Eco Sapucai",
+  "city": "Rio de Janeiro",
+  "uf": "RJ",
+  "lat": -22.910166,
+  "lng": -43.1980482,
+  "precision": "numero",
+  "hash": "8e0a3cabd2"
+ },
+ "Martiniano|São Paulo|SP": {
+  "name": "Martiniano",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5663225,
+  "lng": -46.6429818,
+  "precision": "numero",
+  "hash": "e601515ed7"
+ },
+ "Plaza I|São Paulo|SP": {
+  "name": "Plaza I",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.6110632,
+  "lng": -46.6956348,
+  "precision": "rua (aproximado)",
+  "hash": "bac86d3ebc"
+ },
+ "Torre 2.000|São Paulo|SP": {
+  "name": "Torre 2.000",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5669455,
+  "lng": -46.6862311,
+  "precision": "numero",
+  "hash": "ecad3beb89"
+ },
+ "Spazio Faria Lima|São Paulo|SP": {
+  "name": "Spazio Faria Lima",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5851388,
+  "lng": -46.6820421,
+  "precision": "numero",
+  "hash": "f34592d69e"
+ },
+ "Lagoa Corporate|Rio de Janeiro|RJ": {
+  "name": "Lagoa Corporate",
+  "city": "Rio de Janeiro",
+  "uf": "RJ",
+  "lat": -22.9605246,
+  "lng": -43.2025579,
+  "precision": "numero",
+  "hash": "2086b73860"
+ },
+ "Gabriel 1825|São Paulo|SP": {
+  "name": "Gabriel 1825",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5741364,
+  "lng": -46.6844448,
+  "precision": "numero",
+  "hash": "20bd5a97e0"
+ },
+ "Denver|São Paulo|SP": {
+  "name": "Denver",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5513135,
+  "lng": -46.6603808,
+  "precision": "numero",
+  "hash": "013ce54c8d"
+ },
+ "Sueste Plaza|São Paulo|SP": {
+  "name": "Sueste Plaza",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5857389,
+  "lng": -46.6792314,
+  "precision": "numero",
+  "hash": "fed4631e4e"
+ },
+ "Corporate Plaza|São Paulo|SP": {
+  "name": "Corporate Plaza",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.6084053,
+  "lng": -46.6658941,
+  "precision": "numero",
+  "hash": "5f79362f4c"
+ },
+ "Washington Commercial Building|São Paulo|SP": {
+  "name": "Washington Commercial Building",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5515752,
+  "lng": -46.6605119,
+  "precision": "numero",
+  "hash": "8c7f775f69"
+ },
+ "JF 100|São Paulo|SP": {
+  "name": "JF 100",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5836186,
+  "lng": -46.6710607,
+  "precision": "numero",
+  "hash": "2467770fc3"
+ },
+ "Quantum|São Paulo|SP": {
+  "name": "Quantum",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5858875,
+  "lng": -46.6793525,
+  "precision": "numero",
+  "hash": "9b91475476"
+ },
+ "Padrão Park Bom Retiro|São Paulo|SP": {
+  "name": "Padrão Park Bom Retiro",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5295465,
+  "lng": -46.6373593,
+  "precision": "rua (aproximado)",
+  "hash": "e4be29143b"
+ },
+ "Golden Light|São Paulo|SP": {
+  "name": "Golden Light",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5823833,
+  "lng": -46.6803924,
+  "precision": "numero",
+  "hash": "b9ebc76893"
+ },
+ "Martim Afonso (Edifício Martim Francisco de Andrada e Silva)|São Paulo|SP": {
+  "name": "Martim Afonso (Edifício Martim Francisco de Andrada e Silva)",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5643076,
+  "lng": -46.6642263,
+  "precision": "numero",
+  "hash": "35bc9a809a"
+ },
+ "CASA (Cen. Adm. Sto. Amaro)|São Paulo|SP": {
+  "name": "CASA (Cen. Adm. Sto. Amaro)",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.6319936,
+  "lng": -46.7141284,
+  "precision": "rua (aproximado)",
+  "hash": "c1add47ebd"
+ },
+ "Centro Empresarial Botafogo|Rio de Janeiro|RJ": {
+  "name": "Centro Empresarial Botafogo",
+  "city": "Rio de Janeiro",
+  "uf": "RJ",
+  "lat": -22.9444028,
+  "lng": -43.1826215,
+  "precision": "numero",
+  "hash": "bfb65a0bee"
+ },
+ "Isabella Plaza|São Paulo|SP": {
+  "name": "Isabella Plaza",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5850685,
+  "lng": -46.6708044,
+  "precision": "numero",
+  "hash": "131fd4ec47"
+ },
+ "JK Square|São Paulo|SP": {
+  "name": "JK Square",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.585759,
+  "lng": -46.672431,
+  "precision": "quarteirao (aproximado)",
+  "hash": "bcb7695498"
+ },
+ "Crystal Plaza Shopping Center|Curitiba|PR": {
+  "name": "Crystal Plaza Shopping Center",
+  "city": "Curitiba",
+  "uf": "PR",
+  "lat": -25.4391146,
+  "lng": -49.2813073,
+  "precision": "numero",
+  "hash": "37559d0140"
+ },
+ "Shopping Park Europeu|Blumenau|SC": {
+  "name": "Shopping Park Europeu",
+  "city": "Blumenau",
+  "uf": "SC",
+  "lat": -26.8866763,
+  "lng": -49.0685402,
+  "precision": "numero",
+  "hash": "fb35fbbcdd"
+ },
+ "Shopping Vale do Aço|Ipatinga|MG": {
+  "name": "Shopping Vale do Aço",
+  "city": "Ipatinga",
+  "uf": "MG",
+  "lat": -19.4971841,
+  "lng": -42.5660621,
+  "precision": "numero",
+  "hash": "9fcf9bef0a"
+ },
+ "Shopping Eco Valle|Lorena|SP": {
+  "name": "Shopping Eco Valle",
+  "city": "Lorena",
+  "uf": "SP",
+  "lat": -22.7535232,
+  "lng": -45.1059701,
+  "precision": "numero",
+  "hash": "145092ccee"
+ },
+ "Praça Nova Santa Maria|Santa Maria|RS": {
+  "name": "Praça Nova Santa Maria",
+  "city": "Santa Maria",
+  "uf": "RS",
+  "lat": -29.7075271,
+  "lng": -53.8295727,
+  "precision": "numero",
+  "hash": "eea2937fb8"
+ },
+ "Shopping Serra Dourada|Altamira|PA": {
+  "name": "Shopping Serra Dourada",
+  "city": "Altamira",
+  "uf": "PA",
+  "lat": -3.2006799,
+  "lng": -52.2431883,
+  "precision": "rua (aproximado)",
+  "hash": "387ca427c2"
+ },
+ "Rio Verde|Rio Verde|GO": {
+  "name": "Rio Verde",
+  "city": "Rio Verde",
+  "uf": "GO",
+  "lat": -17.7896616,
+  "lng": -50.9199802,
+  "precision": "numero",
+  "hash": "5751c48ce2"
+ },
+ "Pátio Central Shopping|Patos de Minas|MG": {
+  "name": "Pátio Central Shopping",
+  "city": "Patos de Minas",
+  "uf": "MG",
+  "lat": -18.5853737,
+  "lng": -46.5141357,
+  "precision": "rua (aproximado)",
+  "hash": "81bf01280c"
+ },
+ "Ourinhos Shopping|Ourinhos|SP": {
+  "name": "Ourinhos Shopping",
+  "city": "Ourinhos",
+  "uf": "SP",
+  "lat": -22.9799816,
+  "lng": -49.8630189,
+  "precision": "numero",
+  "hash": "faa88de6e5"
+ },
+ "Boa Vista Shopping|São Paulo|SP": {
+  "name": "Boa Vista Shopping",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.6547969,
+  "lng": -46.7010187,
+  "precision": "numero",
+  "hash": "70ef46cb49"
+ },
+ "Campinas Shopping|Campinas|SP": {
+  "name": "Campinas Shopping",
+  "city": "Campinas",
+  "uf": "SP",
+  "lat": -22.9319928,
+  "lng": -47.0783676,
+  "precision": "numero",
+  "hash": "dfd932d56e"
+ },
+ "Totvs|São Paulo|SP": {
+  "name": "Totvs",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5069263,
+  "lng": -46.6437534,
+  "precision": "estabelecimento",
+  "hash": "f247e7d0b1"
+ },
+ "Parque Ana Costa|Santos|SP": {
+  "name": "Parque Ana Costa",
+  "city": "Santos",
+  "uf": "SP",
+  "lat": -23.9636397,
+  "lng": -46.3315226,
+  "precision": "estabelecimento",
+  "hash": "73015b4f4d"
+ },
+ "Praça Nova Araçatuba|Araçatuba|SP": {
+  "name": "Praça Nova Araçatuba",
+  "city": "Araçatuba",
+  "uf": "SP",
+  "lat": -21.211808,
+  "lng": -50.4698304,
+  "precision": "estabelecimento",
+  "hash": "6c20aa5e1f"
+ },
+ "Citadel|São Paulo|SP": {
+  "name": "Citadel",
+  "city": "São Paulo",
+  "uf": "SP",
+  "lat": -23.5612345,
+  "lng": -46.6669391,
+  "precision": "rua (aproximado)",
+  "hash": "40ff44dc7e"
+ },
+ "Shopping Três Lagoas|Três Lagoas|MS": {
+  "name": "Shopping Três Lagoas",
+  "city": "Três Lagoas",
+  "uf": "MS",
+  "lat": -20.7570573,
+  "lng": -51.6963156,
+  "precision": "estabelecimento",
+  "hash": "0619f50dc6"
+ },
+ "Shopping Sete Lagoas|Sete Lagoas|MG": {
+  "name": "Shopping Sete Lagoas",
+  "city": "Sete Lagoas",
+  "uf": "MG",
+  "lat": -19.4737341,
+  "lng": -44.271598,
+  "precision": "estabelecimento",
+  "hash": "6df791bb10"
+ },
+ "Jatahy Shopping|Jataí|GO": {
+  "name": "Jatahy Shopping",
+  "city": "Jataí",
+  "uf": "GO",
+  "lat": -17.8721252,
+  "lng": -51.7313818,
+  "precision": "estabelecimento",
+  "hash": "efb43e7a6d"
+ },
+ "Prudenshopping|Presidente Prudente|SP": {
+  "name": "Prudenshopping",
+  "city": "Presidente Prudente",
+  "uf": "SP",
+  "lat": -22.1164658,
+  "lng": -51.4066986,
+  "precision": "estabelecimento",
+  "hash": "6d7ed46f9d"
+ }
+}

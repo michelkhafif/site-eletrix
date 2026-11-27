@@ -22,6 +22,7 @@ for (const d of [OUT_IMG, OUT_LOGO, OUT_BRAND, DATA]) fs.mkdirSync(d, { recursiv
 const P = '01_Fotos_Predios/';
 const E = '02_Fotos_Eletrix/';
 const R3 = 'rodada-3/';
+const C = R3 + '01_Fotos_Predios_Carrossel/';
 const images = {
   'aqwa-por-do-sol': P + '01_Aqwa-Corporate_RJ_por-do-sol.jpg',
   'aqwa-noite': P + '02_Aqwa-Corporate_RJ_noite.jpg',
@@ -33,13 +34,9 @@ const images = {
   'pinheiros-one-fachada': P + '08_Pinheiros-One_SP_fachada.jpg',
   'arquipeo-aerea': P + '09_Arquipeo_SP_aerea.jpg',
   'arquipeo-jardim': P + '10_Arquipeo_SP_jardim-interno.jpg',
-  'cea-aerea': P + '11_Centro-Empresarial-do-Aco_SP_aerea.jpg',
-  'cea-fachada': P + '12_Centro-Empresarial-do-Aco_SP_fachada.jpg',
   'faria-lima-financial-center': P + '13_Faria-Lima-Financial-Center_SP.jpg',
-  'castelo-branco-office-park': P + '14_Castelo-Branco-Office-Park_Barueri.jpg',
   'totvs-seneca': P + '15_TOTVS-Seneca_SP.jpg',
   biosquare: P + '16_Biosquare_SP_render.jpg',
-  'berrini-500': P + '17_Berrini-500_SP.jpg',
   'jk-360': P + '18_JK-360_SP.jpg',
   'botafogo-trade-center': P + '19_Botafogo-Trade-Center_RJ.jpg',
   'eco-sapucai': P + '20_ECO-Sapucai_RJ_render.jpg',
@@ -60,6 +57,19 @@ const images = {
   'hub-recarga': E + 'eletrix_hub_recarga.jpg',
   'estadao-orelhao': E + 'imprensa_estadao_1.jpg',
   'estadao-predios': E + 'imprensa_estadao_2_sem-rosto.jpg',
+  // carrossel "Onde a Eletrix opera" (fotos de nov/2026)
+  'predio-plaza-centenario': C + '01_Plaza-Centenario_SP.jpg',
+  'predio-quantum': C + '02_Quantum_SP_render-noite.jpg',
+  'predio-b500': C + '03_B500_SP_fachada-noite.jpg',
+  'predio-cea': C + '04_Centro-Empresarial-do-Aco_SP_aerea-NOVA.jpg',
+  'predio-aqwa': C + '05_AQWA-Corporate_RJ.jpg',
+  'predio-cbop': C + '06_CBOP_Castelo-Branco-Office-Park_Barueri_render.jpg',
+  // só a fachada espelhada: o letreiro não cabe inteiro no cartão quadrado
+  'predio-pinheiros-corporate': { file: C + '07_Pinheiros-Corporate_SP.jpg', crop: { left: 430, top: 0, width: 1060, height: 1060 } },
+  'predio-jk-square': C + '08_JK-Square_SP_aerea.jpg',
+  'predio-river-one': C + '09_River-One_SP.jpg',
+  'predio-spazio-faria-lima': C + '10_Spazio-Faria-Lima_SP.jpg',
+  'predio-bfl1355': C + '11_BFL1355_SP.jpg',
   // "Qual é o seu caso?": três fotos reais, mesmo formato 4:3, enquadradas no carregador
   'caso-morador': { file: R3 + '02_Fotos_Qual-o-seu-caso/morador_carregador-azul-marinho_vertical.jpg', crop: { left: 0, top: 326, width: 640, height: 480 }, tone: { brightness: 1.05, saturation: 1.04 } },
   'caso-sindico': { file: R3 + '02_Fotos_Qual-o-seu-caso/sindico-gestor_carregador-azul-com-placas_horizontal.jpg', crop: { left: 40, top: 40, width: 1176, height: 882 }, tone: { brightness: 1.04, saturation: 1.04 } },
