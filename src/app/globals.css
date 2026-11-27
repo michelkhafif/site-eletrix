@@ -114,12 +114,48 @@ details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] > summary .chev { transform: rotate(180deg); }
 
-/* ---------- Hero: feixe de LED azul que atravessa a foto ---------- */
-@keyframes led-sweep { 0% { transform: translateX(-60%) skewX(-18deg); opacity: 0; } 12% { opacity: 1; } 55% { opacity: 1; } 70%, 100% { transform: translateX(260%) skewX(-18deg); opacity: 0; } }
-.led-beam { position: absolute; inset: -10% auto -10% 0; width: 22%; pointer-events: none; mix-blend-mode: screen;
-  background: linear-gradient(90deg, transparent, rgba(16,183,255,.0) 8%, rgba(16,183,255,.22) 45%, rgba(120,220,255,.38) 50%, rgba(16,183,255,.22) 55%, transparent 92%);
-  transform: translateX(-60%) skewX(-18deg); opacity: 0; will-change: transform, opacity; }
-html.motion .led-beam { animation: led-sweep 9s cubic-bezier(.45,0,.2,1) 1.2s infinite; }
-@keyframes led-glow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
-html.motion .led-glow { animation: led-glow 4.5s ease-in-out infinite; }
+/* ---------- Hero ---------- */
+/* Celular: foto no topo, texto logo abaixo. Telas médias e grandes: texto à esquerda, foto inteira à direita. */
+.hero { background: #050b14; }
+.hero-media { position: relative; height: clamp(288px, calc(100svh - 360px), 580px); container-type: size; overflow: hidden; --hx: 0.5; --hy: 0.3; }
+.hero-photo, .hero-led { position: absolute; inset: 0; }
+/* moldura com a proporção exata da foto (960 x 1280), recortada como object-fit: cover */
+.cover-frame {
+  position: absolute;
+  width: max(100cqw, calc(100cqh * 0.75));
+  aspect-ratio: 960 / 1280;
+  left: calc((100cqw - max(100cqw, 100cqh * 0.75)) * var(--hx));
+  top: calc((100cqh - max(100cqh, 100cqw / 0.75)) * var(--hy));
+}
+/* foto escurecida: o LED precisa de contraste */
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,11,20,.78) 0, rgba(5,11,20,.4) 20%, rgba(5,11,20,.42) 55%, rgba(5,11,20,.86) 80%, #050b14 100%); }
+/* a luz some antes de chegar ao título */
+.hero-led { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 104px), transparent calc(100% - 44px)); mask-image: linear-gradient(to bottom, #000 calc(100% - 104px), transparent calc(100% - 44px)); }
+.hero-ambient { display: none; }
+@media (min-width: 768px) {
+  .hero { min-height: min(calc(100vh - 56px), 880px); min-height: min(calc(100svh - 56px), 880px); }
+  .hero-media { position: absolute; top: var(--header-h); bottom: 0; right: 0; height: auto; width: min(54vw, 84vh, 780px); width: min(54vw, 84svh, 780px); --hx: 0.35; --hy: 0.34; }
+  .hero-shade { background: linear-gradient(to bottom, #050b14 0, rgba(5,11,20,.34) 13%, rgba(5,11,20,.34) 76%, #050b14 100%); }
+  .hero-photo { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%); mask-image: linear-gradient(to right, transparent 0, #000 24%); }
+  .hero-led { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%); mask-image: linear-gradient(to right, transparent 0, #000 7%); }
+  /* a própria foto, desfocada, preenche o resto do hero, sob uma camada azul-marinho */
+  .hero-ambient { display: block; position: absolute; inset: 0; background-size: cover; background-position: 60% 40%; opacity: 0.22; }
+  .hero-ambient + .hero-tint { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(5,11,20,.55), rgba(8,44,74,.28) 45%, transparent 70%); }
+}
 
+/* LED: traços sobre a foto (unidades da foto original, 960 de largura) */
+.led-seg { opacity: 0; will-change: opacity; }
+.led-seg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.led-halo { stroke: #10b7ff; stroke-width: 22; stroke-opacity: 0.22; }
+.led-tail { stroke: #10b7ff; stroke-width: 3; stroke-opacity: 0.55; }
+.led-body { stroke: #19bbff; stroke-width: 4.6; }
+.led-glow { stroke: #5fd3ff; stroke-width: 12; stroke-opacity: 0.55; }
+.led-head { stroke: #f4fcff; stroke-width: 4.8; }
+@media (max-width: 767px) {
+  .led-halo { stroke-width: 30; }
+  .led-tail { stroke-width: 4.8; }
+  .led-body { stroke-width: 7; }
+  .led-glow { stroke-width: 18; }
+  .led-head { stroke-width: 7.4; }
+}
+.hero-led svg { transform: translateZ(0); }

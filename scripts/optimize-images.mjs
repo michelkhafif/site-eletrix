@@ -170,8 +170,15 @@ async function processBrand() {
   }
 }
 
+/** Foto do hero bem pequena e desfocada: preenche o fundo do hero no desktop (cerca de 1 KB). */
+async function processAmbient() {
+  await sharp(path.join(SRC, images['totem-orelhao'])).resize({ width: 64 }).blur(1.6).modulate({ saturation: 1.15 }).webp({ quality: 62 }).toFile(path.join(OUT_IMG, 'hero-ambiente.webp'));
+  console.log('img hero-ambiente');
+}
+
 const only = process.argv[2];
 if (!only || only === 'img') for (const [n, f] of Object.entries(images)) await processImage(n, f);
+if (!only || only === 'img' || only === 'ambiente') await processAmbient();
 if (!only || only === 'logos') {
   for (const s of [...svgOk, ...pngOnly]) await processLogo(s);
   await processBrand();

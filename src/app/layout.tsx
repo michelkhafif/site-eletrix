@@ -28,7 +28,7 @@ const motionScript = `try{if(!matchMedia('(prefers-reduced-motion: reduce)').mat
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className={`${display.variable} ${text.variable}`}>
+    <html lang="pt-BR" className={`${display.variable} ${text.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: motionScript }} />
       </head>

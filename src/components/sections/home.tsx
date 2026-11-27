@@ -1,53 +1,49 @@
 import Link from 'next/link';
 import { Container, Section } from '@/components/ui/Section';
-import { Picture } from '@/components/ui/Picture';
 import { Counter } from '@/components/ui/Counter';
 import { LogoMarquee } from './LogoMarquee';
-import { site } from '@/config/site';
+import { HeroScene } from './HeroScene';
+import { site, withBase } from '@/config/site';
 import { contactHref } from '@/data/services';
 
 /* ------------------------------------------------------------------ HERO */
 export function Hero() {
   return (
-    <section data-tone="dark" aria-labelledby="hero-t" className="relative isolate flex min-h-[min(calc(100svh-56px),880px)] flex-col justify-end overflow-hidden">
-      {/* foto real do carro carregando numa estação Eletrix, escurecida */}
-      <div className="absolute inset-0 -z-10" aria-hidden="true">
-        <Picture name="totem-orelhao" alt="" priority fill sizes="(max-width: 767px) 55vw, 100vw" className="object-[50%_58%] md:object-[50%_74%]" />
-        <div className="absolute inset-0 bg-ink-950/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/30 to-ink-950/50" />
-        <div className="absolute inset-0 hidden bg-gradient-to-r from-ink-950/90 via-ink-950/55 to-transparent md:block" />
-        {/* LED azul: um feixe de luz lento atravessa a imagem, como corrente passando */}
-        <div className="absolute inset-0 overflow-hidden"><div className="led-beam" /></div>
-        <div className="led-glow absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-500 to-transparent" />
-      </div>
+    <section data-tone="dark" aria-labelledby="hero-t" className="hero relative isolate flex flex-col overflow-hidden md:justify-center">
+      <div aria-hidden="true" className="hero-ambient -z-10" style={{ backgroundImage: `url(${withBase('/images/hero-ambiente.webp')})` }} />
+      <div aria-hidden="true" className="hero-tint -z-10" />
+      {/* foto real do carro carregando numa estação Eletrix, com a luz contornando os objetos */}
+      <HeroScene />
 
-      <Container className="relative pb-8 pt-[calc(var(--header-h)+56px)] md:pb-12 md:pt-[calc(var(--header-h)+80px)]">
-        <h1 id="hero-t" className="max-w-[18ch] text-[clamp(2.05rem,1.2rem+4.6vw,4.75rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-white md:max-w-[20ch]">
-          Rede de recarga para carros elétricos, do prédio à sua vaga.
-        </h1>
-        <div className="mt-8 grid max-w-xl grid-cols-2 gap-3 md:mt-10">
-          <Link href={contactHref({ perfil: 'empreendimento' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl bg-brand-500 px-4 py-3 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.85)] transition hover:bg-brand-400 active:translate-y-px md:px-5 md:py-4">
-            <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-lg">Tenho um empreendimento</span>
-            <span className="mt-0.5 hidden text-sm text-ink-950/75 md:block">Hub, Rent, troca de operador</span>
-          </Link>
-          <Link href={contactHref({ interesse: 'instalacao-vaga' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl border border-brand-400 bg-ink-900/80 px-4 py-3 text-white transition hover:bg-brand-500/25 active:translate-y-px md:px-5 md:py-4">
-            <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-lg">Carregar na minha vaga</span>
-            <span className="mt-0.5 hidden text-sm text-white/75 md:block">Visita técnica gratuita</span>
-          </Link>
+      <Container className="pointer-events-none relative z-10 -mt-[88px] pb-8 md:mt-0 md:pb-14 md:pt-[calc(var(--header-h)+32px)]">
+        <div className="pointer-events-auto md:max-w-[54%] lg:max-w-[640px] xl:max-w-[700px]">
+          <h1 id="hero-t" className="max-w-[18ch] text-[clamp(1.85rem,0.45rem+6.4vw,2.9rem)] font-extrabold leading-[1.06] tracking-[-0.035em] text-white md:max-w-none md:text-[clamp(2.4rem,0.8rem+3.4vw,4.2rem)] md:leading-[1.05]">
+            Rede de recarga para carros elétricos, do prédio à sua vaga.
+          </h1>
+          <div className="mt-6 grid max-w-xl grid-cols-2 gap-3 md:mt-9">
+            <Link href={contactHref({ perfil: 'empreendimento' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl bg-brand-500 px-4 py-3 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.85)] transition hover:bg-brand-400 active:translate-y-px md:px-5 md:py-4">
+              <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-base lg:text-lg">Tenho um empreendimento</span>
+              <span className="mt-0.5 hidden text-sm text-ink-950/75 lg:block">Hub, Rent, troca de operador</span>
+            </Link>
+            <Link href={contactHref({ interesse: 'instalacao-vaga' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl border border-brand-400 bg-ink-900/80 px-4 py-3 text-white transition hover:bg-brand-500/25 active:translate-y-px md:px-5 md:py-4">
+              <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-base lg:text-lg">Carregar na minha vaga</span>
+              <span className="mt-0.5 hidden text-sm text-white/75 lg:block">Visita técnica gratuita</span>
+            </Link>
+          </div>
+          <p className="mt-4 text-[0.95rem] text-white/80">
+            Precisa se adequar à norma? <span className="sm:hidden"><br /></span><Link href={contactHref({ interesse: 'adequacao-it-41' })} className="font-semibold text-brand-400 underline underline-offset-4 hover:text-brand-300">Adequação à norma IT-41</Link>
+          </p>
+          <dl className="mt-7 grid max-w-2xl grid-cols-4 gap-3 border-t border-white/15 pt-5 sm:gap-6 md:mt-11 md:pt-6">
+            {site.stats.map((s, i) => (
+              <div key={s.label} className="flex flex-col">
+                <dt className="order-2 mt-1.5 text-[0.72rem] leading-tight text-white/75 sm:text-sm">{s.label}</dt>
+                <dd className="order-1 whitespace-nowrap font-display text-[1.55rem] font-extrabold leading-none tracking-tight text-white sm:text-4xl md:text-[1.9rem] lg:text-[2.35rem]">
+                  <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} delay={500 + i * 220} />
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
-        <p className="mt-4 text-[0.95rem] text-white/80">
-          Precisa se adequar à norma? <Link href={contactHref({ interesse: 'adequacao-it-41' })} className="font-semibold text-brand-400 underline underline-offset-4 hover:text-brand-300">Adequação à norma IT-41</Link>
-        </p>
-        <dl className="mt-9 grid max-w-2xl grid-cols-4 gap-3 border-t border-white/15 pt-6 sm:gap-8 md:mt-12">
-          {site.stats.map((s, i) => (
-            <div key={s.label} className="flex flex-col">
-              <dt className="order-2 mt-1.5 text-[0.72rem] leading-tight text-white/75 sm:text-sm">{s.label}</dt>
-              <dd className="order-1 font-display text-[1.65rem] font-extrabold leading-none tracking-tight text-white sm:text-4xl md:text-[2.5rem]">
-                <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} delay={500 + i * 220} />
-              </dd>
-            </div>
-          ))}
-        </dl>
       </Container>
     </section>
   );
