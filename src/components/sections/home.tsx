@@ -4,6 +4,7 @@ import { Picture } from '@/components/ui/Picture';
 import { Counter } from '@/components/ui/Counter';
 import { LogoMarquee } from './LogoMarquee';
 import { site } from '@/config/site';
+import { contactHref } from '@/data/services';
 
 /* ------------------------------------------------------------------ HERO */
 export function Hero() {
@@ -25,17 +26,17 @@ export function Hero() {
           Rede de recarga para carros elétricos, do prédio à sua vaga.
         </h1>
         <div className="mt-8 grid max-w-xl grid-cols-2 gap-3 md:mt-10">
-          <Link href="/empresas/" className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl bg-brand-500 px-4 py-3 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.85)] transition hover:bg-brand-400 active:translate-y-px md:px-5 md:py-4">
+          <Link href={contactHref({ perfil: 'empreendimento' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl bg-brand-500 px-4 py-3 text-ink-950 shadow-[0_14px_40px_-14px_rgba(16,183,255,.85)] transition hover:bg-brand-400 active:translate-y-px md:px-5 md:py-4">
             <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-lg">Tenho um empreendimento</span>
             <span className="mt-0.5 hidden text-sm text-ink-950/75 md:block">Hub, Rent, troca de operador</span>
           </Link>
-          <Link href="/instalacao-carregador-residencial/" className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl border border-brand-400 bg-ink-900/80 px-4 py-3 text-white transition hover:bg-brand-500/25 active:translate-y-px md:px-5 md:py-4">
-            <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-lg">Quero carregar na minha vaga</span>
+          <Link href={contactHref({ interesse: 'instalacao-vaga' })} className="group flex min-h-[3.5rem] flex-col justify-center rounded-2xl border border-brand-400 bg-ink-900/80 px-4 py-3 text-white transition hover:bg-brand-500/25 active:translate-y-px md:px-5 md:py-4">
+            <span className="font-display text-[0.88rem] font-bold leading-tight min-[380px]:text-[0.98rem] md:text-lg">Carregar na minha vaga</span>
             <span className="mt-0.5 hidden text-sm text-white/75 md:block">Visita técnica gratuita</span>
           </Link>
         </div>
         <p className="mt-4 text-[0.95rem] text-white/80">
-          Síndico ou gestor? <Link href="/condominios/" className="font-semibold text-brand-400 underline underline-offset-4 hover:text-brand-300">Veja o caminho do laudo à IT-41.</Link>
+          Precisa se adequar à norma? <Link href={contactHref({ interesse: 'adequacao-it-41' })} className="font-semibold text-brand-400 underline underline-offset-4 hover:text-brand-300">Adequação à norma IT-41</Link>
         </p>
         <dl className="mt-9 grid max-w-2xl grid-cols-4 gap-3 border-t border-white/15 pt-6 sm:gap-8 md:mt-12">
           {site.stats.map((s, i) => (
