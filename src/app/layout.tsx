@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   title: { default: 'Eletrix | Carregando seu futuro', template: '%s' },
   robots: site.indexable ? { index: true, follow: true } : { index: false, follow: false, nocache: true },
-  icons: { icon: [{ url: withBase('/favicon.svg'), type: 'image/svg+xml' }], apple: withBase('/apple-touch-icon.png') },
+  icons: { icon: [{ url: withBase('/favicon.ico'), sizes: '48x48' }, { url: withBase('/favicon.svg'), type: 'image/svg+xml' }], apple: withBase('/apple-touch-icon.png') },
   formatDetection: { telephone: false },
 };
 

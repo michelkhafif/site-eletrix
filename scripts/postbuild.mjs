@@ -21,7 +21,14 @@ if (production) {
   const prio = (p) => (p === '/' ? '1.0' : /^\/(eletrix-hub|adequacao-it-41|instalacao-carregador-residencial|condominios|empresas)\/$/.test(p) ? '0.9' : p.startsWith('/guias/') ? '0.7' : '0.8');
   const urls = Object.keys(pages).map((p) => `  <url><loc>${siteUrl}${p}</loc><lastmod>${today}</lastmod><priority>${prio(p)}</priority></url>`).join('\n');
   fs.writeFileSync(path.join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
+  const { hostname, pathname } = new URL(`${siteUrl}/`);
+  // domínio próprio no GitHub Pages por branch (no deploy por Actions o arquivo é ignorado, e não atrapalha)
+  if (pathname === '/' && !hostname.endsWith('github.io')) fs.writeFileSync(path.join(OUT, 'CNAME'), `${hostname}\n`);
   console.log('postbuild: produção, robots.txt liberado e sitemap.xml com', Object.keys(pages).length, 'URLs');
+  const config = fs.readFileSync(path.join(ROOT, 'src/config/site.ts'), 'utf8');
+  if (/showPlaceholderTestimonials:\s*true/.test(config)) {
+    console.warn('\n  ATENÇÃO: os depoimentos PROVISÓRIOS estão visíveis nesta versão de produção.\n  Troque-os por depoimentos reais ou use showPlaceholderTestimonials: false (ver GO-LIVE.md).\n');
+  }
 } else {
   fs.writeFileSync(path.join(OUT, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
   if (fs.existsSync(path.join(OUT, 'sitemap.xml'))) fs.rmSync(path.join(OUT, 'sitemap.xml'));

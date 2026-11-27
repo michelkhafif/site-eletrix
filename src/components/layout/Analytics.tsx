@@ -31,7 +31,11 @@ export function Analytics() {
       document.head.appendChild(s);
       const w = window as unknown as { dataLayer: unknown[] };
       w.dataLayer = w.dataLayer || [];
-      const gtag = (...a: unknown[]) => w.dataLayer.push(a);
+      // o gtag.js só reconhece comandos enviados como o objeto "arguments" (um array comum é ignorado)
+      const gtag: (...a: unknown[]) => void = function () {
+        // eslint-disable-next-line prefer-rest-params
+        w.dataLayer.push(arguments);
+      };
       gtag('js', new Date());
       gtag('config', ga4Id);
     }
@@ -40,12 +44,20 @@ export function Analytics() {
       s.async = true;
       s.src = 'https://connect.facebook.net/en_US/fbevents.js';
       document.head.appendChild(s);
-      const w = window as unknown as { fbq?: (...a: unknown[]) => void; _fbq?: unknown };
-      const fbq = (...a: unknown[]) => ((w.fbq as unknown as { queue: unknown[] }).queue.push(a));
-      (fbq as unknown as { queue: unknown[] }).queue = [];
-      w.fbq = fbq;
-      fbq('init', metaPixelId);
-      fbq('track', 'PageView');
+      // mesma fila do código oficial do Pixel: o fbevents.js assume as chamadas quando termina de carregar
+      type Fbq = ((...a: unknown[]) => void) & { callMethod?: (...a: unknown[]) => void; queue: unknown[][]; loaded: boolean; version: string; push: unknown };
+      const w = window as unknown as { fbq?: Fbq; _fbq?: Fbq };
+      if (!w.fbq) {
+        const fbq = ((...a: unknown[]) => (fbq.callMethod ? fbq.callMethod(...a) : void fbq.queue.push(a))) as Fbq;
+        fbq.queue = [];
+        fbq.loaded = true;
+        fbq.version = '2.0';
+        fbq.push = fbq;
+        w.fbq = fbq;
+        w._fbq = fbq;
+        fbq('init', metaPixelId);
+        fbq('track', 'PageView');
+      }
     }
   }, [enabled, choice, ga4Id, metaPixelId]);
 
@@ -55,7 +67,7 @@ export function Analytics() {
     setChoice(v);
   };
   return (
-    <div role="region" aria-label="Aviso de cookies" className="fixed inset-x-4 bottom-20 z-50 mx-auto max-w-xl rounded-2xl border border-white/15 bg-ink-900 p-4 text-sm text-white shadow-lift md:bottom-6 md:left-6 md:right-auto">
+    <div role="region" aria-label="Aviso de cookies" data-wa-avoid className="fixed inset-x-4 bottom-20 z-50 mx-auto max-w-xl rounded-2xl border border-white/15 bg-ink-900 p-4 text-sm text-white shadow-lift md:bottom-6 md:left-6 md:right-auto">
       <p className="text-muted-dark">
         Usamos cookies de medição para entender como o site é usado. Você pode recusar. Saiba mais na{' '}
         <Link href="/politica-de-privacidade/" className="text-brand-400 underline underline-offset-4">política de privacidade</Link>.

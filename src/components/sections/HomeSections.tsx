@@ -37,7 +37,7 @@ const casePhoto: Record<Profile, { name: string; alt: string }> = {
 export function WhichCase() {
   const order: Profile[] = ['morador', 'sindico', 'negocio'];
   return (
-    <Section tone="paper" labelledBy="caso-t">
+    <Section tone="paper" id="solucoes" labelledBy="caso-t">
       <Container>
         <SectionHeader id="caso-t" title="Qual é o seu caso?" lead="Escolha o seu perfil e veja o que a Eletrix faz por você." />
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -348,7 +348,7 @@ export function Testimonials() {
   if (!site.flags.showPlaceholderTestimonials) return null;
   const [main, ...others] = testimonials;
   return (
-    <Section tone="ink" labelledBy="dep-t" className="overflow-hidden">
+    <Section tone="ink" id="depoimentos" labelledBy="dep-t" className="overflow-hidden">
       <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-0 h-[480px] w-[480px] rounded-full bg-brand-500/10 blur-[130px]" />
       <Container className="relative">
         <SectionHeader id="dep-t" title="O que muda quando a operação funciona." />

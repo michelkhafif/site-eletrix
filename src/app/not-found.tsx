@@ -30,7 +30,7 @@ export default function NotFound() {
             </li>
           ))}
         </ul>
-        <p className="mt-10 text-muted-dark">Ou veja o <Link href="/#estacoes" className="text-brand-400 underline underline-offset-4">mapa de estações</Link>, os <Link href="/guias/" className="text-brand-400 underline underline-offset-4">guias</Link> e a página de <Link href="/contato/" className="text-brand-400 underline underline-offset-4">contato</Link>.</p>
+        <p className="mt-10 text-muted-dark">Ou veja o <Link href="/#estacoes" className="text-brand-400 underline underline-offset-4">mapa de estações</Link>, os <Link href="/guias/" className="text-brand-400 underline underline-offset-4">guias</Link>, o <Link href="/suporte/" className="text-brand-400 underline underline-offset-4">suporte das estações</Link> e a página de <Link href="/contato/" className="text-brand-400 underline underline-offset-4">contato</Link>.</p>
       </Container>
     </Section>
   );

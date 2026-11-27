@@ -26,11 +26,17 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run typecheck
-      # Ambiente de teste: basePath /site-eletrix, noindex e robots.txt com Disallow: /
+      - run: npm run seo:check
+      # Padrão = ambiente de teste (basePath /site-eletrix, noindex, robots.txt com Disallow: /).
+      # Lançamento: crie a variável do repositório SITE_ENV=production (ver GO-LIVE.md) e o build
+      # passa a sair para https://eletrix.mobi, sem basePath, indexável e com sitemap.
       - run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: /site-eletrix
-          NEXT_PUBLIC_SITE_ENV: test
+          NEXT_PUBLIC_BASE_PATH: ${{ vars.SITE_ENV != 'production' && '/site-eletrix' || '' }}
+          NEXT_PUBLIC_SITE_ENV: ${{ vars.SITE_ENV == 'production' && 'production' || 'test' }}
+      - run: npm run links:check
+        env:
+          NEXT_PUBLIC_BASE_PATH: ${{ vars.SITE_ENV != 'production' && '/site-eletrix' || '' }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out

@@ -1,0 +1,14 @@
+# Redirecionamentos 301 para hospedagens que leem este arquivo (Cloudflare Pages, Netlify).
+# No GitHub Pages ele é ignorado: as mesmas rotas redirecionam por meta refresh.
+/estacao-de-recarga-veiculos-eletricos        /empresas/       301
+/estacao-de-recarga-veiculos-eletricos/       /empresas/       301
+/carregador-veicular-predios-corporativos     /eletrix-hub/    301
+/carregador-veicular-predios-corporativos/    /eletrix-hub/    301
+/eletroposto-tarifado                         /eletrix-hub/    301
+/eletroposto-tarifado/                        /eletrix-hub/    301
+/empreendimentos                              /#estacoes       301
+/empreendimentos/                             /#estacoes       301
+/estacoes                                     /#estacoes       301
+/estacoes/                                    /#estacoes       301
+/app                                          /#app            301
+/app/                                         /#app            301

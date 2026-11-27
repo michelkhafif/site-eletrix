@@ -31,6 +31,20 @@ function wrap(text, max) {
 
 const slug = (p) => (p === '/' ? 'home' : p.replace(/^\/|\/$/g, '').replace(/\//g, '--'));
 
+/** favicon.ico (48 x 48, PNG dentro do contêiner ICO) a partir do favicon.svg, para navegadores e buscadores antigos. */
+async function favicon() {
+  const png = await sharp(path.join(ROOT, 'public/favicon.svg'), { density: 300 }).resize(48, 48).png().toBuffer();
+  const head = Buffer.alloc(22);
+  head.writeUInt16LE(1, 2); head.writeUInt16LE(1, 4);
+  head.writeUInt8(48, 6); head.writeUInt8(48, 7); head.writeUInt16LE(1, 10); head.writeUInt16LE(32, 12);
+  head.writeUInt32LE(png.length, 14); head.writeUInt32LE(22, 18);
+  fs.writeFileSync(path.join(ROOT, 'public/favicon.ico'), Buffer.concat([head, png]));
+  console.log('favicon.ico');
+}
+await favicon();
+// remove imagens de páginas que não existem mais
+for (const f of fs.readdirSync(outDir)) if (!Object.keys(pages).some((p) => `${slug(p)}.png` === f)) fs.rmSync(path.join(outDir, f));
+
 for (const [p, m] of Object.entries(pages)) {
   const { headline, kicker, bg } = m.og;
   const info = images[bg];
