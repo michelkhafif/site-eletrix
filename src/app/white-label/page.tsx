@@ -81,7 +81,7 @@ export default function WhiteLabelPage() {
         <RelatedLinks items={[
           { href: '/eletrix-hub/', kicker: '06', title: 'Eletrix Hub', text: 'Comodato sem mensalidade.' },
           { href: '/eletrix-rent/', kicker: '07', title: 'Eletrix Rent', text: 'Locação com mensalidade fixa.' },
-          { href: '/app/', kicker: 'App', title: 'App Eletrix', text: 'Como o usuário recarrega e paga.' },
+          { href: '/#app', kicker: 'App', title: 'App Eletrix', text: 'Como o usuário recarrega e paga.' },
         ]} />
       </Band>
       <CTABand title="Quer a recarga com a sua marca?" text="Converse com o time comercial e avalie o white label para a sua rede." whatsappMessage={wa.whitelabel} bg="thera-praca" />

@@ -116,15 +116,6 @@
       "bg": "case-6"
     }
   },
-  "/app/": {
-    "title": "App Eletrix: recarregue seu carro elétrico pelo celular",
-    "description": "Localize estações no mapa, inicie e acompanhe a recarga e pague com cartão de crédito ou saldo em carteira. Disponível para iOS e Android.",
-    "og": {
-      "headline": "Recarregue pelo app Eletrix.",
-      "kicker": "iOS e Android",
-      "bg": "app-mapa"
-    }
-  },
   "/suporte/": {
     "title": "Suporte Eletrix: ajuda para recarga e estações",
     "description": "Suporte das estações Eletrix: 0800 444 1044, 24 horas, ou WhatsApp das 8h às 20h. Veja o que conferir se a recarga não iniciar.",

@@ -103,6 +103,12 @@ dialog.sheet::backdrop { background: rgba(5, 11, 20, 0.72); backdrop-filter: blu
 dialog.sheet[open] { animation: sheet-up 0.26s cubic-bezier(0.2, 0.8, 0.2, 1); }
 @media (min-width: 640px) { dialog.sheet[open] { animation: sheet-pop 0.2s ease-out; } }
 
+/* Menu do celular aberto: o botão flutuante do WhatsApp sai da frente */
+html[data-menu-open] .wa-float { visibility: hidden; }
+
+/* seções que recebem o foco por um link do menu não ganham contorno */
+section[tabindex='-1']:focus { outline: none; }
+
 /* ---------- Accordion nativo ---------- */
 details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }

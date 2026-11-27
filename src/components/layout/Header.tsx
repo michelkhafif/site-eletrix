@@ -5,11 +5,18 @@ import { usePathname } from 'next/navigation';
 import { Icon } from '@/components/ui/Icon';
 import { Button } from '@/components/ui/Button';
 import { Logo } from './Logo';
+import { scrollOnHome } from './anchor';
 import { Picture } from '@/components/ui/Picture';
 import { extraSolutions, profiles, solutions, type Profile } from '@/data/solutions';
+import { contactByPath, contactHref } from '@/data/services';
+import { site } from '@/config/site';
 
-const mainLinks = [
+/** Ordem do menu: Home · Soluções · App · Estações · Parceiros · Sobre. */
+const beforeSolutions = [{ href: '/', label: 'Home' }];
+const afterSolutions = [
+  { href: '/#app', label: 'App' },
   { href: '/#estacoes', label: 'Estações' },
+  { href: '/parceiros/', label: 'Parceiros' },
   { href: '/sobre/', label: 'Sobre' },
 ];
 
@@ -101,7 +108,9 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = mobile ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
+    // com o menu aberto, elementos flutuantes (WhatsApp) saem da frente
+    document.documentElement.toggleAttribute('data-menu-open', mobile);
+    return () => { document.body.style.overflow = ''; document.documentElement.removeAttribute('data-menu-open'); };
   }, [mobile]);
 
   useEffect(() => {
@@ -141,7 +150,21 @@ export function Header() {
   };
   useEffect(() => { if (!mega) setPinned(false); }, [mega]);
 
-  const active = (href: string) => pathname.startsWith(href);
+  const active = (href: string) => (href === '/' ? pathname === '/' : !href.includes('#') && pathname.startsWith(href));
+  const contact = contactHref(contactByPath[pathname]);
+  const go = (href: string) => (e: React.MouseEvent) => { setMobile(false); setMega(false); scrollOnHome(e, href, pathname); };
+  const mobileLink = (l: { href: string; label: string }) => (
+    <Link key={l.href} href={l.href} onClick={go(l.href)} aria-current={active(l.href) ? 'page' : undefined}
+      className={`flex min-h-[3.25rem] shrink-0 items-center border-b border-white/10 py-2 font-display text-xl font-bold ${active(l.href) ? 'text-brand-400' : 'text-white'}`}>
+      {l.label}
+    </Link>
+  );
+  const navLink = (l: { href: string; label: string }) => (
+    <Link key={l.href} href={l.href} onClick={go(l.href)} aria-current={active(l.href) ? 'page' : undefined}
+      className={`flex h-10 items-center whitespace-nowrap rounded-full px-2 text-[0.86rem] font-medium transition hover:bg-white/10 xl:px-3.5 xl:text-[0.92rem] ${active(l.href) ? 'text-brand-400' : 'text-white/90'}`}>
+      {l.label}
+    </Link>
+  );
 
   return (
     <>
@@ -154,10 +177,11 @@ export function Header() {
       <a href="#conteudo" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand-500 focus:px-4 focus:py-2 focus:font-semibold focus:text-ink-950">
         Pular para o conteúdo
       </a>
-      <div className="container-x flex h-full items-center justify-between gap-6">
-        <Logo height={21} />
+      <div className="container-x flex h-full items-center justify-between gap-3 xl:gap-6">
+        <Logo height={20} onClick={go('/')} className="[&>img]:!h-[18px] sm:[&>img]:!h-5 xl:[&>img]:!h-[21px]" />
 
-        <nav aria-label="Principal" className="hidden items-center gap-1 lg:flex">
+        <nav aria-label="Principal" className="hidden items-center lg:flex xl:gap-1">
+          {beforeSolutions.map(navLink)}
           <div ref={wrap} className="relative" onMouseEnter={openHover} onMouseLeave={closeHover}>
             <button
               ref={megaBtn}
@@ -165,26 +189,26 @@ export function Header() {
               aria-expanded={mega}
               aria-controls="mega-solucoes"
               onClick={onMegaClick}
-              className={`flex h-10 items-center gap-1.5 rounded-full px-4 text-[0.92rem] font-medium transition hover:bg-white/10 ${mega ? 'bg-white/10 text-white' : 'text-white/90'}`}
+              className={`flex h-10 items-center gap-1 whitespace-nowrap rounded-full px-2 text-[0.86rem] font-medium transition hover:bg-white/10 xl:gap-1.5 xl:px-3.5 xl:text-[0.92rem] ${mega ? 'bg-white/10 text-white' : 'text-white/90'}`}
             >
-              Soluções <Icon name="chevronDown" size={16} className={`transition-transform duration-200 ${mega ? 'rotate-180' : ''}`} />
+              Soluções <Icon name="chevronDown" size={15} className={`transition-transform duration-200 ${mega ? 'rotate-180' : ''}`} />
             </button>
             <div id="mega-solucoes" hidden={!mega} className="fixed left-1/2 top-[calc(var(--header-h)-4px)] w-[min(1180px,calc(100vw-2rem))] -translate-x-1/2 pt-3">
               {mega && <MegaPanel onNavigate={() => setMega(false)} />}
             </div>
           </div>
-          {mainLinks.map((l) => (
-            <Link key={l.href} href={l.href} aria-current={active(l.href) ? 'page' : undefined}
-              className={`flex h-10 items-center rounded-full px-3 text-[0.92rem] font-medium transition hover:bg-white/10 xl:px-4 ${active(l.href) ? 'text-brand-400' : 'text-white/90'}`}>
-              {l.label}
-            </Link>
-          ))}
+          {afterSolutions.map(navLink)}
         </nav>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          <Link href="/app/" className="hidden h-10 items-center rounded-full px-3 text-sm text-white/80 transition hover:text-white lg:flex">App</Link>
-          <Link href="/suporte/" className="hidden h-10 items-center rounded-full px-3 text-sm text-white/80 transition hover:text-white lg:flex">Suporte</Link>
-          <Button href="/contato/" size="sm" className="ml-2">Fale com a Eletrix</Button>
+        <div className="hidden items-center gap-1 lg:flex xl:gap-2">
+          <a href={site.app.download} target="_blank" rel="noopener"
+            className="flex h-10 items-center gap-1.5 whitespace-nowrap rounded-full border border-brand-400/60 bg-brand-500/15 px-3 text-[0.84rem] font-semibold text-white transition hover:border-brand-400 hover:bg-brand-500/30 xl:px-4 xl:text-sm">
+            <Icon name="phoneApp" size={16} strokeWidth={1.9} className="text-brand-400" /> Baixe o App
+          </a>
+          <Link href="/suporte/" aria-haspopup="dialog" className="flex h-10 items-center gap-1.5 whitespace-nowrap rounded-full px-2 text-[0.84rem] font-medium text-white/85 transition hover:bg-white/10 hover:text-white xl:px-3 xl:text-sm">
+            <Icon name="headset" size={17} className="hidden xl:block" />Suporte
+          </Link>
+          <Button href={contact} size="sm" className="!px-3.5 !text-[0.84rem] xl:!px-4 xl:!text-sm">Fale com a Eletrix</Button>
         </div>
 
         <button
@@ -203,9 +227,10 @@ export function Header() {
     </header>
       {mobile && (
         <div id="menu-mobile" ref={panel} role="dialog" aria-modal="true" aria-label="Menu" className="fixed inset-x-0 bottom-0 top-0 z-40 overflow-y-auto overscroll-contain bg-ink-950 pt-[var(--header-h)] lg:hidden" style={{ height: '100dvh' }} data-tone="dark">
-          <nav aria-label="Menu móvel" className="container-x flex min-h-full flex-col pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4">
+          <nav aria-label="Menu móvel" className="container-x flex min-h-full flex-col pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-2">
+            {beforeSolutions.map(mobileLink)}
             <button type="button" aria-expanded={mobileSol} onClick={() => setMobileSol((v) => !v)}
-              className="flex min-h-14 items-center justify-between border-b border-white/10 py-3 text-left font-display text-xl font-bold text-white">
+              className="flex min-h-[3.25rem] shrink-0 items-center justify-between border-b border-white/10 py-2 text-left font-display text-xl font-bold text-white">
               Soluções <Icon name="chevronDown" className={`transition-transform ${mobileSol ? 'rotate-180' : ''}`} />
             </button>
             {mobileSol && (
@@ -224,15 +249,19 @@ export function Header() {
                 ))}
               </div>
             )}
-            {mainLinks.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setMobile(false)} className="flex min-h-14 items-center border-b border-white/10 py-3 font-display text-xl font-bold text-white">{l.label}</Link>
-            ))}
-            <div className="mt-2 flex gap-2 text-white/80">
-              <Link href="/app/" onClick={() => setMobile(false)} className="flex min-h-12 items-center pr-5">App</Link>
-              <Link href="/suporte/" onClick={() => setMobile(false)} className="flex min-h-12 items-center pr-5">Suporte</Link>
-            </div>
-            <div className="mt-auto pt-8">
-              <Button href="/contato/" size="lg" className="w-full" onClick={() => setMobile(false)}>Fale com a Eletrix</Button>
+            {afterSolutions.map(mobileLink)}
+            <div className="mt-auto pt-6">
+              <div className="grid grid-cols-2 gap-3">
+                <a href={site.app.download} target="_blank" rel="noopener" onClick={() => setMobile(false)}
+                  className="flex min-h-14 items-center justify-center gap-2 rounded-full border border-brand-400/60 bg-brand-500/15 px-3 text-center font-semibold text-white active:bg-brand-500/40">
+                  <Icon name="phoneApp" size={19} className="shrink-0 text-brand-400" /> Baixe o App
+                </a>
+                <Link href="/suporte/" aria-haspopup="dialog" onClick={() => setMobile(false)}
+                  className="flex min-h-14 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-3 font-semibold text-white active:bg-white/15">
+                  <Icon name="headset" size={19} className="shrink-0 text-brand-400" /> Suporte
+                </Link>
+              </div>
+              <Button href={contact} size="lg" className="mt-3 w-full" onClick={() => setMobile(false)}>Fale com a Eletrix</Button>
             </div>
           </nav>
         </div>
