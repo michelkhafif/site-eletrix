@@ -100,7 +100,7 @@ export default function CompaniesPage() {
 
       <DuvidasSobre path={PATH} />
       <RelatedLinks_ />
-      <FinalContact initial="gestor" whatsappMessage={wa.empreendimento} title="Vamos conversar sobre o seu empreendimento?" />
+      <FinalContact initial={{ perfil: 'empreendimento' }} origin={PATH} whatsappMessage={wa.empreendimento} title="Vamos conversar sobre o seu empreendimento?" />
     </>
   );
 }

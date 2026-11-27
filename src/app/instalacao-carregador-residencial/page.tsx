@@ -113,7 +113,7 @@ export default function ResidentialPage() {
               <p className="mt-5 text-lead text-fg-muted">Preencha o formulário ou chame direto no WhatsApp. Respondemos em horário comercial.</p>
               <p className="mt-6"><Button href={whatsappLink(wa.morador)} icon="whatsapp">Falar no WhatsApp</Button></p>
             </div>
-            <div data-reveal className="card p-6 md:p-9"><ContactForm profile="morador" origin={PATH} /></div>
+            <div data-tone="light" className="rounded-3xl p-5 shadow-lift ring-1 ring-ink-900/5 sm:p-8"><ContactForm initial={{ interesse: 'instalacao-vaga' }} origin={PATH} /></div>
           </div>
         </Container>
       </Section>

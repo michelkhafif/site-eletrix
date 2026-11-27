@@ -93,7 +93,7 @@ export default function CondosPage() {
       <FAQ items={faqs.condominios} />
 
       <DuvidasSobre path={PATH} />
-      <FinalContact initial="sindico" whatsappMessage={wa.sindico} title="Vamos planejar o caminho do seu condomínio?" />
+      <FinalContact initial={{ perfil: 'sindico' }} origin={PATH} whatsappMessage={wa.sindico} title="Vamos planejar o caminho do seu condomínio?" />
     </>
   );
 }

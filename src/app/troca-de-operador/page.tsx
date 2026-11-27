@@ -75,20 +75,20 @@ export default function SwitchPage() {
         <p className="mt-6 text-fg-muted">Mais de 50 estações já migraram para a Eletrix nos últimos meses. <Link href="/eletrix-hub/" className="font-semibold text-accent underline underline-offset-4">Conheça o Eletrix Hub</Link>.</p>
       </Band>
 
-      <Section tone="light" id="formulario" labelledBy="form-t">
+      <Section tone="paper" id="formulario" labelledBy="form-t">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
             <div data-reveal>
               <p className="eyebrow mb-4">Pedir avaliação</p>
               <h2 id="form-t" className="text-h2">Conte como estão os carregadores do seu prédio.</h2>
-              <p className="mt-5 text-lead text-fg-muted">Informe os dados do empreendimento e quantos carregadores existem. A equipe comercial entra em contato para agendar a visita técnica.</p>
+              <p className="mt-5 text-lead text-fg-muted">Informe os dados do empreendimento e, na mensagem, quantos carregadores existem. A equipe comercial entra em contato para agendar a visita técnica.</p>
             </div>
-            <div data-reveal className="card p-6 md:p-9"><ContactForm profile="gestor" origin={PATH} /></div>
+            <div data-tone="light" className="rounded-3xl p-5 shadow-lift ring-1 ring-ink-900/5 sm:p-8"><ContactForm initial={{ interesse: 'troca-operador' }} origin={PATH} /></div>
           </div>
         </Container>
       </Section>
 
-      <FAQ items={faqs.troca} tone="paper" />
+      <FAQ items={faqs.troca} tone="light" />
 
       <DuvidasSobre path={PATH} />
       <Band tone="light" id="continue" eyebrow="Continue por aqui" title="Ao assumir, a Eletrix também:">

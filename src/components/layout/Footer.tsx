@@ -71,13 +71,12 @@ export function Footer() {
                 <a href={whatsappLink(wa.suporte, 'support')} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 items-center font-semibold transition hover:text-brand-400">{site.contact.phoneSupportDisplay}</a>
               </li>
               <li><a href={`mailto:${site.contact.email}`} className="inline-flex min-h-9 items-center transition hover:text-brand-400">{site.contact.email}</a></li>
-              <li><address className="not-italic leading-snug text-white/75">{a.street}<br />{a.district}, {a.city}/{a.state}<br />CEP {a.zip}</address></li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-muted-dark md:flex-row md:items-center md:justify-between">
-          <p>© 2026 {site.legalName} · CNPJ {site.cnpj}</p>
+          <p className="max-w-3xl leading-relaxed">© 2026 {site.legalName}, CNPJ {site.cnpj}. <span className="block">{a.street}, {a.district}, {a.city}/{a.state}, CEP {a.zip}</span></p>
           <ul className="flex flex-wrap gap-x-6">
             <li><Link href="/politica-de-privacidade/" className="inline-flex min-h-9 items-center hover:text-white">Política de privacidade</Link></li>
             <li><Link href="/termos-de-uso/" className="inline-flex min-h-9 items-center hover:text-white">Termos de uso</Link></li>
