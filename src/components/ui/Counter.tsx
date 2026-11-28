@@ -17,6 +17,8 @@ export function Counter({ value, prefix = '', suffix = '', delay = 0, duration =
     if (!el || !document.documentElement.classList.contains('motion')) return;
     const fmt = (n: number) => `${prefix}${Math.round(n)}${suffix}`;
     el.textContent = fmt(0);
+    // algarismos de largura igual só durante a contagem; parado, o "11" volta ao espaçamento normal
+    el.classList.add('tnum');
     let raf = 0;
     const timer = setTimeout(() => {
       const t0 = performance.now();
@@ -24,6 +26,7 @@ export function Counter({ value, prefix = '', suffix = '', delay = 0, duration =
         const p = Math.min(1, (t - t0) / duration);
         el.textContent = fmt(value * (1 - Math.pow(1 - p, 4)));
         if (p < 1) raf = requestAnimationFrame(tick);
+        else el.classList.remove('tnum');
       };
       raf = requestAnimationFrame(tick);
     }, delay);
@@ -32,8 +35,8 @@ export function Counter({ value, prefix = '', suffix = '', delay = 0, duration =
   return (
     <>
       <span className="sr-only">{finalText}</span>
-      <span aria-hidden="true" className="tnum inline-grid">
-        <span className="invisible col-start-1 row-start-1">{finalText}</span>
+      <span aria-hidden="true" className="inline-grid">
+        <span className="tnum invisible col-start-1 row-start-1">{finalText}</span>
         <span ref={ref} className="col-start-1 row-start-1">{finalText}</span>
       </span>
     </>

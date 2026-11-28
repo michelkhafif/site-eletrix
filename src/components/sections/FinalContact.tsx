@@ -28,8 +28,14 @@ export function FinalContact({ initial, origin, whatsappMessage = wa.default, ti
           <div className="flex flex-col justify-between gap-10 rounded-3xl bg-white/[0.04] p-6 ring-1 ring-white/10 backdrop-blur-sm md:p-9">
             <div>
               <h2 id="final-t" className="text-h2">{title}</h2>
-              <p className="mt-4 max-w-md text-lead text-muted-dark">Conte o seu caso. O time comercial indica o caminho e agenda a visita técnica.</p>
-              <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-1 lg:max-w-sm">
+              <ol className="mt-7 space-y-3.5">
+                {['Conte o seu caso no formulário ou no WhatsApp.', 'O time comercial indica o melhor caminho.', 'A gente agenda a visita técnica.'].map((t, i) => (
+                  <li key={t} className="flex items-center gap-3.5 text-[1.02rem] text-white/85">
+                    <span aria-hidden="true" className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-500 font-display text-sm font-extrabold text-ink-950">{i + 1}</span>{t}
+                  </li>
+                ))}
+              </ol>
+              <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:max-w-sm lg:grid-cols-1">
                 <Button href={whatsappLink(whatsappMessage)} size="lg">
                   <span className="inline-flex items-center gap-2"><WhatsAppGlyph size={19} /> Falar no WhatsApp</span>
                 </Button>

@@ -25,7 +25,7 @@ const profileOrder: Profile[] = ['morador', 'sindico', 'negocio'];
 function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
   const group = (p: Profile) => solutions.filter((s) => s.profile === p);
   return (
-    <div className="grid gap-0 divide-x divide-white overflow-hidden rounded-2xl border border-white bg-ink-900 shadow-lift lg:grid-cols-[1fr_1fr_1.1fr_0.9fr]">
+    <div className="grid gap-0 divide-x divide-white overflow-hidden rounded-2xl border border-white bg-ink-900 shadow-lift lg:grid-cols-3 xl:grid-cols-[1fr_1fr_1.1fr_0.9fr]">
       {profileOrder.map((p) => (
         <div key={p} className="bg-ink-900 p-6">
           <p className="text-sm font-semibold text-brand-400">{profiles[p].title}</p>
@@ -71,7 +71,7 @@ function MegaPanel({ onNavigate }: { onNavigate: () => void }) {
           </ul>
         </div>
       ))}
-      <Link href="/eletrix-hub/" onClick={onNavigate} className="group relative hidden min-h-[280px] overflow-hidden bg-ink-950 lg:block">
+      <Link href="/eletrix-hub/" onClick={onNavigate} className="group relative hidden min-h-[280px] overflow-hidden bg-ink-950 xl:block">
         <div className="absolute inset-0"><Picture name="totem-orelhao" alt="" sizes="320px" fill position="50% 30%" className="opacity-70 transition duration-500 group-hover:scale-[1.03] group-hover:opacity-85" /></div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6">

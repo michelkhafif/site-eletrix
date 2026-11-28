@@ -12,7 +12,7 @@
     "images": "node scripts/optimize-images.mjs",
     "data": "node scripts/geocode.mjs && node scripts/build-stations.mjs && node scripts/build-map.mjs",
     "og": "node scripts/generate-og.mjs",
-    "build:pages": "cross-env NEXT_PUBLIC_BASE_PATH=/site-eletrix next build",
+    "build:pages": "cross-env NEXT_PUBLIC_BASE_PATH=/site-eletrix npm run build",
     "postbuild": "node scripts/postbuild.mjs",
     "seo:check": "node scripts/check-seo.mjs",
     "links:check": "node scripts/check-links.mjs"
