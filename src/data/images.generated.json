@@ -183,6 +183,15 @@
   ],
   "fallback": 1280
  },
+ "app-tela": {
+  "w": 589,
+  "h": 1280,
+  "widths": [
+   480,
+   589
+  ],
+  "fallback": 589
+ },
  "totem-orelhao": {
   "w": 960,
   "h": 1280,
@@ -313,44 +322,6 @@
   ],
   "fallback": 883
  },
- "caso-morador": {
-  "w": 640,
-  "h": 480,
-  "widths": [
-   480,
-   640
-  ],
-  "fallback": 640
- },
- "caso-sindico": {
-  "w": 1176,
-  "h": 882,
-  "widths": [
-   480,
-   800,
-   1176
-  ],
-  "fallback": 1176
- },
- "caso-negocio": {
-  "w": 1022,
-  "h": 767,
-  "widths": [
-   480,
-   800,
-   1022
-  ],
-  "fallback": 1022
- },
- "app-tela": {
-  "w": 589,
-  "h": 1280,
-  "widths": [
-   480,
-   589
-  ],
-  "fallback": 589
- },
  "predio-plaza-centenario": {
   "w": 1200,
   "h": 1200,
@@ -455,5 +426,34 @@
    415
   ],
   "fallback": 415
+ },
+ "caso-morador": {
+  "w": 640,
+  "h": 480,
+  "widths": [
+   480,
+   640
+  ],
+  "fallback": 640
+ },
+ "caso-sindico": {
+  "w": 1176,
+  "h": 882,
+  "widths": [
+   480,
+   800,
+   1176
+  ],
+  "fallback": 1176
+ },
+ "caso-negocio": {
+  "w": 1022,
+  "h": 767,
+  "widths": [
+   480,
+   800,
+   1022
+  ],
+  "fallback": 1022
  }
 }
