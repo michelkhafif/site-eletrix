@@ -114,3 +114,129 @@ Substitui a decisão do item C-2 acima. A faixa volta a ser uma rolagem horizont
 - **Roda também com `prefers-reduced-motion`**, por pedido expresso. O marquee é a exceção à regra de reduzir movimento; a grade estática foi removida. Registro o risco: usuários sensíveis a movimento verão a faixa rolando (o movimento é lento e linear).
 - Logos maiores (escala 1,6× contra 1,45× antes), com a mesma área ótica entre eles (altura e largura calculadas pela proporção de cada logo). Células de 200 px no celular e 240 px no desktop; no celular a faixa também roda.
 - Fundo continua claro (branco), contrastando com o hero escuro.
+
+---
+
+# Rodada 3 (27/11/2026)
+
+Branch `rodada-3`. Onde esta seção contradiz as anteriores, vale esta. 💡 marca os itens com liberdade criativa.
+
+## R-1 Header 💡
+- **A (escolhida):** os seis itens continuam visíveis a partir de 1024 px, com fonte e respiros menores abaixo de 1280 px e sem o ícone de "Suporte" nessa faixa. Medido em 1024, 1152, 1280, 1440 e 1920: nada encosta nem quebra linha.
+- B: juntar "Parceiros" e "Sobre" em um menu "Mais". Esconde justamente o item novo.
+- C: menu hambúrguer até 1279 px. Esconde tudo em muitos notebooks.
+- "Home" e "App" rolam com suavidade quando já se está na home (sem suavidade com movimento reduzido) e levam o foco à seção.
+- "Fale com a Eletrix" leva o contexto da página (na IT-41, já abre em síndico + IT-41). Na home e nas páginas institucionais abre sem escolha, para a pessoa decidir.
+- Menu do celular: "Baixe o App" e "Suporte" lado a lado, acima do botão principal.
+- Menu Soluções entre 1024 e 1279 px: três colunas, sem a foto em destaque ("IT-41" quebrava no meio).
+
+## R-2 Suporte em popup
+- `<dialog>` nativo (`showModal`): resto da página inerte, Esc, foco devolvido. Folha de baixo para cima no celular.
+- Qualquer link para `/suporte/` abre o popup; a página continua como alternativa sem JavaScript.
+- 0800 em primeiro, em marinho; WhatsApp em verde claro, com o horário em destaque.
+
+## R-3 Contato 💡
+- **A (escolhida):** fundo marinho com a foto do Aqwa bem apagada, três canais compactos e o formulário em cartão claro. No desktop, canais à esquerda e formulário à direita.
+- B: faixa escura em cima e formulário "subindo" sobre uma seção clara. Empurra o formulário para baixo no celular.
+- C: tela dividida com foto grande. Boa no desktop, inútil no celular.
+- Perfil virou um seletor de três posições; "Endereço" é obrigatório; "Condomínio" é opcional para o morador.
+- Nas outras páginas: cartões das seções brancas ganharam azul claro (`--card: #f2f9fe`), para não haver caixa branca sobre branco.
+- Endereço e CNPJ ficam na linha final do rodapé (o endereço saiu da coluna "Fale com a gente").
+
+## R-4 LED do hero 💡
+- **A (escolhida):** contornos traçados à mão em curvas de Bézier sobre a foto original (`src/data/hero-led.json`), conferidos com `scripts/qa/led-overlay.mjs`. A luz segue uma história: cabo → plugue → tampa e porta de recarga → capô e para-lama → orelhão → carregador → tomada → segundo orelhão → prédio.
+- B: detecção automática de bordas (sharp/potrace). Descartada: centenas de fragmentos serrilhados, sem como coreografar.
+- C: um traço único ligando todos os objetos. Os saltos entre objetos pareceriam falha.
+- D: canvas. Descartado pelo pedido de leveza.
+- **Enquadramento:** o recorte antigo no desktop cortava o orelhão e o carro. Agora o desktop mostra a foto inteira à direita do texto, com uma cópia desfocada ao fundo; no celular, foto em cima e texto logo abaixo. Foto e SVG usam a mesma moldura calculada em CSS, então a luz fica sobre as bordas em qualquer largura.
+- **Desempenho:** a primeira versão, só em CSS, mantinha 60 animações ligadas e ocupava cerca de dois terços de um processador simulado 4x mais lento. A versão final (`LedRunner.tsx`) mexe só no trecho aceso, a 32 quadros por segundo, começa depois do carregamento, para fora da tela ou com a aba escondida e não roda com movimento reduzido. Na mesma simulação: cerca de um quinto com aceleração gráfica, de um terço à metade sem ela.
+- No celular o halo largo foi desligado.
+
+## R-5 e R-6 Hero e números
+- Os três caminhos do hero vão para `/contato/` (empreendimento; morador + vaga; síndico + IT-41).
+- Números novos em `src/config/site.ts`. Parados, os algarismos voltam ao espaçamento proporcional (o "+11" parecia "+1 1").
+
+## R-7 Parceiros
+- Um tom só, gerado a partir do canal alfa, com receita por logo para não perder recortes: BBZ (letras vazadas), Jaime, GarageInn e Intercity (desenhos claros dentro de formas coloridas), Elias Victor Nigri (só nos círculos) e shpaisman (símbolo em dois tons).
+- Tamanho por área óptica corrigida pela densidade de tinta, com ajuste fino por marca. Mesmo intervalo entre todos.
+- Ordem fixa em `src/data/partners.ts`, alternando largos e compactos e espalhando os grandes nomes.
+
+## R-8 Fotos dos perfis
+- As três em 4:3, recortadas no pipeline com o carregador no centro e leve ajuste de luz. Botões: "Pedir visita técnica", "Falar com um especialista", "Quero oferecer recarga".
+
+## R-9 Hub
+- Seis diferenciais; o do app é destacado em branco e leva à seção seguinte. Botão "Quero o Eletrix Hub"; abaixo, um link para a página do Hub (mantém o caminho para o conteúdo detalhado).
+- "Dashboard" e "Aplicativo individualizado" também entraram em `/eletrix-hub/`, para home e página não se contradizerem (a rodada 2 tinha removido o dashboard de lá).
+
+## R-10 App logo depois do Hub 💡
+- **A (escolhida):** o iPhone avança da seção do app sobre a seção do Hub, e o item "Aplicativo individualizado" tem a chamada "Veja o app".
+- B: as duas seções no mesmo fundo, com uma frase-ponte. Menos memorável e perde o ritmo de cor.
+- C: celular fixo acompanhando a rolagem. Mais complexo e cansativo no celular.
+- A barra de status da captura foi limpa (horário e bateria de quem fez a captura).
+
+## R-11 Página de parceiros 💡
+- **A (escolhida):** fundo marinho, logos brancos em cartões, três faixas (64, 76 e 70 s por volta), a do meio no sentido contrário; pausa no mouse e no foco; com movimento reduzido, grade 7 x 4.
+- B: fundo claro com logos cinza. Repetiria a faixa da home.
+
+## R-12 WhatsApp 💡
+- Balão: **"Como podemos ajudar?"** (escolhida); "Fale com a gente" (repete o rodapé); "Posso ajudar?" (soa como uma pessoa só).
+- Entra após 4 s; no celular recolhe sozinho após 9 s; some quando ficaria sobre botão, formulário, pergunta recolhida ou texto do rodapé. Descartei deixá-lo sempre visível com espaço reservado no fim das páginas.
+
+## R-13 Fechamento dos síndicos 💡
+- **A (escolhida):** bloco marinho que encerra as quatro etapas, na mesma grade, com a frase, o botão e o link para o caminho completo.
+- B: faixa azul de ponta a ponta: já existe a da troca de operador logo abaixo.
+- C: um quinto nó na linha do tempo: confundiria a sequência.
+
+## R-14 Onde a Eletrix opera 💡
+
+Composição **A (escolhida)**
+
+```
++----------------------------------------------------+
+| Onde a                      ::: mapa :::           |
+| Eletrix opera.            :: oo    oo  ::          |
+| +300 estações...            : oo oo oo :  +------+ |
+| (Norte)(Nordeste)(...)        :ooo:       | G.SP | |
+| | legenda                      :o:        +------+ |
+|----------------------------------------------------|
+| Alguns endereços da rede              <   ||   >   |
+##|########|########|########|########|########|######  (borda a borda)
+| ==--------  01 / 15                                |
++----------------------------------------------------+
+```
+
+Composição B
+
+```
++----------------------------------------------------+
+|          +300 estações em 11 estados               |
+|  SP 14  |          :::: mapa grande ::::           |
+|  PR 6   |          ::::::::::::::::::::            |
+|  ...    |          ::::::::::::::::::::            |
+|----------------------------------------------------|
+#### carrossel ####
+```
+
+B foi descartada: o mapa é alto (900 x 1353) e em largura total passaria de uma tela, com vazios dos lados; e a lista por estado exporia a diferença entre os dados (10) e o número oficial (11). Por isso a lista é por região, que confere: há pontos nas cinco.
+
+- **Mapa:** divisas municipais nos 10 estados; pins em gota, três por endereço novo; Grande São Paulo com a capital realçada; na área do detalhe o mapa geral mostra menos pins. Duas versões do SVG: com movimento reduzido a página escolhe a parada.
+- **Carrossel:** 15 prédios (os 11 pedidos, depois Thera, Pinheiros One, Arquipeo e Faria Lima Financial Center). Cartões quadrados, o atual alinhado à margem do texto. Além de pausar no mouse, foco, aba escondida e fora da tela, ganhou um **botão de pausa** (WCAG 2.2.2). "Berrini 500" passou a "B500". Quantum e CBOP são imagens de projeto, ditas no texto alternativo.
+
+## R-15 Depoimentos 💡
+- **A (escolhida):** um depoimento principal com foto da operação e dois menores em cartões claros, cada um com o trecho que resume o resultado marcado.
+- B: carrossel de um por vez: esconde dois terços da prova.
+- C: depoimento com número ao lado: não há números reais por cliente.
+
+## R-16 e R-17
+- Um único componente de cartão de matéria na home e em `/imprensa/`.
+- Fechamento da home em dois painéis de mesma altura. No esquerdo, três passos curtos (o que acontece depois), canais e contatos.
+
+## R-18
+- A variável de repositório `SITE_ENV=production` liga o modo de lançamento sem editar código; sem ela, o deploy continua como teste.
+- Acrescentados: `CNAME`, `_redirects`, redirecionamento das âncoras do site antigo, `favicon.ico`, suporte na página 404, política de privacidade com os campos atuais.
+- Corrigido o envio ao GA4 e ao Meta Pixel (como estava, o GA4 não registraria nada quando fosse ligado).
+
+## Outras
+- Movimento reduzido: agora inclui a faixa da home (ver pendências).
+- Ícone de WhatsApp: o glifo oficial no site todo.
+- Desempenho: foto do hero em 640 px no celular; o carrossel monta as cópias do laço depois de carregar; os logos das faixas carregam depois da página.
