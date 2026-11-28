@@ -100,7 +100,7 @@
 }
 
 /* Página de parceiros: três faixas com cartões; pausam com mouse ou foco */
-.partner-rows { --tile: clamp(148px, 15vw, 330px); }
+.partner-rows { --tile: clamp(160px, 15vw, 330px); }
 .partner-rows:hover .marquee-track, .partner-rows:focus-visible .marquee-track, .partner-rows:focus .marquee-track { animation-play-state: paused; }
 .partner-rows:focus-visible { outline: 2px solid #10b7ff; outline-offset: -2px; }
 .partner-rows .partner-tile { width: var(--tile); height: calc(var(--tile) * 0.5); }
@@ -109,7 +109,7 @@
 @media (min-width: 640px) and (max-width: 1023px) { .partner-grid { --tile: 164px; } }
 @media (max-width: 639px) { .partner-grid { --tile: 42vw; } }
 /* nos cartões, os logos brilham um pouco mais */
-.partner-tile .logo-mono { opacity: 0.8; max-width: 80%; }
+.partner-tile .logo-mono { opacity: 0.8; max-width: 86%; }
 .partner-tile:hover .logo-mono { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   .partner-rows { display: none; }

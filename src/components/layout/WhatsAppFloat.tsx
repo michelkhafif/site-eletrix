@@ -76,7 +76,7 @@ export function WhatsAppFloat() {
   return (
     <div className="wa-float fixed z-40 flex items-end gap-3" style={{ right: 'calc(1rem + env(safe-area-inset-right))', bottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
       {bubble && (
-        <div ref={balloon} className={`wa-bubble relative mb-1.5 flex items-center gap-1 rounded-2xl bg-white py-1.5 pl-4 pr-1.5 shadow-[0_12px_32px_-8px_rgba(5,11,20,.35)] ring-1 ring-ink-900/10 transition-[opacity,transform] duration-200 ${bubbleAway || away ? hidden : ''}`}>
+        <div ref={balloon} className={`wa-bubble relative mb-1.5 flex items-center gap-1 rounded-2xl bg-white py-1.5 pl-4 pr-1.5 shadow-[0_12px_32px_-8px_rgba(5,11,20,.35)] ring-1 ring-ink-900/10 transition-[opacity,transform,visibility] duration-200 ${bubbleAway || away ? `invisible ${hidden}` : ''}`}>
           <a href={whatsappLink(msg)} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="whitespace-nowrap py-2 text-[0.95rem] font-semibold text-ink-900">Como podemos ajudar?</a>
           <button type="button" onClick={dismiss} aria-label="Fechar a mensagem" className="grid h-9 w-9 place-items-center rounded-full text-slate-600 transition hover:bg-slate-100 hover:text-ink-900">
             <Icon name="close" size={16} strokeWidth={2} />

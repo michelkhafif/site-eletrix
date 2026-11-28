@@ -158,6 +158,11 @@ const k = isize / insetView.width;
 const mainPins = pins(points, main, 23, { thin: 13 });
 const insetPins = pins(points.filter((s) => inside(s, insetView)), insetView, 20, { minGap: 5.5 });
 
+/** Pulso dos halos (só na versão animada). */
+const pulse = `
+@media (prefers-reduced-motion:no-preference){.a{animation:p 4.4s ease-in-out infinite}}
+@keyframes p{0%,100%{opacity:.12;transform:scale(.6)}50%{opacity:.95;transform:scale(1.55)}}`;
+
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${main.width} ${main.height}" width="${main.width}" height="${main.height}">
 <defs>
 <radialGradient id="g" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#b6ecff"/><stop offset=".42" stop-color="#10b7ff"/><stop offset="1" stop-color="#0a6fa3"/></radialGradient>
@@ -169,9 +174,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${main.width} 
 <mask id="mx" maskUnits="userSpaceOnUse" x="0" y="0" width="${main.width}" height="${main.height}"><rect width="${main.width}" height="${main.height}" fill="url(#fx)"/></mask>
 <mask id="my" maskUnits="userSpaceOnUse" x="0" y="0" width="${main.width}" height="${main.height}"><rect width="${main.width}" height="${main.height}" fill="url(#fy)"/></mask>
 </defs>
-<style>.h{fill:url(#h);opacity:.42;transform-box:fill-box;transform-origin:center}
-@media (prefers-reduced-motion:no-preference){.a{animation:p 4.4s ease-in-out infinite}}
-@keyframes p{0%,100%{opacity:.12;transform:scale(.6)}50%{opacity:.95;transform:scale(1.55)}}</style>
+<style>.h{fill:url(#h);opacity:.42;transform-box:fill-box;transform-origin:center}${pulse}</style>
 <g mask="url(#mx)"><g mask="url(#my)" stroke-linejoin="round">
 <path d="${statesOther}" fill="#08142a" stroke="#10b7ff" stroke-opacity=".28" stroke-width="1"/>
 <path d="${statesOn}" fill="#0c2444" stroke="none"/>
@@ -201,6 +204,9 @@ const outDir = path.join(ROOT, 'public', 'mapa');
 fs.mkdirSync(outDir, { recursive: true });
 fs.rmSync(path.join(outDir, 'rede-grande-sp.svg'), { force: true });
 fs.writeFileSync(path.join(outDir, 'rede-brasil.svg'), svg);
+// versão sem animação, escolhida pela própria página quando a pessoa pede menos movimento
+// (a consulta de mídia dentro de um SVG carregado como imagem não é confiável em todos os navegadores)
+fs.writeFileSync(path.join(outDir, 'rede-brasil-parado.svg'), svg.replace(pulse, ''));
 
 const pct = (v, total) => Math.round((v / total) * 1000) / 10;
 const summary = {

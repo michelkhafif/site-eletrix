@@ -238,12 +238,15 @@ export function Stations() {
             <p className="mt-7 hidden max-w-sm border-l-2 border-brand-500 pl-4 text-[0.97rem] text-fg-muted lg:block">Os pontos azuis marcam endereços com recarga Eletrix, em operação ou em instalação. No detalhe, a Grande São Paulo.</p>
           </div>
           <figure className="relative mx-auto w-full max-w-[560px]">
-            <img
-              src={withBase('/mapa/rede-brasil.svg')}
-              alt={`Mapa do Brasil com as estações da Eletrix, do Pará ao Rio Grande do Sul, e um detalhe ampliado da Grande São Paulo`}
-              width={mapSummary.main[0]} height={mapSummary.main[1]} loading="lazy" decoding="async"
-              className="block h-auto w-full"
-            />
+            <picture>
+              <source media="(prefers-reduced-motion: reduce)" srcSet={withBase('/mapa/rede-brasil-parado.svg')} />
+              <img
+                src={withBase('/mapa/rede-brasil.svg')}
+                alt="Mapa do Brasil com as estações da Eletrix, do Pará ao Rio Grande do Sul, e um detalhe ampliado da Grande São Paulo"
+                width={mapSummary.main[0]} height={mapSummary.main[1]} loading="lazy" decoding="async"
+                className="block h-auto w-full"
+              />
+            </picture>
             <figcaption className="absolute -translate-y-full pb-1.5 text-[0.72rem] font-semibold text-brand-300 sm:text-sm" style={{ left: `${mapSummary.inset.left}%`, top: `${mapSummary.inset.top}%` }}>Grande São Paulo</figcaption>
           </figure>
         </div>
