@@ -66,8 +66,12 @@ for (const [w, h, touch] of [[1440, 900, false], [390, 844, true]]) {
   await page.mouse.move(2, 2); await page.evaluate(() => document.activeElement.blur());
   const p1 = await state(); await page.waitForTimeout(3500); const p2 = await state();
   ok(p1.pos === p2.pos, `${w}: botao pausar`);
+  // "Retomar" volta a passar mesmo com o foco ainda no botão (no celular o foco fica nele depois do toque)
   await page.getByRole('button', { name: 'Retomar a passagem automática' }).click();
-  await page.mouse.move(2, 2); await page.evaluate(() => document.activeElement.blur());
+  await page.mouse.move(2, 2);
+  const q1 = await state(); await page.waitForTimeout(3500); const q2 = await state();
+  ok(q2.pos !== q1.pos, `${w}: botao retomar volta a passar (${q1.pos} -> ${q2.pos})`);
+  await page.evaluate(() => document.activeElement.blur());
   // setas na tela
   const s1 = await state();
   await page.getByRole('button', { name: 'Próximo prédio' }).filter({ visible: true }).click(); await page.waitForTimeout(150);

@@ -36,7 +36,9 @@ console.log('mostrar:', out(show).length, 'depois:', out(later).length);
 const tag = (list, status) => out(list).map((s) => ({ name: s.name, city: s.city, uf: s.uf, lat: s.lat, lng: s.lng, status, pins: 1 }));
 const stations = [...tag(show, 'operando'), ...tag(later, 'a-instalar')];
 
-// --- pontos novos (nov/2026): três pins por endereço; sem duplicar o que já existe (mesmo local ou a menos de 150 m)
+// --- pontos novos (nov/2026): três pins por endereço. Não duplica o que já existe no CSV antigo (mesmo local
+// ou a menos de 150 m). Entre os próprios pontos novos, só o mesmo nome conta como repetido: há prédios
+// diferentes a poucos metros um do outro.
 const sameAs = {
   Totvs: 'TOTVS', Biosquare: 'Ed. Biosquare', 'Eco Sapucai': 'Ed. Eco Sapucaí', 'Gabriel 1825': 'Ed. Gabriel', Denver: 'Ed. Denver', 'Plaza I': 'Edifício Plaza I',
   'Golden Light': 'Ed. Golden Light', 'JK Tower': 'Ed. JK Tower', 'Padrão Park Bom Retiro': 'Padrão Park Bom Retiro', 'Clube de Campo SP': 'Clube de Campo de São Paulo',
@@ -45,7 +47,8 @@ const sameAs = {
 const meters = (a, b) => Math.hypot((a.lng - b.lng) * 111320 * Math.cos((a.lat * Math.PI) / 180), (a.lat - b.lat) * 110570);
 const cache = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/geocode-cache.json'), 'utf8'));
 const novos = parse(fs.readFileSync(path.join(ROOT, '_materiais/rodada-3/novos_pontos_mapa_nov2026.csv'), 'utf8').replace(/^﻿/, ''), { columns: true, delimiter: ';', skip_empty_lines: true });
-const log = { novos: 0, jaExistiam: [] };
+const original = [...stations];
+const log = { novos: 0, unidos: new Map() };
 for (const row of novos) {
   const name = row.nome.trim();
   const geo = cache[`${name}|${row.cidade.trim()}|${row.uf.trim()}`];
@@ -53,9 +56,10 @@ for (const row of novos) {
   const alias = sameAs[name];
   const found = stations.find((s) => alias && s.name === alias && s.city === geo.city)
     ?? stations.find((s) => s.name === name && s.city === geo.city)
-    ?? stations.find((s) => s.uf === geo.uf && meters(s, geo) < 150);
+    // o mais próximo entre os do CSV antigo, se estiver a menos de 150 m
+    ?? original.filter((s) => s.uf === geo.uf && meters(s, geo) < 150).sort((a, b) => meters(a, geo) - meters(b, geo))[0];
   if (found) {
-    if (found.pins < 3) log.jaExistiam.push(`${name} -> ${found.name}`);
+    if (original.includes(found)) log.unidos.set(name, `${found.name} (${Math.round(meters(found, geo))} m)`);
     found.pins = 3;
   } else {
     stations.push({ name, city: geo.city, uf: geo.uf, lat: geo.lat, lng: geo.lng, status: 'operando', pins: 3 });
@@ -67,5 +71,5 @@ fs.writeFileSync(path.join(ROOT, 'src/data/estacoes.json'), JSON.stringify(stati
 const cities = [...new Set(stations.map((s) => `${s.city}/${s.uf}`))];
 const states = [...new Set(stations.map((s) => s.uf))];
 console.log(`estacoes.json: ${stations.length} locais (${log.novos} novos), ${stations.reduce((n, s) => n + s.pins, 0)} pins`);
-console.log(`já existiam (viram 3 pins): ${log.jaExistiam.join('; ')}`);
+console.log(`unidos a um ponto do CSV antigo (3 pins): ${[...log.unidos].map(([a, b]) => `${a} -> ${b}`).join('; ')}`);
 console.log(`${cities.length} cidades; ${states.length} estados: ${states.join(', ')}`);

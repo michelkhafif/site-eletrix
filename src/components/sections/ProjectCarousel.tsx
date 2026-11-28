@@ -115,13 +115,13 @@ export function ProjectCarousel({ slides, title, label }: { slides: Slide[]; tit
   return (
     <div ref={root} role="region" aria-roledescription="carrossel" aria-label={label}
       onPointerEnter={(e) => e.pointerType === 'mouse' && setHover(true)} onPointerLeave={(e) => e.pointerType === 'mouse' && setHover(false)}
-      onFocus={() => setFocus(true)} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocus(false); }}>
+      onFocus={(e) => { if (!(e.target as HTMLElement).hasAttribute('data-playpause')) setFocus(true); }} onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setFocus(false); }}>
       <div className="container-x flex items-center justify-between gap-4">
         <h3 className="font-display text-[1.35rem] font-bold text-white md:text-2xl">{title}</h3>
         <div className="flex items-center gap-2" data-wa-avoid>
           <button type="button" className={`${button} hidden sm:grid`} onClick={() => go(-1, true)} aria-label="Prédio anterior"><Icon name="arrowRight" size={20} className="rotate-180" /></button>
           {!reduced && (
-            <button type="button" className={button} onClick={() => setPaused((v) => !v)} aria-label={paused ? 'Retomar a passagem automática' : 'Pausar a passagem automática'}>
+            <button type="button" data-playpause className={button} onClick={() => { setPaused((v) => !v); setFocus(false); }} aria-label={paused ? 'Retomar a passagem automática' : 'Pausar a passagem automática'}>
               <Icon name={paused ? 'play' : 'pause'} size={18} />
             </button>
           )}
