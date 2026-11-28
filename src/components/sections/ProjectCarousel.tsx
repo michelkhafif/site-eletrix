@@ -15,7 +15,10 @@ type Slide = { name: string; node: ReactNode };
 export function ProjectCarousel({ slides, title, label }: { slides: Slide[]; title: string; label: string }) {
   const n = slides.length;
   const [pos, setPos] = useState(n);
-  const [animate, setAnimate] = useState(true);
+  const [animate, setAnimate] = useState(false);
+  // o HTML sai com uma cópia só (página mais leve); as duas de apoio entram depois de carregar
+  const [looped, setLooped] = useState(false);
+  useEffect(() => setLooped(true), []);
   const [drag, setDrag] = useState(0);
   const [hover, setHover] = useState(false);
   const [focus, setFocus] = useState(false);
@@ -25,7 +28,7 @@ export function ProjectCarousel({ slides, title, label }: { slides: Slide[]; tit
   const [reduced, setReduced] = useState(true);
   const [announce, setAnnounce] = useState('');
   const root = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLUListElement>(null);
+  const track = useRef<HTMLDivElement>(null);
   const start = useRef<{ x: number; y: number; id: number; moved: boolean } | null>(null);
 
   const real = ((pos % n) + n) % n;
@@ -129,15 +132,15 @@ export function ProjectCarousel({ slides, title, label }: { slides: Slide[]; tit
       <div className="carousel mt-5 cursor-grab touch-pan-y select-none overflow-hidden active:cursor-grabbing" tabIndex={0} aria-label="Use as setas do teclado para ver outros prédios"
         onKeyDown={(e) => { if (e.key === 'ArrowRight') { e.preventDefault(); go(1, true); } if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1, true); } }}
         onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerEnd} onPointerCancel={onPointerEnd} onDragStart={(e) => e.preventDefault()}>
-        <ul ref={track} className="carousel-track" data-animate={animate && drag === 0}
-          style={{ ['--pos' as string]: pos, ['--drag' as string]: `${drag}px` }}
+        <div ref={track} className="carousel-track" data-animate={animate && drag === 0}
+          style={{ ['--pos' as string]: looped ? pos : pos - n, ['--drag' as string]: `${drag}px` }}
           onTransitionEnd={(e) => { if (e.target === e.currentTarget) setPos((p) => recenter(p)); }}>
-          {[0, 1, 2].flatMap((copy) => slides.map((s, i) => (
-            <li key={`${copy}-${i}`} className="carousel-slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} de ${n}`} aria-hidden={copy === 1 ? undefined : true} data-copy={copy}>
+          {(looped ? [0, 1, 2] : [1]).flatMap((copy) => slides.map((s, i) => (
+            <div key={`${copy}-${i}`} className="carousel-slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} de ${n}`} aria-hidden={copy === 1 ? undefined : true} data-copy={copy}>
               {s.node}
-            </li>
+            </div>
           )))}
-        </ul>
+        </div>
       </div>
 
       <div className="container-x mt-5 flex items-center gap-4" data-wa-avoid>

@@ -1,4 +1,5 @@
 import { Picture } from '@/components/ui/Picture';
+import { LedRunner } from './LedRunner';
 import led from '@/data/hero-led.json';
 
 /**
@@ -7,7 +8,7 @@ import led from '@/data/hero-led.json';
  *
  * A foto e o SVG ficam em molduras idênticas (.cover-frame), com a proporção exata da foto original,
  * recortadas por CSS (unidades de container). Assim a luz fica em cima das bordas em qualquer tela.
- * Só anima stroke-dashoffset e opacity. Sem JavaScript; com movimento reduzido, nada aparece.
+ * Só stroke-dashoffset e opacity mudam, e só nos trechos acesos (ver LedRunner). Com movimento reduzido, nada aparece.
  */
 
 type Seg = { id: string; d: string };
@@ -62,21 +63,7 @@ function timeline() {
 }
 
 const { plan, total } = timeline();
-const pct = (s: number) => `${((s / total) * 100).toFixed(2)}%`;
-const f = (v: number) => v.toFixed(4);
-
-const css = plan.map((p, i) => {
-  const t = p.tail / p.len;
-  const a = p.start, b = p.start + (p.len + p.tail) / SPEED;
-  const frac = { head: Math.min(SNAKE.head, p.len * 0.2) / p.len, body: Math.min(SNAKE.body, p.len * 0.4) / p.len, tail: t };
-  const moves = (Object.keys(frac) as (keyof typeof frac)[]).map((k) =>
-    `@keyframes l${i}${k}{0%,${pct(a)}{stroke-dashoffset:${f(frac[k])}}${pct(b)},100%{stroke-dashoffset:${f(frac[k] - 1 - t)}}}` +
-    `.led-s${i} .d-${k}{stroke-dasharray:${f(frac[k])} 3}` +
-    `html.motion .led-s${i} .d-${k}{animation:l${i}${k} ${total.toFixed(2)}s linear infinite}`).join('');
-  const fade = `@keyframes o${i}{0%,${pct(a)}{opacity:0}${pct(a + 0.12)},${pct(b - 0.22)}{opacity:1}${pct(b)},100%{opacity:0}}` +
-    `html.motion .led-s${i}{animation:o${i} ${total.toFixed(2)}s linear infinite}`;
-  return moves + fade;
-}).join('');
+const f = (v: number) => Number(v.toFixed(4));
 
 /** Camadas do traço: brilho largo, rastro, corpo, brilho da ponta e ponta quase branca. */
 const layers: { cls: string; dash: 'head' | 'body' | 'tail' }[] = [
@@ -92,22 +79,28 @@ export function HeroScene() {
     <div className="hero-media" aria-hidden="true">
       <div className="hero-photo">
         <div className="cover-frame">
-          <Picture name="totem-orelhao" alt="" priority fill sizes="(min-width: 768px) 780px, 100vw" />
+          <Picture name="totem-orelhao" alt="" priority fill sizes="(max-width: 767px) 80vw, 780px" />
         </div>
         <div className="hero-shade" />
       </div>
       <div className="hero-led">
         <div className="cover-frame">
           <svg viewBox={`0 0 ${led.w} ${led.h}`} preserveAspectRatio="xMidYMid slice" className="h-full w-full" focusable="false">
-            <style dangerouslySetInnerHTML={{ __html: css }} />
-            {plan.map((p, i) => (
-              <g key={p.seg.id} className={`led-seg led-s${i}`} data-seg={p.seg.id}>
-                {layers.map((l) => <path key={l.cls} d={p.seg.d} pathLength={1} className={`${l.cls} d-${l.dash}`} />)}
-              </g>
-            ))}
+            {plan.map((p) => {
+              // comprimentos em frações do caminho (pathLength = 1)
+              const dash = { head: Math.min(SNAKE.head, p.len * 0.2) / p.len, body: Math.min(SNAKE.body, p.len * 0.4) / p.len, tail: p.tail / p.len };
+              return (
+                <g key={p.seg.id} className="led-seg" data-seg={p.seg.id} data-start={f(p.start)} data-end={f(p.start + (p.len + p.tail) / SPEED)} data-travel={f(1 + dash.tail)} style={{ display: 'none' }}>
+                  {layers.map((l) => (
+                    <path key={l.cls} d={p.seg.d} pathLength={1} className={l.cls} data-dash={f(dash[l.dash])} style={{ strokeDasharray: `${f(dash[l.dash])} 3`, strokeDashoffset: f(dash[l.dash]) }} />
+                  ))}
+                </g>
+              );
+            })}
           </svg>
         </div>
       </div>
+      <LedRunner total={f(total)} />
     </div>
   );
 }

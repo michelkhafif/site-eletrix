@@ -11,9 +11,7 @@ const sizes = [[390, 844], [768, 1024], [1440, 900], [1920, 1080], [360, 640], [
 const frames = [1.0, 2.4, 3.6, 5.6, 7.4, 8.6]; // segundos
 
 const browser = await chromium.launch({ channel: process.env.PW_CHANNEL || 'msedge' });
-const freeze = (p, t) => p.evaluate((ms) => {
-  document.getAnimations().filter((a) => a.animationName?.startsWith('l') || a.animationName?.startsWith('o')).forEach((a) => { a.pause(); a.currentTime = ms; });
-}, t * 1000);
+const freeze = (p, t) => p.evaluate((s) => window.dispatchEvent(new CustomEvent('led:seek', { detail: s })), t);
 
 for (const [w, h] of sizes) {
   const ctx = await browser.newContext({ viewport: { width: w, height: h }, reducedMotion: 'no-preference', hasTouch: w < 700 });
@@ -26,7 +24,7 @@ for (const [w, h] of sizes) {
     const hero = document.querySelector('.hero').getBoundingClientRect();
     const f = [...document.querySelectorAll('.cover-frame')].map((e) => e.getBoundingClientRect());
     const media = document.querySelector('.hero-media').getBoundingClientRect();
-    return { hero: Math.round(hero.height), media: `${Math.round(media.width)}x${Math.round(media.height)}`, same: f[0].x === f[1].x && f[0].y === f[1].y && f[0].width === f[1].width, frame: `${Math.round(f[0].width)}x${Math.round(f[0].height)}`, sw: document.documentElement.scrollWidth, anims: document.getAnimations().length };
+    return { hero: Math.round(hero.height), media: `${Math.round(media.width)}x${Math.round(media.height)}`, same: f[0].x === f[1].x && f[0].y === f[1].y && f[0].width === f[1].width, frame: `${Math.round(f[0].width)}x${Math.round(f[0].height)}`, sw: document.documentElement.scrollWidth, acesos: [...document.querySelectorAll('.led-seg')].filter((g) => g.style.display !== 'none').map((g) => g.dataset.seg).join('+') };
   });
   console.log(w, h, JSON.stringify(m), errs.join(' '));
   await freeze(page, 5.6);

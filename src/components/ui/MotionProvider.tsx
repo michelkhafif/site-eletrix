@@ -5,6 +5,15 @@ import { usePathname } from 'next/navigation';
 /** Um único observer revela os elementos [data-reveal]. Sem JS ou com movimento reduzido, tudo fica visível. */
 export function MotionProvider() {
   const pathname = usePathname();
+  // Logos das faixas rolantes: carregam depois que a página termina (sem disputar com a foto principal),
+  // para nenhum chegar em branco à tela.
+  useEffect(() => {
+    const load = () => document.querySelectorAll<HTMLImageElement>('.marquee img[loading="lazy"]').forEach((i) => { i.loading = 'eager'; });
+    if (document.readyState === 'complete') load();
+    else window.addEventListener('load', load, { once: true });
+    return () => window.removeEventListener('load', load);
+  }, [pathname]);
+
   useEffect(() => {
     const root = document.documentElement;
     if (!root.classList.contains('motion')) return;

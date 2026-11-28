@@ -177,22 +177,22 @@ details[open] > summary .chev { transform: rotate(180deg); }
 }
 /* foto escurecida: o LED precisa de contraste */
 .hero-shade { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(5,11,20,.78) 0, rgba(5,11,20,.4) 20%, rgba(5,11,20,.42) 55%, rgba(5,11,20,.86) 80%, #050b14 100%); }
-/* a luz some antes de chegar ao título */
-.hero-led { -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 104px), transparent calc(100% - 44px)); mask-image: linear-gradient(to bottom, #000 calc(100% - 104px), transparent calc(100% - 44px)); }
+/* a luz some antes de chegar ao título (um véu por cima, mais leve que uma máscara) */
+.hero-media::after { content: ''; position: absolute; inset: auto 0 0; height: 112px; background: linear-gradient(to bottom, transparent, rgba(5,11,20,.7) 28%, #050b14 62%); pointer-events: none; }
 .hero-ambient { display: none; }
 @media (min-width: 768px) {
   .hero { min-height: min(calc(100vh - 56px), 880px); min-height: min(calc(100svh - 56px), 880px); }
   .hero-media { position: absolute; top: var(--header-h); bottom: 0; right: 0; height: auto; width: min(54vw, 84vh, 780px); width: min(54vw, 84svh, 780px); --hx: 0.35; --hy: 0.34; }
   .hero-shade { background: linear-gradient(to bottom, #050b14 0, rgba(5,11,20,.34) 13%, rgba(5,11,20,.34) 76%, #050b14 100%); }
   .hero-photo { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 24%); mask-image: linear-gradient(to right, transparent 0, #000 24%); }
-  .hero-led { -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%); mask-image: linear-gradient(to right, transparent 0, #000 7%); }
+  .hero-media::after { display: none; }
   /* a própria foto, desfocada, preenche o resto do hero, sob uma camada azul-marinho */
   .hero-ambient { display: block; position: absolute; inset: 0; background-size: cover; background-position: 60% 40%; opacity: 0.22; }
   .hero-ambient + .hero-tint { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(5,11,20,.55), rgba(8,44,74,.28) 45%, transparent 70%); }
 }
 
 /* LED: traços sobre a foto (unidades da foto original, 960 de largura) */
-.led-seg { opacity: 0; will-change: opacity; }
+.led-seg { opacity: 0; }
 .led-seg path { fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .led-halo { stroke: #10b7ff; stroke-width: 22; stroke-opacity: 0.22; }
 .led-tail { stroke: #10b7ff; stroke-width: 3; stroke-opacity: 0.55; }
@@ -200,7 +200,7 @@ details[open] > summary .chev { transform: rotate(180deg); }
 .led-glow { stroke: #5fd3ff; stroke-width: 12; stroke-opacity: 0.55; }
 .led-head { stroke: #f4fcff; stroke-width: 4.8; }
 @media (max-width: 767px) {
-  .led-halo { stroke-width: 30; }
+  .led-halo { display: none; }
   .led-tail { stroke-width: 4.8; }
   .led-body { stroke-width: 7; }
   .led-glow { stroke-width: 18; }

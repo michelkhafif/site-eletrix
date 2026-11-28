@@ -14,10 +14,10 @@ for (const [w, h] of [[390, 844], [768, 1024], [1440, 900], [1920, 1080]]) {
   const page = await ctx.newPage();
   await page.goto(base + '/', { waitUntil: 'networkidle' });
   await page.addStyleTag({ content: `
-    .led-seg { opacity: 1 !important; }
+    .led-seg { opacity: 1 !important; display: inline !important; }
     .led-seg path { stroke-dasharray: none !important; stroke: #ff2bd6 !important; stroke-opacity: 1 !important; stroke-width: ${w < 768 ? 2.4 : 1.6} !important; }
-    .led-seg path:not(.led-body) { display: none; }
-    .hero-shade { opacity: .35; } .hero-led { -webkit-mask-image: none !important; mask-image: none !important; }
+    .led-seg path:not(.led-body) { display: none !important; }
+    .hero-shade { opacity: .35; } .hero-media::after { display: none !important; }
     .hero h1, .hero .pointer-events-auto, header, .wa-float { visibility: hidden !important; }` });
   await page.waitForTimeout(500);
   const buf = await page.locator('.hero-media').screenshot();

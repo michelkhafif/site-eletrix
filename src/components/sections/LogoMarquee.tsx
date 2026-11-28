@@ -27,11 +27,11 @@ function box(slug: string, scale = 1) {
   return { w: Math.round(w), h: Math.round(h) };
 }
 
-function LogoImg({ slug, name, tone, scale = 1, eager }: { slug: string; name: string; tone: 'dark' | 'light'; scale?: number; eager?: boolean }) {
+function LogoImg({ slug, name, tone, scale = 1 }: { slug: string; name: string; tone: 'dark' | 'light'; scale?: number }) {
   const l = logoInfo(slug);
   const { w, h } = box(slug, scale);
   return (
-    <img src={withBase(l.file)} alt={name} width={w} height={h} loading={eager ? 'eager' : 'lazy'} decoding="async"
+    <img src={withBase(l.file)} alt={name} width={w} height={h} loading="lazy" decoding="async"
       className={`block max-w-none ${tone === 'dark' ? 'logo-mono' : 'logo-mono-dark'}`} style={{ width: w, height: h }} />
   );
 }
@@ -41,22 +41,20 @@ function LogoImg({ slug, name, tone, scale = 1, eager }: { slug: string; name: s
  * de tela) e o trilho anda exatamente metade, então o laço não tem emenda. O espaço entre logos é sempre
  * o mesmo, medido de borda a borda. Com movimento reduzido, vira uma fileira parada que se arrasta.
  */
-export function LogoTrack({ list, tone, scale = 1, gap, speed = 55, reverse = false, eagerCount = 0 }: {
-  list: Partner[]; tone: 'dark' | 'light'; scale?: number; gap: number; speed?: number; reverse?: boolean; eagerCount?: number;
-}) {
+function LogoTrack({ list, tone, scale = 1, gap, speed = 55 }: { list: Partner[]; tone: 'dark' | 'light'; scale?: number; gap: number; speed?: number }) {
   const length = list.reduce((sum, p) => sum + box(p.slug, scale).w + gap, 0);
   const group = (copy: boolean) => (
     <ul className={`marquee-group flex shrink-0 items-center ${copy ? 'marquee-copy' : ''}`} style={{ gap, paddingRight: gap }} aria-hidden={copy || undefined}>
-      {list.map((p, i) => (
+      {list.map((p) => (
         <li key={p.slug} className="flex shrink-0 items-center justify-center" style={{ height: 64 * scale }}>
-          <LogoImg slug={p.slug} name={copy ? '' : p.name} tone={tone} scale={scale} eager={!copy && i < eagerCount} />
+          <LogoImg slug={p.slug} name={copy ? '' : p.name} tone={tone} scale={scale} />
         </li>
       ))}
     </ul>
   );
   return (
     <div className="marquee">
-      <div className="marquee-track flex" style={{ animationDuration: `${Math.round(length / speed)}s`, animationDirection: reverse ? 'reverse' : 'normal' }}>
+      <div className="marquee-track flex" style={{ animationDuration: `${Math.round(length / speed)}s` }}>
         {group(false)}
         {group(true)}
       </div>
@@ -68,8 +66,8 @@ export function LogoTrack({ list, tone, scale = 1, gap, speed = 55, reverse = fa
 export function LogoMarquee() {
   return (
     <div role="group" aria-label="Parceiros e clientes da Eletrix">
-      <div className="sm:hidden"><LogoTrack list={partners} tone="light" scale={0.92} gap={44} speed={46} eagerCount={4} /></div>
-      <div className="hidden sm:block"><LogoTrack list={partners} tone="light" scale={1.08} gap={68} speed={58} eagerCount={6} /></div>
+      <div className="sm:hidden"><LogoTrack list={partners} tone="light" scale={0.92} gap={44} speed={46} /></div>
+      <div className="hidden sm:block"><LogoTrack list={partners} tone="light" scale={1.08} gap={68} speed={58} /></div>
     </div>
   );
 }

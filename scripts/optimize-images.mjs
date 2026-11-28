@@ -93,7 +93,8 @@ async function processImage(name, entry) {
   }
   const meta = await sharp(file).metadata();
   const aspect = meta.height / meta.width;
-  const wl = HERO.includes(name) ? [...WIDTHS, 1920] : WIDTHS;
+  // a foto do hero ganha uma largura intermediária para o celular
+  const wl = name === 'totem-orelhao' ? [480, 640, 800, 1280] : HERO.includes(name) ? [...WIDTHS, 1920] : WIDTHS;
   const ws = wl.filter((w) => w < meta.width);
   const maxW = Math.min(meta.width, wl[wl.length - 1]);
   if (!ws.includes(maxW)) ws.push(maxW);

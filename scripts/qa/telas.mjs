@@ -27,11 +27,10 @@ for (const [w, h] of sizes) {
     });
     await page.waitForTimeout(2600);
     // congela as animações num instante representativo (a luz do hero sobre o totem; faixas de logos paradas)
-    await page.evaluate(() => document.getAnimations().forEach((a, i) => {
-      const n = a.animationName || '';
-      if (/^(l\d|o\d)/.test(n)) { a.pause(); a.currentTime = 5600; }
-      if (n === 'marquee') { a.pause(); a.currentTime = 7000 + i * 900; }
-    }));
+    await page.evaluate(() => {
+      window.dispatchEvent(new CustomEvent('led:seek', { detail: 5.6 }));
+      document.getAnimations().filter((a) => a.animationName === 'marquee').forEach((a, i) => { a.pause(); a.currentTime = 7000 + i * 900; });
+    });
     await page.waitForTimeout(250);
     const height = await page.evaluate(() => document.documentElement.scrollHeight);
     if (height <= 15000) return shot(page, `${name}-${w}`, { fullPage: true });
